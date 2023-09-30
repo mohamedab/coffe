@@ -1,0 +1,23 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.mat-drawer-container {
+  background-color: transparent !important;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+  height: 200px;
+}
+
+.mat-toolbar.mat-primary {
+  background-color: #945d34 !important;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.activebutton {
+    background-color: #e88f2a !important;
+}

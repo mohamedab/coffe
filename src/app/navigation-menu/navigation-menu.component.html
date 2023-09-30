@@ -1,0 +1,41 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+    [style.background-image]="'url(assets/images/background/bg4.jpeg)'">
+    <mat-toolbar>
+      <a *ngIf="isHandset$ | async" class="closebtn btn" (click)="drawer.close()">×</a>
+      <div class="logo-header">
+        <a href="/">
+          <img src="assets/images/logo.png" width="193" height="89" alt="" class="mCS_img_loaded">
+        </a>
+      </div>
+    </mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/menu" routerLinkActive="activebutton" style="text-align: center">Menu</a>
+      <a mat-list-item routerLink="/about" routerLinkActive="activebutton" style="text-align: center">About us</a>
+      <a mat-list-item routerLink="/contact" routerLinkActive="activebutton" style="text-align: center">Contact</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" *ngIf="isHandset$ | async">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        style="position: absolute;right: 0px;">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <div class="logo-header">
+        <a routeLink="/">
+          <img src="assets/images/logo-2.png" alt="">
+        </a>
+      </div>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+    <app-total-bar [totalPrice]="total"></app-total-bar>
+  </mat-sidenav-content>
+</mat-sidenav-container>

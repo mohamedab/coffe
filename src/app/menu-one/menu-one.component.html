@@ -1,0 +1,431 @@
+<div class="section-full bg-pink-light">
+  <div class="container">
+    <div class="dlab-tabs menu-tabs style1">
+      <ul class="nav-tabs nav" role="tablist">
+        <li class="nav-item ng-star-inserted">
+          <a (click)="showCoffeeMenu()"
+            [class.active]="coffeeMenu"
+            id="ngb-nav-3" role="tab" aria-selected="true"
+            aria-disabled="false" class="nav-link"
+            aria-controls="ngb-nav-3-panel">
+            <div class="icon-bx">
+              <img
+                src="assets/images/icons/icon8.png">
+            </div>
+            <h4>COFFEE</h4>
+            <h6>COFFEE &amp; CAPPUCCINO</h6>
+          </a>
+        </li>
+        <li class="nav-item ng-star-inserted">
+          <a (click)="showLunchMenu()"
+            [class.active]="lunchMenu"
+            id="ngb-nav-4" role="tab" aria-selected="false"
+            aria-disabled="false" class="nav-link">
+            <div
+              src="assets/images/icons/icon5.png"></div>
+            <h4>LUNCH</h4>
+            <h6>COFFEE &amp; CAPPUCCINO</h6>
+          </a>
+        </li>
+        <li class="nav-item ng-star-inserted">
+          <a (click)="showDinnerMenu()"
+            [class.active]="dinnerMenu"
+            id="ngb-nav-5" role="tab" aria-selected="false"
+            aria-disabled="false" class="nav-link">
+            <div
+              src="assets/images/icons/icon6.png"></div>
+            <h4>DINER</h4>
+            <h6>COFFEE &amp; CAPPUCCINO</h6>
+          </a>
+        </li>
+        <li class="nav-item ng-star-inserted">
+          <a (click)="showDrinkMenu()"
+            [class.active]="drinkMenu"
+            id="ngb-nav-6" role="tab" aria-selected="false"
+            aria-disabled="false" class="nav-link">
+            <div
+              src="assets/images/icons/icon7.png"></div>
+            <h4>DRINKS</h4>
+            <h6>COFFEE &amp; CAPPUCCINO</h6>
+          </a>
+        </li>
+      </ul>
+      <div class="mt-2 tab-content">
+        <div *ngIf="coffeeMenu" class="tab-pane fade show active ng-star-inserted" id="ngb-nav-3-panel" role="tabpanel"
+                                aria-labelledby="ngb-nav-3">
+          <div class="tab-pane ng-star-inserted">
+            <div class="menu-box">
+              <ul class="menu-list">
+                <li class="ng-star-inserted">
+                  <div class="item-left">
+                    <img
+                      src="assets/images/cup/cup1.png">
+                    <h4
+                      class="title">Single Cup Brew
+                    </h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">$4.50</h5>
+                    <a (click)="addToCart(2.55)"><mat-icon class="add">add</mat-icon></a>
+                    <a (click)="removeFromCart(2)"><mat-icon class="remove">remove</mat-icon></a>
+                  </div>
+                </li>
+                <li class="ng-star-inserted">
+                  <div class="item-left">
+                    <img
+                      src="assets/images/cup/cup2.png">
+                    <h4
+                      class="title">Black Eyed Andy
+                    </h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">$4.99</h5>
+                    <a (click)="addToCart(5)"><mat-icon class="add">add</mat-icon></a>
+                    <a (click)="removeFromCart(1)"><mat-icon class="remove">remove</mat-icon></a>
+                  </div>
+                </li>
+                <li class="ng-star-inserted">
+                  <div class="item-left">
+                    <img
+                      src="assets/images/cup/cup3.png">
+                    <h4
+                      class="title">Cuban Shot
+                    </h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">$2.55</h5>
+                    <a (click)="addToCart(2.55)"><mat-icon class="add">add</mat-icon></a>
+                    <a (click)="removeFromCart(2)"><mat-icon class="remove">remove</mat-icon></a>
+                  </div>
+                </li>
+                <li class="ng-star-inserted">
+                  <div class="item-left">
+                    <img
+                      src="assets/images/cup/cup4.png">
+                    <h4
+                      class="title">Single Cup Brew
+                    </h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">$4.50</h5>
+                    <a (click)="addToCart(2.55)"><mat-icon class="add">add</mat-icon></a>
+                    <a (click)="removeFromCart(2)"><mat-icon class="remove">remove</mat-icon></a>
+                  </div>
+                </li>
+                <li class="ng-star-inserted">
+                  <div class="item-left">
+                    <img
+                      src="assets/images/cup/cup5.png">
+                    <h4
+                      class="title">Black Eyed Andy
+                    </h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">$4.99</h5>
+                    <a (click)="addToCart(4.99)"><mat-icon class="add">add</mat-icon></a>
+                    <a (click)="removeFromCart(1)"><mat-icon class="remove">remove</mat-icon></a>
+                  </div>
+                </li>
+                <li class="ng-star-inserted">
+                  <div class="item-left">
+                    <img
+                      src="assets/images/cup/cup6.png">
+                    <h4
+                      class="title">Cuban Shot
+                    </h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">$2.55</h5>
+                    <a (click)="addToCart(2.55)"><mat-icon class="add">add</mat-icon></a>
+                    <a (click)="removeFromCart(2)"><mat-icon class="remove">remove</mat-icon></a>
+                  </div>
+                </li>
+                <li class="ng-star-inserted">
+                  <div class="item-left">
+                    <img
+                      src="assets/images/cup/cup7.png">
+                    <h4
+                      class="title">Caffé Americano
+                    </h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">$2.55</h5>
+                    <a (click)="addToCart(2.55)"><mat-icon class="add">add</mat-icon></a>
+                    <a (click)="removeFromCart(2)"><mat-icon class="remove">remove</mat-icon></a>
+                  </div>
+                </li>
+                <li class="ng-star-inserted">
+                  <div class="item-left">
+                    <img
+                      src="assets/images/cup/cup8.png">
+                    <h4
+                      class="title">Caramel Macchiato
+                    </h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">$2.55</h5>
+                    <a (click)="addToCart(2.55)"><mat-icon class="add">add</mat-icon></a>
+                    <a (click)="removeFromCart(2)"><mat-icon class="remove">remove</mat-icon></a>
+                  </div>
+                </li>
+                <li class="ng-star-inserted">
+                  <div class="item-left">
+                    <img
+                      src="assets/images/cup/cup9.png">
+                    <h4
+                      class="title">Café Latte
+                    </h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">$4.99</h5>
+                    <a (click)="addToCart(4.99)"><mat-icon class="add">add</mat-icon></a>
+                    <a (click)="removeFromCart(2)"><mat-icon class="remove">remove</mat-icon></a>
+                  </div>
+                </li>
+                <li class="ng-star-inserted">
+                  <div class="item-left">
+                    <img
+                      src="assets/images/cup/cup1.png">
+                    <h4
+                      class="title">Standard black coffee
+                    </h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">$2.55</h5>
+                    <a (click)="addToCart(2.55)"><mat-icon class="add">add</mat-icon></a>
+                    <a (click)="removeFromCart(2)"><mat-icon class="remove">remove</mat-icon></a>
+                  </div>
+                </li>
+                <!---->
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="lunchMenu" class="tab-pane fade ng-star-inserted active show" id="ngb-nav-4-panel" role="tabpanel"
+                               aria-labelledby="ngb-nav-4">
+          <div class="tab-pane ng-star-inserted">
+            <div class="menu-box">
+              <ul class="menu-list">
+                <li class="ng-star-inserted">
+                  <div class="item-left">
+                    <img src="assets/images/cup/cup1.png">
+                    <h4 class="title">Single Cup Brew</h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">$4.50</h5>
+                    <a (click)="addToCart(4.50)"><mat-icon class="add">add</mat-icon></a>
+                    <a (click)="removeFromCart(3)"><mat-icon class="remove">remove</mat-icon></a>
+                  </div>
+                </li>
+                <li class="ng-star-inserted">
+                  <div class="item-left">
+                    <img src="assets/images/cup/cup2.png">
+                    <h4 class="title">Black Eyed Andy</h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">$4.99</h5>
+                    <a (click)="addToCart(4.99)"><mat-icon class="add">add</mat-icon></a>
+                    <a (click)="removeFromCart(1)"><mat-icon class="remove">remove</mat-icon></a>
+                  </div>
+                </li>
+                <li class="ng-star-inserted">
+                  <div class="item-left">
+                    <img src="assets/images/cup/cup3.png">
+                    <h4 class="title">Cuban Shot</h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">$2.55</h5>
+                    <a (click)="addToCart(2.55)"><mat-icon class="add">add</mat-icon></a>
+                    <a (click)="removeFromCart(2)"><mat-icon class="remove">remove</mat-icon></a>
+                  </div>
+                </li>
+                <li class="ng-star-inserted">
+                  <div class="item-left">
+                    <img src="assets/images/cup/cup4.png">
+                    <h4 class="title">Single Cup Brew</h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">$4.50</h5>
+                    <a (click)="addToCart(4.50)"><mat-icon class="add">add</mat-icon></a>
+                    <a (click)="removeFromCart(3)"><mat-icon class="remove">remove</mat-icon></a>
+                  </div>
+                </li>
+                <!---->
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="dinnerMenu" class="tab-pane fade ng-star-inserted active show" id="ngb-nav-5-panel" role="tabpanel"
+                                aria-labelledby="ngb-nav-5">
+          <div class="tab-pane ng-star-inserted">
+            <div class="menu-box">
+              <ul class="menu-list">
+                <li class="ng-star-inserted">
+                  <div class="item-left">
+                    <img src="assets/images/cup/cup6.png">
+                    <h4 class="title">Single Cup Brew</h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">$4.50</h5>
+                    <a (click)="addToCart(2.55)"><mat-icon class="add">add</mat-icon></a>
+                    <a (click)="removeFromCart(2)"><mat-icon class="remove">remove</mat-icon></a>
+                  </div>
+                </li>
+                <li class="ng-star-inserted">
+                  <div class="item-left">
+                    <img src="assets/images/cup/cup7.png">
+                    <h4 class="title">Black Eyed Andy</h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">$4.99</h5>
+                    <a (click)="addToCart(2.55)"><mat-icon class="add">add</mat-icon></a>
+                    <a (click)="removeFromCart(2)"><mat-icon class="remove">remove</mat-icon></a>
+                  </div>
+                </li>
+                <li class="ng-star-inserted">
+                  <div class="item-left">
+                    <img src="assets/images/cup/cup8.png">
+                    <h4 class="title">Cuban Shot</h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">$2.55</h5>
+                    <a (click)="addToCart(2.55)"><mat-icon class="add">add</mat-icon></a>
+                    <a (click)="removeFromCart(2)"><mat-icon class="remove">remove</mat-icon></a>
+                  </div>
+                </li>
+                <li class="ng-star-inserted">
+                  <div class="item-left">
+                    <img src="assets/images/cup/cup9.png">
+                    <h4 class="title">Cafe au Lait</h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">$4.50</h5>
+                    <a (click)="addToCart(2.55)"><mat-icon class="add">add</mat-icon></a>
+                    <a (click)="removeFromCart(2)"><mat-icon class="remove">remove</mat-icon></a>
+                  </div>
+                </li>
+                <li class="ng-star-inserted">
+                  <div class="item-left">
+                    <img src="assets/images/cup/cup1.png">
+                    <h4 class="title">Coffee of the Day</h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">$2.55</h5>
+                    <a (click)="addToCart(2.55)"><mat-icon class="add">add</mat-icon></a>
+                    <a (click)="removeFromCart(2)"><mat-icon class="remove">remove</mat-icon></a>
+                  </div>
+                </li>
+                <li class="ng-star-inserted">
+                  <div class="item-left">
+                    <img src="assets/images/cup/cup2.png">
+                    <h4 class="title">Cappuccino</h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">$4.50</h5>
+                    <a (click)="addToCart(2.55)"><mat-icon class="add">add</mat-icon></a>
+                    <a (click)="removeFromCart(2)"><mat-icon class="remove">remove</mat-icon></a>
+                  </div>
+                </li>
+                <!---->
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="drinkMenu" class="tab-pane fade ng-star-inserted active show" id="ngb-nav-6-panel" role="tabpanel"
+                               aria-labelledby="ngb-nav-6">
+          <div class="tab-pane ng-star-inserted">
+            <div class="menu-box">
+              <ul class="menu-list">
+                <li class="ng-star-inserted">
+                  <div class="item-left">
+                    <img src="assets/images/cup/cup3.png">
+                    <h4 class="title">Single Cup Brew</h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">$4.50</h5>
+                  </div>
+                </li>
+                <li class="ng-star-inserted">
+                  <div class="item-left">
+                    <img src="assets/images/cup/cup4.png">
+                    <h4 class="title">Black Eyed Andy</h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">$4.99</h5>
+                  </div>
+                </li>
+                <li class="ng-star-inserted">
+                  <div class="item-left">
+                    <img src="assets/images/cup/cup5.png">
+                    <h4 class="title">Cuban Shot</h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">$2.55</h5>
+                  </div>
+                </li>
+                <li class="ng-star-inserted">
+                  <div class="item-left">
+                    <img src="assets/images/cup/cup6.png">
+                    <h4 class="title">Cafe au Lait</h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">$4.50</h5>
+                  </div>
+                </li>
+                <li class="ng-star-inserted">
+                  <div class="item-left">
+                    <img src="assets/images/cup/cup7.png">
+                    <h4 class="title">Coffee of the Day</h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">$2.55</h5>
+                  </div>
+                </li>
+                <li class="ng-star-inserted">
+                  <div class="item-left">
+                    <img src="assets/images/cup/cup8.png">
+                    <h4 class="title">Cappuccino</h4>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">$4.50</h5>
+                  </div>
+                </li>
+                <!---->
+              </ul>
+            </div>
+          </div>
+          <!---->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

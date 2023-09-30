@@ -1,0 +1,121 @@
+.container {
+  max-width: 970px;
+
+  .menu-tabs {
+    padding-bottom: 70px;
+
+    .nav-tabs {
+      position: relative;
+      top: -87px;
+      margin-bottom: 0;
+      justify-content: space-between;
+      z-index: 1;
+
+      &.nav {
+        display: flex;
+        flex-wrap: wrap;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+      }
+
+      .mat-mdc-tab {
+        height: 68px;
+        width: 25%;
+        background-color: #00000080;
+
+
+        .mdc-tab__ripple {
+          &::before {
+            width: 25%;
+            background-color: #e88f2a !important;
+            color: #fff;
+            border: 0;
+          }
+        }
+
+        &.mdc-tab--active {
+          .mat-mdc-tab-ripple {
+            background-color: #e88f2a !important;
+          }
+        }
+
+        .mdc-tab-indicator__content--underline {
+          border-color: #e88f2a !important;
+        }
+
+        .mdc-tab__content {
+          width: 100%;
+
+          .mdc-tab__text-label {
+            color: #fff;
+            height: 100%;
+            width: 100%;
+
+            img {
+              border-style: none;
+              height: auto;
+              max-width: 100%;
+              vertical-align: middle;
+            }
+          }
+
+          mat-icon {
+            padding-right: 10px;
+          }
+        }
+      }
+
+      .icon-bx {
+        width: 30px;
+        position: absolute;
+        left: 20px;
+        top: 16px;
+      }
+
+      a {
+        position: relative;
+        padding: 16px 15px 16px 60px;
+        display: block;
+      }
+
+      h4 {
+        font-size: 18px;
+        margin-bottom: 0;
+        line-height: 20px;
+        color: #fff;
+        text-align: left;
+      }
+
+      h6 {
+        margin-bottom: 0;
+        color: #fff;
+        font-size: 11px;
+        line-height: 16px;
+        font-weight: 300;
+      }
+    }
+  }
+}
+
+.mat-tab-label {
+  min-width: 25px !important;
+  padding: 5px;
+  background-color: transparent;
+  color: red;
+  font-weight: 700;
+}
+
+/* Styles for the active tab label */
+.mat-tab-label.mat-tab-label-active {
+  min-width: 25px !important;
+  padding: 5px;
+  background-color: transparent;
+  color: red;
+  font-weight: 700;
+}
+
+/* Styles for the ink bar */
+.mat-ink-bar {
+  background-color: green;
+}
