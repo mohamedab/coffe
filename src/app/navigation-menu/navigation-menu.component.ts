@@ -3,6 +3,7 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Observable} from 'rxjs';
 import {map, shareReplay} from 'rxjs/operators';
 import {PriceCalculatorService} from "../services/price-calculator.service";
+import {Product} from "../models/product";
 
 @Component({
   selector: 'app-navigation-menu',
@@ -17,10 +18,4 @@ export class NavigationMenuComponent {
       map(result => result.matches),
       shareReplay()
     );
-
-  total = 0;
-
-  constructor(private priceCalculator: PriceCalculatorService) {
-    this.priceCalculator.getTotal().subscribe(total => this.total = total);
-  }
 }

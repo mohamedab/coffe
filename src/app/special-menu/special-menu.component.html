@@ -11,66 +11,17 @@
       <div class="col-lg-12">
         <div class="menu-box">
           <ul class="menu-list">
-            <li class="ng-star-inserted">
-              <div class="item-left">
-                <img src="assets/images/cup/cup1.png">
-                <h4 class="title">Single Cup Brew</h4>
-                <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
-              </div>
-              <div class="item-right">
-                <h5 class="price">$4.50</h5>
-              </div>
-            </li>
-            <li class="ng-star-inserted">
-              <div class="item-left">
-                <img src="assets/images/cup/cup2.png">
-                <h4 class="title">Black Eyed Andy</h4>
-                <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
-              </div>
-              <div class="item-right">
-                <h5 class="price">$2.55</h5>
-              </div>
-            </li>
-            <li class="ng-star-inserted">
-              <div class="item-left">
-                <img src="assets/images/cup/cup3.png">
-                <h4 class="title">Cuban Shot</h4>
-                <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
-              </div>
-              <div class="item-right">
-                <h5 class="price">$2.55</h5>
-              </div>
-            </li>
-            <li class="ng-star-inserted">
-              <div class="item-left">
-                <img src="assets/images/cup/cup4.png">
-                <h4 class="title">Cafe au Lait</h4>
-                <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
-              </div>
-              <div class="item-right">
-                <h5 class="price">$2.55</h5>
-              </div>
-            </li>
-            <li class="ng-star-inserted">
-              <div class="item-left">
-                <img src="assets/images/cup/cup5.png">
-                <h4 class="title">Coffee of the Day</h4>
-                <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
-              </div>
-              <div class="item-right">
-                <h5 class="price">$2.55</h5>
-              </div>
-            </li>
-            <li class="ng-star-inserted">
-              <div class="item-left">
-                <img src="assets/images/cup/cup6.png">
-                <h4 class="title">Cappuccino</h4>
-                <p class="description">Lorem ipsum dolor sit amet consectetur adipiscing</p>
-              </div>
-              <div class="item-right">
-                <h5 class="price">$2.55</h5>
-              </div>
-            </li>
+            <li *ngFor="let product of specialMenuList; let i = index" >
+                  <div class="item-left">
+                    <img [src]="product.image">
+                    <h4 class="title">{{product.name}}</h4>
+                    <p class="description">{{product.ingredients}}</p>
+                  </div>
+                  <div class="item-right">
+                    <h5 class="price">{{product.price | currency}}</h5>
+                    <button mat-flat-button class="add" (click)="addToCart(product)">add</button>
+                  </div>
+                </li>
           </ul>
         </div>
       </div>

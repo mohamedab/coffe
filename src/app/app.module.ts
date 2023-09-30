@@ -25,6 +25,9 @@ import { FooterComponent } from './footer/footer.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactInfoComponent } from './contact-info/contact-info.component';
 import { TotalBarComponent } from './total-bar/total-bar.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
+import { OrderDetailComponent } from './order-detail/order-detail.component';
+import {MatTableModule} from "@angular/material/table";
 
 // Create a function that returns an instance of TranslateHttpLoader
 export function createTranslateLoader(http: HttpClient) {
@@ -42,7 +45,8 @@ export function createTranslateLoader(http: HttpClient) {
     FooterComponent,
     AboutUsComponent,
     ContactInfoComponent,
-    TotalBarComponent
+    TotalBarComponent,
+    OrderDetailComponent
   ],
   imports: [
     CommonModule,
@@ -62,7 +66,9 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     MatToolbarModule, MatButtonModule, MatSidenavModule, MatListModule, MatDividerModule,
     MatIconModule,
-    MatTabsModule
+    MatTabsModule,
+    FlexLayoutModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
