@@ -7,12 +7,17 @@
     <mat-toolbar>
       <a *ngIf="isHandset$ | async" class="closebtn btn" (click)="drawer.close()">×</a>
       <div class="logo-header">
-        <a href="/">
+        <a routerLink="/menu">
           <img src="assets/images/logo.png" width="193" height="89" alt="" class="mCS_img_loaded">
         </a>
       </div>
     </mat-toolbar>
-    <mat-nav-list>
+    <mat-nav-list *ngIf="isHandset$ | async">
+      <a mat-list-item routerLink="/menu" routerLinkActive="activebutton" style="text-align: center" (click)="drawer.close()">Menu</a>
+      <a mat-list-item routerLink="/about" routerLinkActive="activebutton" style="text-align: center" (click)="drawer.close()">About us</a>
+      <a mat-list-item routerLink="/contact" routerLinkActive="activebutton" style="text-align: center" (click)="drawer.close()">Contact</a>
+    </mat-nav-list>
+    <mat-nav-list *ngIf="!(isHandset$ | async)">
       <a mat-list-item routerLink="/menu" routerLinkActive="activebutton" style="text-align: center">Menu</a>
       <a mat-list-item routerLink="/about" routerLinkActive="activebutton" style="text-align: center">About us</a>
       <a mat-list-item routerLink="/contact" routerLinkActive="activebutton" style="text-align: center">Contact</a>
