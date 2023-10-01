@@ -30,6 +30,7 @@ export class MenuOneComponent {
   constructor(private cartService: CartService,
               private itemService: ItemService) {
     this.itemService.getItems().subscribe((items: Item[]) => {
+      console.log(items);
       this.coffeeMenuList = items.filter(item => item.category === 'Coffee');
       this.lunchMenuList = items.filter(item => item.category === 'Lunch');
       this.dinnerMenuList = items.filter(item => item.category === 'Diner');

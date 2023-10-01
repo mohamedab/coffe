@@ -11,14 +11,23 @@ export class ItemComponent {
 
   @Input() items: Item[] = [];
   quantities: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  @Input() editOrder: boolean = false;
 
-  constructor(private priceCalculator: CartService) {
+  constructor(private cartService: CartService) {
   }
 
   addToCart(item: Item) {
     let itemToAdd = new Item();
     itemToAdd = item;
-    this.priceCalculator.addToCart(itemToAdd, itemToAdd.quantity);
+    this.cartService.addToCart(itemToAdd, itemToAdd.quantity);
     item.quantity = 0;
+  }
+
+  removeFromCart(item: Item) {
+    this.cartService.removeFromCart(item)
+  }
+
+  updateItemQuantity(item: any) {
+    this.cartService.updateCart(item, item.quantity);
   }
 }

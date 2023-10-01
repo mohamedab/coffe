@@ -3,16 +3,26 @@
     <li *ngFor="let item of items; let i = index">
       <div class="item-left">
         <img [src]="item.imageUrl">
-        <h4 class="title">{{item.name}}</h4>
+        <h4 class="title" *ngIf="!editOrder">{{item.name}}</h4>
+        <h4 class="title" *ngIf="editOrder">{{item.quantity}} x {{item.name}}</h4>
         <p class="description">{{item.ingredients}}</p>
       </div>
-      <div class="item-right">
+      <div class="item-right" *ngIf="!editOrder">
         <h5 class="price">{{item.price | currency}}</h5>
         <div fxLayout="row" fxLayoutAlign="space-between center" class="item-right-btm">
           <select [(ngModel)]="item.quantity" name="quantity" class="quantity">
             <option *ngFor="let quantity of quantities" [ngValue]="quantity">{{quantity}}</option>
           </select>
           <button mat-flat-button class="add" [disabled]="item.quantity===0" (click)="addToCart(item)">add</button>
+        </div>
+      </div>
+      <div class="item-right" *ngIf="editOrder">
+        <h4 class="total">{{(item.price * item.quantity) | currency}}</h4>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="item-right-btm">
+          <select [(ngModel)]="item.quantity" (change)="updateItemQuantity(item)" name="quantity" class="quantity">
+            <option *ngFor="let quantity of quantities" [ngValue]="quantity">{{quantity}}</option>
+          </select>
+          <button mat-flat-button class="remove" (click)="removeFromCart(item)">remove</button>
         </div>
       </div>
     </li>

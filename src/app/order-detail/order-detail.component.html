@@ -7,20 +7,6 @@
 </mat-toolbar>
 
 <div class="tab-pane">
-  <div class="menu-box">
-    <ul class="menu-list">
-      <li *ngFor="let item of selectedItems; let i = index">
-        <div class="item-left">
-          <img [src]="item.imageUrl">
-          <h4 class="title">{{item.quantity}} x {{item.name}}</h4>
-          <p class="description">{{item.ingredients}}</p>
-        </div>
-        <div class="item-right">
-          <h4 class="total">{{(item.price * item.quantity) | currency}}</h4>
-          <button mat-flat-button class="remove" (click)="removeFromCart(item)">remove</button>
-        </div>
-      </li>
-    </ul>
-  </div>
+  <app-item [items]="selectedItems" [editOrder]="true"></app-item>
 </div>
 <app-total-bar [showOrderDetailBouton]="false"></app-total-bar>

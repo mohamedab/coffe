@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -31,6 +30,9 @@ import {MatTableModule} from "@angular/material/table";
 import { ItemComponent } from './item/item.component';
 import {MatSelectModule} from "@angular/material/select";
 import {FormsModule} from "@angular/forms";
+import {environment} from "../environments/environment";
+import {initializeApp, provideFirebaseApp} from "@angular/fire/app";
+import {getFirestore, provideFirestore} from "@angular/fire/firestore";
 
 // Create a function that returns an instance of TranslateHttpLoader
 export function createTranslateLoader(http: HttpClient) {
@@ -74,7 +76,9 @@ export function createTranslateLoader(http: HttpClient) {
     MatTabsModule,
     FlexLayoutModule,
     MatTableModule,
-    MatSelectModule
+    MatSelectModule,
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [],
   bootstrap: [AppComponent]

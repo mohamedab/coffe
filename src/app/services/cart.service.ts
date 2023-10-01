@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
 import {Item} from "../models/item";
 import {Order} from "../models/order";
+import {addDoc, collection, doc, Firestore, setDoc} from "@angular/fire/firestore";
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,10 @@ export class CartService {
 
   private cart: Order = new Order();
   private cartSubject = new BehaviorSubject<Order>(this.cart);
+  cartCollection: any;
 
-
-  constructor() {
+  constructor(private firestore: Firestore) {
+    this.cartCollection = collection(this.firestore, 'Orders');
     // Load the cart from local storage when the service initializes
     this.loadCartFromLocalStorage();
   }
@@ -30,11 +32,28 @@ export class CartService {
     }
   }
 
+  updateCart(item: Item, quantity: number): void {
+    const existingCartItem = this.cart.items.find((cartItem) => cartItem.itemId === item.itemId);
+    if (existingCartItem) {
+      // If the item already exists in the cart, update the quantity
+      existingCartItem.quantity = quantity;
+      // Recalculate the total amount
+      this.calculateTotalAmount();
+
+      // Save the updated cart in local storage
+      this.saveCartToLocalStorage();
+
+      // Emit the updated cart through the cartSubject
+      console.log(this.cart);
+      this.cartSubject.next(this.cart);
+    }
+
+  }
+
   addToCart(item: Item, quantity: number): void {
     const existingCartItem = this.cart.items.find((cartItem) => cartItem.itemId === item.itemId);
 
     if (existingCartItem) {
-      console.log(existingCartItem);
       // If the item already exists in the cart, update the quantity
       existingCartItem.quantity += quantity;
     } else {
@@ -50,6 +69,7 @@ export class CartService {
     this.saveCartToLocalStorage();
 
     // Emit the updated cart through the cartSubject
+    console.log(this.cart);
     this.cartSubject.next(this.cart);
   }
 
@@ -71,6 +91,15 @@ export class CartService {
 
   getCart(): Observable<Order> {
     return this.cartSubject.asObservable();
+  }
+
+  updateOrder(order: Order) {
+    const orderDocRef = doc(this.firestore, `Orders/${order.orderId}`);
+    return setDoc(orderDocRef, order);
+  }
+
+  addOrder(order: Order): void {
+    addDoc(this.cartCollection, order);
   }
 
 

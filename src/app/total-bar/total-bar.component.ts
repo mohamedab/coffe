@@ -13,18 +13,20 @@ export class TotalBarComponent {
   totalPrice: number = 0;
   selecedItemsNbr: number = 0;
   @Input() showOrderDetailBouton: boolean = true;
+  cart: Order = new Order();
 
   constructor(private router: Router,
-              public priceCalculator: CartService) {
-    this.priceCalculator.getCart().subscribe((cart: Order) => {
-        if (cart.items.length > 0) {
-          this.selecedItemsNbr = cart.items.reduce((acc, item) => acc + parseInt(String(item.quantity), 10), 0);
-          this.totalPrice = cart.totalAmount;
-          if (this.totalPrice === 0) {
-            this.router.navigate(['menu']);
-          }
+              public cartService: CartService) {
+    this.cartService.getCart().subscribe((cart: Order) => {
+      if (cart.items.length > 0) {
+        this.selecedItemsNbr = cart.items.reduce((acc, item) => acc + parseInt(String(item.quantity), 10), 0);
+        this.totalPrice = cart.totalAmount;
+        if (this.totalPrice === 0) {
+          this.router.navigate(['menu']);
         }
-      });
+        this.cart = cart;
+      }
+    });
   }
 
   orderDetail() {
