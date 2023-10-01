@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Router} from "@angular/router";
-import {PriceCalculatorService} from "../services/price-calculator.service";
-import {Product} from "../models/product";
+import {CartService} from "../services/cart.service";
+import {Order} from "../models/order";
 
 @Component({
   selector: 'app-total-bar',
@@ -15,20 +15,14 @@ export class TotalBarComponent {
   @Input() showOrderDetailBouton: boolean = true;
 
   constructor(private router: Router,
-              public priceCalculator: PriceCalculatorService) {
-    this.priceCalculator.getSelectedItems()
-      .subscribe((selectedItems) => {
-        if (selectedItems) {
-          this.selecedItemsNbr = Array.from(selectedItems.entries())
-            .map((items) => items[1])
-            .reduce((acc, item) => acc + item.quantity, 0);
-        }
-      });
-    this.priceCalculator.getTotal()
-      .subscribe((total: number) => {
-        this.totalPrice = total;
-        if (total === 0) {
-          this.router.navigate(['menu']);
+              public priceCalculator: CartService) {
+    this.priceCalculator.getCart().subscribe((cart: Order) => {
+        if (cart.items.length > 0) {
+          this.selecedItemsNbr = cart.items.reduce((acc, item) => acc + parseInt(String(item.quantity), 10), 0);
+          this.totalPrice = cart.totalAmount;
+          if (this.totalPrice === 0) {
+            this.router.navigate(['menu']);
+          }
         }
       });
   }

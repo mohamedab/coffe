@@ -9,21 +9,7 @@
     </div>
     <div class="row">
       <div class="col-lg-12">
-        <div class="menu-box">
-          <ul class="menu-list">
-            <li *ngFor="let product of specialMenuList; let i = index" >
-                  <div class="item-left">
-                    <img [src]="product.image">
-                    <h4 class="title">{{product.name}}</h4>
-                    <p class="description">{{product.ingredients}}</p>
-                  </div>
-                  <div class="item-right">
-                    <h5 class="price">{{product.price | currency}}</h5>
-                    <button mat-flat-button class="add" (click)="addToCart(product)">add</button>
-                  </div>
-                </li>
-          </ul>
-        </div>
+        <app-item [items]="specialMenuList"></app-item>
       </div>
     </div>
   </div>

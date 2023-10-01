@@ -1,0 +1,21 @@
+<div class="menu-box">
+  <ul class="menu-list">
+    <li *ngFor="let item of items; let i = index">
+      <div class="item-left">
+        <img [src]="item.imageUrl">
+        <h4 class="title">{{item.name}}</h4>
+        <p class="description">{{item.ingredients}}</p>
+      </div>
+      <div class="item-right">
+        <h5 class="price">{{item.price | currency}}</h5>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="item-right-btm">
+          <select [(ngModel)]="item.quantity" name="quantity" class="quantity">
+            <option *ngFor="let quantity of quantities" [ngValue]="quantity">{{quantity}}</option>
+          </select>
+          <button mat-flat-button class="add" [disabled]="item.quantity===0" (click)="addToCart(item)">add</button>
+        </div>
+      </div>
+    </li>
+    <!---->
+  </ul>
+</div>

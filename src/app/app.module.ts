@@ -28,6 +28,9 @@ import { TotalBarComponent } from './total-bar/total-bar.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import {MatTableModule} from "@angular/material/table";
+import { ItemComponent } from './item/item.component';
+import {MatSelectModule} from "@angular/material/select";
+import {FormsModule} from "@angular/forms";
 
 // Create a function that returns an instance of TranslateHttpLoader
 export function createTranslateLoader(http: HttpClient) {
@@ -46,7 +49,8 @@ export function createTranslateLoader(http: HttpClient) {
     AboutUsComponent,
     ContactInfoComponent,
     TotalBarComponent,
-    OrderDetailComponent
+    OrderDetailComponent,
+    ItemComponent
   ],
   imports: [
     CommonModule,
@@ -55,6 +59,7 @@ export function createTranslateLoader(http: HttpClient) {
     BrowserAnimationsModule,
     MatIconModule,
     MatCardModule,
+    FormsModule,
     HttpClientModule, // Import HttpClientModule for translation
     TranslateModule.forRoot({
       defaultLanguage: 'en', // Set the default language
@@ -68,7 +73,8 @@ export function createTranslateLoader(http: HttpClient) {
     MatIconModule,
     MatTabsModule,
     FlexLayoutModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,15 +9,15 @@
 <div class="tab-pane">
   <div class="menu-box">
     <ul class="menu-list">
-      <li *ngFor="let entry of selectedItems; let i = index">
+      <li *ngFor="let item of selectedItems; let i = index">
         <div class="item-left">
-          <img [src]="entry[1].image">
-          <h4 class="title">{{entry[1].quantity}} x {{entry[1].name}}</h4>
-          <p class="description">{{entry[1].ingredients}}</p>
+          <img [src]="item.imageUrl">
+          <h4 class="title">{{item.quantity}} x {{item.name}}</h4>
+          <p class="description">{{item.ingredients}}</p>
         </div>
         <div class="item-right">
-          <h4 class="total">{{entry[1].total | currency}}</h4>
-          <button mat-flat-button class="remove" (click)="removeFromCart(entry[1])">remove</button>
+          <h4 class="total">{{(item.price * item.quantity) | currency}}</h4>
+          <button mat-flat-button class="remove" (click)="removeFromCart(item)">remove</button>
         </div>
       </li>
     </ul>

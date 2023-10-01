@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
-import {PriceCalculatorService} from "../services/price-calculator.service";
-import {Product} from "../models/product";
+import {Item} from "../models/item";
+import {CartService} from "../services/cart.service";
+import {ItemService} from "../services/item.service";
 
 @Component({
   selector: 'app-menu-one',
@@ -9,200 +10,35 @@ import {Product} from "../models/product";
 })
 export class MenuOneComponent {
 
-  coffeeMenuList: Product[] = [
-    {
-      name: 'Cappuccino',
-      price: 3.5,
-      image: 'assets/images/cup/cup1.png',
-      ingredients: ['espresso', 'steamed milk', 'foam'],
-      quantity: 0,
-      total: 0,
-    },
-    {
-      name: 'Latte',
-      price: 4,
-      image: 'assets/images/cup/cup2.png',
-      ingredients: ['espresso', 'steamed milk'],
-      quantity: 0,
-      total: 0,
-    },
-    {
-      name: 'Espresso',
-      price: 2,
-      image: 'assets/images/cup/cup3.png',
-      ingredients: ['espresso'],
-      quantity: 0,
-      total: 0,
-    },
-    {
-      name: 'Mocha',
-      price: 4.5,
-      image: 'assets/images/cup/cup4.png',
-      ingredients: ['espresso', 'chocolate', 'steamed milk', 'whipped cream'],
-      quantity: 0,
-      total: 0,
-    },
-    {
-      name: 'Macchiato',
-      price: 3,
-      image: 'assets/images/cup/cup5.png',
-      ingredients: ['espresso', 'caramel', 'foam'],
-      quantity: 0,
-      total: 0,
-    },
-    {
-      name: 'Americano',
-      price: 3,
-      image: 'assets/images/cup/cup6.png',
-      ingredients: ['espresso', 'hot water'],
-      quantity: 0,
-      total: 0,
-    },
-    {
-      name: 'Iced Coffee',
-      price: 3.5,
-      image: 'assets/images/cup/cup7.png',
-      ingredients: ['brewed coffee', 'ice', 'milk', 'sugar'],
-      quantity: 0,
-      total: 0,
-    },
-    {
-      name: 'Caramel Frappuccino',
-      price: 5,
-      image: 'assets/images/cup/cup8.png',
-      ingredients: ['coffee', 'caramel syrup', 'ice', 'milk', 'whipped cream'],
-      quantity: 0,
-      total: 0,
-    },
-    {
-      name: 'Irish Coffee',
-      price: 5,
-      image: 'assets/images/cup/cup9.png',
-      ingredients: ['whiskey', 'brewed coffee', 'sugar', 'whipped cream'],
-      quantity: 0,
-      total: 0,
-    },
-  ];
+  coffeeMenuList: Item[] = [];
 
-  lunchMenuList: Product[] = [
-    {
-      name: 'Chicken Caesar Salad',
-      price: 9.99,
-      image: 'assets/images/cup/cup1.png',
-      ingredients: ['romaine lettuce', 'grilled chicken', 'croutons', 'Caesar dressing'],
-      quantity: 0,
-      total: 0,
-    },
-    {
-      name: 'Vegetable Wrap',
-      price: 8.99,
-      image: 'assets/images/cup/cup4.png',
-      ingredients: ['grilled vegetables', 'hummus', 'feta cheese', 'tortilla'],
-      quantity: 0,
-      total: 0,
-    },
-    {
-      name: 'Classic BLT Sandwich',
-      price: 7.99,
-      image: 'assets/images/cup/cup6.png',
-      ingredients: ['bacon', 'lettuce', 'tomato', 'mayo', 'toasted bread'],
-      quantity: 0,
-      total: 0,
-    },
-    {
-      name: 'Caprese Panini',
-      price: 9.49,
-      image: 'assets/images/cup/cup9.png',
-      ingredients: ['tomato', 'fresh mozzarella', 'basil', 'balsamic glaze', 'ciabatta'],
-      quantity: 0,
-      total: 0,
-    },
-    // Add more lunch items here
-  ];
+  lunchMenuList: Item[] = [];
 
-  dinnerMenuList: Product[] = [
-    {
-      name: 'Grilled Salmon',
-      price: 16.99,
-      image: 'assets/images/cup/cup1.png',
-      ingredients: ['salmon fillet', 'lemon herb butter', 'steamed asparagus'],
-      quantity: 0,
-      total: 0,
-    },
-    {
-      name: 'Steakhouse Burger',
-      price: 14.99,
-      image: 'assets/images/cup/cup2.png',
-      ingredients: ['beef patty', 'cheddar cheese', 'bacon', 'lettuce', 'tomato', 'special sauce'],
-      quantity: 0,
-      total: 0,
-    },
-    {
-      name: 'Vegetable Stir-Fry',
-      price: 13.49,
-      image: 'assets/images/cup/cup3.png',
-      ingredients: ['assorted vegetables', 'tofu', 'savory sauce'],
-      quantity: 0,
-      total: 0,
-    },
-    {
-      name: 'Pasta Primavera',
-      price: 12.99,
-      image: 'assets/images/cup/cup4.png',
-      ingredients: ['penne pasta', 'seasonal vegetables', 'creamy Alfredo sauce'],
-      quantity: 0,
-      total: 0,
-    },
-    // Add more dinner items here
-  ];
+  dinnerMenuList: Item[] = [];
 
-  drinksMenuList: Product[] = [
-    {
-      name: 'Iced Tea',
-      price: 2.49,
-      image: 'assets/images/cup/cup5.png',
-      ingredients: ['iced tea', 'lemon'],
-      quantity: 0,
-      total: 0,
-    },
-    {
-      name: 'Soda (Coke, Pepsi, etc.)',
-      price: 1.99,
-      image: 'assets/images/cup/cup6.png',
-      ingredients: ['soda'],
-      quantity: 0,
-      total: 0,
-    },
-    {
-      name: 'Lemonade',
-      price: 2.49,
-      image: 'assets/images/cup/cup7.png',
-      ingredients: ['lemonade'],
-      quantity: 0,
-      total: 0,
-    },
-    {
-      name: 'Fruit Smoothie',
-      price: 4.99,
-      image: 'assets/images/cup/cup8.png',
-      ingredients: ['assorted fruits', 'yogurt'],
-      quantity: 0,
-      total: 0,
-    },
-    // Add more drink items here
-  ];
+  drinksMenuList: Item[] = [];
 
 
-  total: number = 0;
+  allMenuItems: Item[] = [];
+
+  itemId: number = 0;
   coffeeMenu: boolean = true;
   lunchMenu: boolean = false;
   dinnerMenu: boolean = false;
   drinkMenu: boolean = false;
 
-  constructor(private priceCalculator: PriceCalculatorService) {}
+  constructor(private cartService: CartService,
+              private itemService: ItemService) {
+    this.itemService.getItems().subscribe((items: Item[]) => {
+      this.coffeeMenuList = items.filter(item => item.category === 'Coffee');
+      this.lunchMenuList = items.filter(item => item.category === 'Lunch');
+      this.dinnerMenuList = items.filter(item => item.category === 'Diner');
+      this.drinksMenuList = items.filter(item => item.category === 'Drink');
+    });
+  }
 
-  addToCart(item: Product) {
-    this.priceCalculator.addToCart(item);
+  addToCart(item: Item) {
+    this.cartService.addToCart(item, 1);
   }
 
   showCoffeeMenu() {
@@ -231,6 +67,12 @@ export class MenuOneComponent {
     this.lunchMenu = false;
     this.dinnerMenu = false;
     this.drinkMenu = true;
+  }
+
+// Generate a unique itemId for each item
+  generateUniqueId(): string {
+    // Generate a random 8-character alphanumeric string
+    return Math.random().toString(36).substring(2, 10);
   }
 
 }

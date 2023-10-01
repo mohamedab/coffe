@@ -54,89 +54,29 @@
         <div *ngIf="coffeeMenu" class="tab-pane fade show active" id="ngb-nav-3-panel" role="tabpanel"
                                 aria-labelledby="ngb-nav-3">
           <div class="tab-pane">
-            <div class="menu-box">
-              <ul class="menu-list">
-                <li *ngFor="let product of coffeeMenuList; let i = index">
-                  <div class="item-left">
-                    <img [src]="product.image">
-                    <h4 class="title">{{product.name}}</h4>
-                    <p class="description">{{product.ingredients}}</p>
-                  </div>
-                  <div class="item-right">
-                    <h5 class="price">{{product.price | currency}}</h5>
-                    <button mat-flat-button class="add" (click)="addToCart(product)">add</button>
-                  </div>
-                </li>
-                <!---->
-              </ul>
-            </div>
+            <app-item [items]="coffeeMenuList"></app-item>
           </div>
         </div>
 
         <div *ngIf="lunchMenu" class="tab-pane fade  active show" id="ngb-nav-4-panel" role="tabpanel"
                                aria-labelledby="ngb-nav-4">
           <div class="tab-pane ">
-            <div class="menu-box">
-              <ul class="menu-list">
-                <li *ngFor="let product of lunchMenuList; let i = index">
-                  <div class="item-left">
-                    <img [src]="product.image">
-                    <h4 class="title">{{product.name}}</h4>
-                    <p class="description">{{product.ingredients}}</p>
-                  </div>
-                  <div class="item-right">
-                    <h5 class="price">{{product.price | currency}}</h5>
-                    <button mat-flat-button class="add" (click)="addToCart(product)">add</button>
-                  </div>
-                </li>
-                <!---->
-              </ul>
-            </div>
+            <app-item [items]="lunchMenuList"></app-item>
           </div>
         </div>
 
         <div *ngIf="dinnerMenu" class="tab-pane fade  active show" id="ngb-nav-5-panel" role="tabpanel"
                                 aria-labelledby="ngb-nav-5">
           <div class="tab-pane ">
-            <div class="menu-box">
-              <ul class="menu-list">
-                <li *ngFor="let product of dinnerMenuList; let i = index" >
-                  <div class="item-left">
-                    <img [src]="product.image">
-                    <h4 class="title">{{product.name}}</h4>
-                    <p class="description">{{product.ingredients}}</p>
-                  </div>
-                  <div class="item-right">
-                    <h5 class="price">{{product.price | currency}}</h5>
-                    <button mat-flat-button class="add" (click)="addToCart(product)">add</button>
-                  </div>
-                </li>
-              </ul>
-            </div>
+            <app-item [items]="dinnerMenuList"></app-item>
           </div>
         </div>
 
         <div *ngIf="drinkMenu" class="tab-pane fade  active show" id="ngb-nav-6-panel" role="tabpanel"
                                aria-labelledby="ngb-nav-6">
           <div class="tab-pane ">
-            <div class="menu-box">
-              <ul class="menu-list">
-                <li *ngFor="let product of drinksMenuList; let i = index" >
-                  <div class="item-left">
-                    <img [src]="product.image">
-                    <h4 class="title">{{product.name}}</h4>
-                    <p class="description">{{product.ingredients}}</p>
-                  </div>
-                  <div class="item-right">
-                    <h5 class="price">{{product.price | currency}}</h5>
-                    <button mat-flat-button class="add" (click)="addToCart(product)">add</button>
-                  </div>
-                </li>
-                <!---->
-              </ul>
-            </div>
+            <app-item [items]="drinksMenuList"></app-item>
           </div>
-          <!---->
         </div>
       </div>
     </div>

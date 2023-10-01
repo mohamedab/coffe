@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
-import {Product} from "../models/product";
-import {PriceCalculatorService} from "../services/price-calculator.service";
+import {Item} from "../models/item";
+import {CartService} from "../services/cart.service";
 import {Router} from "@angular/router";
+import {Order} from "../models/order";
 
 @Component({
   selector: 'app-order-detail',
@@ -10,23 +11,19 @@ import {Router} from "@angular/router";
 })
 export class OrderDetailComponent {
 
-  selectedItemsMap: Map<string, Product> = new Map<string, Product>();
-  selectedItems: any;
+  selectedItems: Item[]= [];
 
-  constructor(private priceCalculator: PriceCalculatorService,
+  constructor(private priceCalculator: CartService,
               private router: Router) {
-    this.priceCalculator.getSelectedItems().subscribe((selectedItems) => {
-      if (selectedItems) {
-        this.selectedItemsMap = selectedItems;
-        this.selectedItems = Array.from(selectedItems.entries());
+    this.priceCalculator.getCart().subscribe((cart: Order) => {
+      if (cart) {
+        this.selectedItems = cart.items;
       }
     });
   }
 
-  removeFromCart(product: Product) {
-    this.selectedItemsMap.delete(product.name);
-    this.priceCalculator.broadcastNewList(this.selectedItemsMap);
-    this.priceCalculator.broadcastTotalPrice(this.selectedItemsMap);
+  removeFromCart(item: Item) {
+    this.priceCalculator.removeFromCart(item)
   }
 
 

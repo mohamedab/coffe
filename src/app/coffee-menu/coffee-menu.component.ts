@@ -1,6 +1,5 @@
 import {Component, ViewEncapsulation} from '@angular/core';
-import {Product} from "../models/product";
-import {PriceCalculatorService} from "../services/price-calculator.service";
+import {CartService} from "../services/cart.service";
 
 @Component({
   selector: 'app-coffee-menu',
@@ -8,7 +7,4 @@ import {PriceCalculatorService} from "../services/price-calculator.service";
   styleUrls: ['./coffee-menu.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class CoffeeMenuComponent {
-
-  constructor(private priceCalculator: PriceCalculatorService) {}
-}
+export class CoffeeMenuComponent {}
