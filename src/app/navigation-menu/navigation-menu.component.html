@@ -5,6 +5,14 @@
     [opened]="(isHandset$ | async) === false"
     [style.background-image]="'url(assets/images/background/bg4.jpeg)'">
     <mat-toolbar>
+      <button *ngIf="!(isHandset$ | async)" mat-icon-button
+              [matBadge]="cart.length"
+              [matBadgeHidden]="hidden"
+              matBadgeColor="warn"
+              class="closebtn btn" aria-label="Cart icon" style="margin: 20px"
+              (click)="goToCart()">
+        <mat-icon>shop</mat-icon>
+      </button>
       <a *ngIf="isHandset$ | async" class="closebtn btn" (click)="drawer.close()">×</a>
       <div class="logo-header">
         <a routerLink="/menu">
@@ -13,9 +21,15 @@
       </div>
     </mat-toolbar>
     <mat-nav-list *ngIf="isHandset$ | async">
-      <a mat-list-item routerLink="/menu" routerLinkActive="activebutton" style="text-align: center" (click)="drawer.close()">Menu</a>
-      <a mat-list-item routerLink="/about" routerLinkActive="activebutton" style="text-align: center" (click)="drawer.close()">About us</a>
-      <a mat-list-item routerLink="/contact" routerLinkActive="activebutton" style="text-align: center" (click)="drawer.close()">Contact</a>
+      <a mat-list-item routerLink="/menu" routerLinkActive="activebutton"
+         style="text-align: center" (click)="drawer.close()">Menu
+      </a>
+      <a mat-list-item routerLink="/about" routerLinkActive="activebutton"
+         style="text-align: center" (click)="drawer.close()">About us
+      </a>
+      <a mat-list-item routerLink="/contact" routerLinkActive="activebutton"
+         style="text-align: center" (click)="drawer.close()">Contact
+      </a>
     </mat-nav-list>
     <mat-nav-list *ngIf="!(isHandset$ | async)">
       <a mat-list-item routerLink="/menu" routerLinkActive="activebutton" style="text-align: center">Menu</a>
@@ -38,6 +52,15 @@
           <img src="assets/images/logo-2.png" alt="">
         </a>
       </div>
+      <span class="spacer"></span>
+      <button mat-icon-button
+              [matBadge]="cart.length"
+              [matBadgeHidden]="hidden"
+              matBadgeColor="warn"
+              class="shop-icon" aria-label="Cart icon"
+              (click)="goToCart()">
+        <mat-icon>shop</mat-icon>
+      </button>
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>

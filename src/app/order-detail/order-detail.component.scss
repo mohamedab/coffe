@@ -26,3 +26,9 @@
 .mat-mdc-snack-bar-container .mat-mdc-button.mat-mdc-snack-bar-action:not(:disabled) {
   color: #e88f2a !important;
 }
+
+.form-card {
+  background-color: transparent !important;
+  margin: 21px;
+  z-index: 1;
+}

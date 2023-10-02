@@ -48094,3 +48094,15 @@ html.lb-disable-scrolling {
 .mat-mdc-progress-spinner .mdc-circular-progress__determinate-circle, .mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
   stroke: #945d34 !important;
 }
+
+// Badge
+.mat-badge-medium.mat-badge-overlap.mat-badge-after .mat-badge-content {
+    right: 0;
+}
+.mat-badge-medium.mat-badge-above .mat-badge-content {
+    top: 0;
+}
+
+mat-nav-list .mdc-list-item__primary-text {
+  color: white !important;
+}

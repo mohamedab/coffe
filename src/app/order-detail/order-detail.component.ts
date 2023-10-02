@@ -1,9 +1,10 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {Item} from "../models/item";
-import {CartService} from "../services/cart.service";
+import {OrderService} from "../services/order.service";
 import {Router} from "@angular/router";
 import {Order} from "../models/order";
 import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from "@angular/material/snack-bar";
+import {CartService} from "../services/cart.service";
 
 @Component({
   selector: 'app-order-detail',
@@ -24,10 +25,11 @@ export class OrderDetailComponent {
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
 
-  constructor(private cartService: CartService,
+  constructor(private orderService: OrderService,
+              private cartService: CartService,
               private router: Router,
               private _snackBar: MatSnackBar) {
-    this.cartService.getCart().subscribe((order: Order) => {
+    this.orderService.getOrder().subscribe((order: Order) => {
       if (order) {
         this.selectedItems = order.items;
         this.order = order;
@@ -38,14 +40,10 @@ export class OrderDetailComponent {
     });
   }
 
-  removeFromCart(item: Item) {
-    this.cartService.removeFromCart(item)
-  }
-
 
   goBack() {
     if (this.order.status) {
-      this.cartService.clearCartToLocalStorage();
+      this.orderService.clearOrderToLocalStorage();
     }
     this.router.navigate(['menu']);
   }
@@ -57,12 +55,14 @@ export class OrderDetailComponent {
       this.order.orderDate = new Date();
       this.order.clientName = this.clientName;
       this.order.serverId = this.selectedServer;
-      this.cartService.addOrder(this.order).then(
-        () => {
+      this.orderService.addOrder(this.order).then(() => {
           console.log('Order Successfully added');
           this.isOrderConfirmed = true;
           // Save the updated cart in local storage
-          this.cartService.saveCartToLocalStorage(this.order);
+          this.orderService.saveOrderToLocalStorage(this.order);
+          // Add order to cart
+          this.cartService.addOrderToCart(this.order);
+          // Display a snackbar.
           this._snackBar.open('Order Successfully confirmed', 'Done', {
             horizontalPosition: this.horizontalPosition,
             verticalPosition: this.verticalPosition,
@@ -70,12 +70,13 @@ export class OrderDetailComponent {
         }
       ).catch(err => {
         console.log(err);
+        this.order.orderId = '';
       });
     }
   }
 
   startNewOrder() {
-    this.cartService.clearCartToLocalStorage();
+    this.orderService.clearOrderToLocalStorage();
     this.router.navigate(['menu']);
   }
 }

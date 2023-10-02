@@ -37,6 +37,9 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatBadgeModule} from "@angular/material/badge";
+import { CartComponent } from './cart/cart.component';
+import {MatExpansionModule} from "@angular/material/expansion";
 
 // Create a function that returns an instance of TranslateHttpLoader
 export function createTranslateLoader(http: HttpClient) {
@@ -56,7 +59,8 @@ export function createTranslateLoader(http: HttpClient) {
     ContactInfoComponent,
     TotalBarComponent,
     OrderDetailComponent,
-    ItemComponent
+    ItemComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,
@@ -76,7 +80,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatToolbarModule, MatButtonModule, MatSidenavModule, MatListModule, MatDividerModule,
     MatIconModule, MatTabsModule, FlexLayoutModule, MatTableModule, MatInputModule,
     MatSelectModule, MatProgressSpinnerModule,MatSnackBarModule,
-    MatIconModule, MatFormFieldModule, MatCardModule,
+    MatIconModule, MatFormFieldModule, MatCardModule,MatBadgeModule,MatExpansionModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideFirestore(() => getFirestore()),
   ],

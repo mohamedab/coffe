@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Router} from "@angular/router";
-import {CartService} from "../services/cart.service";
 import {Order} from "../models/order";
+import {OrderService} from "../services/order.service";
 
 @Component({
   selector: 'app-total-bar',
@@ -16,20 +16,20 @@ export class TotalBarComponent {
   cart: Order = new Order();
 
   constructor(private router: Router,
-              public cartService: CartService) {
-    this.cartService.getCart().subscribe((cart: Order) => {
-      if (cart.items.length >= 0) {
-        this.selecedItemsNbr = cart.items.reduce((acc, item) => acc + parseInt(String(item.quantity), 10), 0);
-        this.totalPrice = cart.totalAmount;
+              public cartService: OrderService) {
+    this.cartService.getOrder().subscribe((order: Order) => {
+      if (order.items.length >= 0) {
+        this.selecedItemsNbr = order.items.reduce((acc, item) => acc + parseInt(String(item.quantity), 10), 0);
+        this.totalPrice = order.totalAmount;
         if (this.totalPrice === 0) {
           this.router.navigate(['menu']);
         }
-        this.cart = cart;
+        this.cart = order;
       }
     });
   }
 
-  orderDetail() {
+  goToOrderDetail() {
     this.router.navigate(['/order']);
   }
 }

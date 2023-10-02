@@ -1,0 +1,28 @@
+<div class="bg-pink-light" style="height: 100%">
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let order of cart; let i = index" style="top: 10px;margin: 0 15px 15px 15px;">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Order N° {{i + 1}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="tab-pane">
+        <div class="menu-box">
+          <ul class="menu-list">
+            <li *ngFor="let item of order.items; let j = index">
+              <div class="item-left">
+                <img [src]="item.imageUrl">
+                <h4 class="title">{{item.quantity}} x {{item.name}} ({{item.price | currency}})</h4>
+                <p class="description">{{item.ingredients}}</p>
+              </div>
+              <div class="item-right">
+                <h4 class="total">{{(item.price * item.quantity) | currency}}</h4>
+              </div>
+            </li>
+          </ul>
+          <h4>Total: {{ order.totalAmount | currency }}</h4>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

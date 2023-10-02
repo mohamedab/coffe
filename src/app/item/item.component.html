@@ -10,20 +10,14 @@
       <!-- Order selection-->
       <div class="item-right" *ngIf="!editOrder">
         <h5 class="price">{{item.price | currency}}</h5>
-        <div fxLayout="row" fxLayoutAlign="space-between center" class="item-right-btm">
-          <select [(ngModel)]="item.quantity" name="quantity" class="quantity">
-            <option *ngFor="let quantity of quantities" [ngValue]="quantity">{{quantity}}</option>
-          </select>
-          <button mat-flat-button class="add" [disabled]="item.quantity===0" (click)="addToCart(item)">add</button>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <button mat-flat-button class="add" (click)="addToCart(item)">add</button>
         </div>
       </div>
       <!-- Order modif/confirmation-->
       <div class="item-right" *ngIf="editOrder">
         <h4 class="total">{{(item.price * item.quantity) | currency}}</h4>
-        <div *ngIf="!isOrderConfirmed" fxLayout="row" fxLayoutAlign="space-between center" class="item-right-btm">
-          <select [(ngModel)]="item.quantity" (change)="updateItemQuantity(item)" name="quantity" class="quantity">
-            <option *ngFor="let quantity of quantities" [ngValue]="quantity">{{quantity}}</option>
-          </select>
+        <div *ngIf="!isOrderConfirmed" fxLayout="row" fxLayoutAlign="space-between center">
           <button mat-flat-button class="remove" (click)="removeFromCart(item)">remove</button>
         </div>
       </div>

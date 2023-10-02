@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Item} from "../models/item";
-import {CartService} from "../services/cart.service";
+import {OrderService} from "../services/order.service";
 
 @Component({
   selector: 'app-item',
@@ -14,21 +14,15 @@ export class ItemComponent {
   @Input() editOrder: boolean = false;
   @Input() isOrderConfirmed: boolean = false;
 
-  constructor(private cartService: CartService) {
-  }
+  constructor(private cartService: OrderService) {}
 
   addToCart(item: Item) {
     let itemToAdd = new Item();
     itemToAdd = item;
-    this.cartService.addToCart(itemToAdd, itemToAdd.quantity);
-    item.quantity = 0;
+    this.cartService.addToOrder(itemToAdd, 1);
   }
 
   removeFromCart(item: Item) {
-    this.cartService.removeFromCart(item)
-  }
-
-  updateItemQuantity(item: any) {
-    this.cartService.updateCartQuantity(item, item.quantity);
+    this.cartService.removeFromOrder(item)
   }
 }

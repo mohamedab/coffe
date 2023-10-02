@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Item} from "../models/item";
-import {CartService} from "../services/cart.service";
+import {OrderService} from "../services/order.service";
 import {ItemService} from "../services/item.service";
 
 @Component({
@@ -29,7 +29,7 @@ export class MenuOneComponent {
 
   showSpinner: boolean = true;
 
-  constructor(private cartService: CartService,
+  constructor(private cartService: OrderService,
               private itemService: ItemService) {
     this.itemService.getItems().subscribe((items: Item[]) => {
       console.log(items);

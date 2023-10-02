@@ -1,6 +1,6 @@
 <div fxLayout="row" fxLayoutAlign="space-between center"
      class="bottom-bar"
-     (click)="orderDetail()"
+     (click)="goToOrderDetail()"
      *ngIf="totalPrice > 0">
   <div class="total-price">{{selecedItemsNbr}} {{ selecedItemsNbr > 1 ? 'items' : 'item'}} |
     Total: {{ totalPrice | currency }}</div>

@@ -9,28 +9,23 @@ import {addDoc, collection, doc, Firestore, setDoc} from "@angular/fire/firestor
 })
 export class CartService {
 
-  private cart: Order = new Order();
-  private cartSubject = new BehaviorSubject<Order>(this.cart);
-  cartCollection: any;
+  private cart: Order[] = [];
+  private cartSubject = new BehaviorSubject<Order[]>(this.cart);
 
-  constructor(private firestore: Firestore) {
-    this.cartCollection = collection(this.firestore, 'Orders');
-    // Load the cart from local storage when the service initializes
+  constructor() {
+    // Load the order from local storage when the service initializes
     this.loadCartFromLocalStorage();
   }
 
-  saveCartToLocalStorage(cart?: Order): void {
-    if (cart) {
-      this.cart = cart;
-    }
+  saveCartToLocalStorage(): void {
     localStorage.setItem('cart', JSON.stringify(this.cart));
   }
 
   clearCartToLocalStorage(): void {
     localStorage.removeItem('cart');
-    this.cart = new Order();
+    this.cart = [];
     this.saveCartToLocalStorage();
-    // Emit the updated cart through the cartSubject
+    // Emit the updated order through the orderSubject
     this.cartSubject.next(this.cart);
   }
 
@@ -38,88 +33,41 @@ export class CartService {
     const storedCart = localStorage.getItem('cart');
     if (storedCart) {
       this.cart = JSON.parse(storedCart);
-      // Emit the updated cart through the cartSubject
+      // Emit the updated cart through the orderSubject
       this.cartSubject.next(this.cart);
     }
   }
 
-  updateCartQuantity(item: Item, quantity: number): void {
-    const existingCartItem = this.cart.items.find((cartItem) => cartItem.itemId === item.itemId);
-    if (existingCartItem) {
-      // If the item already exists in the cart, update the quantity
-      existingCartItem.quantity = quantity;
-      // Recalculate the total amount
-      this.calculateTotalAmount();
+  addOrderToCart(order: Order): void {
+    const existingOrder = this.cart.find((orderItem) => orderItem.orderId === order.orderId);
 
-      // Save the updated cart in local storage
+    if (!existingOrder) {
+      // If it's a new order, add it to the order
+      this.cart.push(order);
+      // Save the updated order in local storage
       this.saveCartToLocalStorage();
 
-      // Emit the updated cart through the cartSubject
+      // Emit the updated order through the orderSubject
       this.cartSubject.next(this.cart);
     }
   }
 
-  addToCart(item: Item, quantity: number): void {
-    const existingCartItem = this.cart.items.find((cartItem) => cartItem.itemId === item.itemId);
+  removeOrderFromCart(order: Order): void {
+    const orderIndex = this.cart.findIndex((orderItem) => orderItem.orderId === order.orderId);
 
-    if (existingCartItem) {
-      // If the item already exists in the cart, update the quantity
-      existingCartItem.quantity += quantity;
-    } else {
-      // If it's a new item, add it to the cart
-      const newItem: Item = {...item, quantity};
-      this.cart.items.push(newItem);
-    }
+    if (orderIndex !== -1) {
+      this.cart.splice(orderIndex, 1);
 
-    // Recalculate the total amount
-    this.calculateTotalAmount();
-
-    // Save the updated cart in local storage
-    this.saveCartToLocalStorage();
-
-    // Emit the updated cart through the cartSubject
-    this.cartSubject.next(this.cart);
-  }
-
-  removeFromCart(item: Item): void {
-    const itemIndex = this.cart.items.findIndex((cartItem) => cartItem.itemId === item.itemId);
-
-    if (itemIndex !== -1) {
-      this.cart.items.splice(itemIndex, 1);
-      // Recalculate the total amount
-      this.calculateTotalAmount();
-
-      // Save the updated cart in local storage
+      // Save the updated order in local storage
       this.saveCartToLocalStorage();
 
-      // Emit the updated cart through the cartSubject
+      // Emit the updated order through the orderSubject
       this.cartSubject.next(this.cart);
     }
   }
 
-  getCart(): Observable<Order> {
+  getCart(): Observable<Order[]> {
     return this.cartSubject.asObservable();
-  }
-
-  updateOrder(order: Order) {
-    const orderDocRef = doc(this.firestore, order.orderId);
-    return setDoc(orderDocRef, order).then(
-      () => {
-        console.log('Order Successfully updated');
-        // Save the updated cart in local storage
-        this.saveCartToLocalStorage();
-      }
-    ).catch(err => console.log(err));
-  }
-
-  addOrder(order: Order): Promise<any> {
-    order.orderId = doc(collection(this.firestore, 'orderId')).id;
-    return addDoc(this.cartCollection, order);
-  }
-
-
-  private calculateTotalAmount(): void {
-    this.cart.totalAmount = this.cart.items.reduce((total, item) => total + item.price * item.quantity, 0);
   }
 
 }

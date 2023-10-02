@@ -4,6 +4,7 @@ import {CoffeeMenuComponent} from "./coffee-menu/coffee-menu.component";
 import {AboutUsComponent} from "./about-us/about-us.component";
 import {ContactInfoComponent} from "./contact-info/contact-info.component";
 import {OrderDetailComponent} from "./order-detail/order-detail.component";
+import {CartComponent} from "./cart/cart.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/menu', pathMatch: 'full' },
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'order', component: OrderDetailComponent },
   { path: 'about', component: AboutUsComponent },
   { path: 'contact', component: ContactInfoComponent },
+  { path: 'cart', component: CartComponent },
 ];
 
 @NgModule({
