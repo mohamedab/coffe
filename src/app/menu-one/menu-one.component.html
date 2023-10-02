@@ -51,6 +51,9 @@
         </li>
       </ul>
       <div class="tab-content">
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <mat-spinner color="accent" *ngIf="showSpinner"></mat-spinner>
+        </div>
         <div *ngIf="coffeeMenu" class="tab-pane fade show active" id="ngb-nav-3-panel" role="tabpanel"
                                 aria-labelledby="ngb-nav-3">
           <div class="tab-pane">

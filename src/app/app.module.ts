@@ -33,6 +33,10 @@ import {FormsModule} from "@angular/forms";
 import {environment} from "../environments/environment";
 import {initializeApp, provideFirebaseApp} from "@angular/fire/app";
 import {getFirestore, provideFirestore} from "@angular/fire/firestore";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 // Create a function that returns an instance of TranslateHttpLoader
 export function createTranslateLoader(http: HttpClient) {
@@ -59,8 +63,6 @@ export function createTranslateLoader(http: HttpClient) {
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatIconModule,
-    MatCardModule,
     FormsModule,
     HttpClientModule, // Import HttpClientModule for translation
     TranslateModule.forRoot({
@@ -72,11 +74,9 @@ export function createTranslateLoader(http: HttpClient) {
       },
     }),
     MatToolbarModule, MatButtonModule, MatSidenavModule, MatListModule, MatDividerModule,
-    MatIconModule,
-    MatTabsModule,
-    FlexLayoutModule,
-    MatTableModule,
-    MatSelectModule,
+    MatIconModule, MatTabsModule, FlexLayoutModule, MatTableModule, MatInputModule,
+    MatSelectModule, MatProgressSpinnerModule,MatSnackBarModule,
+    MatIconModule, MatFormFieldModule, MatCardModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideFirestore(() => getFirestore()),
   ],

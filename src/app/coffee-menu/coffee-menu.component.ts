@@ -1,5 +1,4 @@
 import {Component, ViewEncapsulation} from '@angular/core';
-import {CartService} from "../services/cart.service";
 
 @Component({
   selector: 'app-coffee-menu',

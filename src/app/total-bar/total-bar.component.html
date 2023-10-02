@@ -1,10 +1,10 @@
-<div fxLayout="row" [fxLayoutAlign]="showOrderDetailBouton ? 'space-between center': 'center center'"
+<div fxLayout="row" fxLayoutAlign="space-between center"
      class="bottom-bar"
      (click)="orderDetail()"
      *ngIf="totalPrice > 0">
   <div class="total-price">{{selecedItemsNbr}} {{ selecedItemsNbr > 1 ? 'items' : 'item'}} |
     Total: {{ totalPrice | currency }}</div>
   <div>
-    <button *ngIf="showOrderDetailBouton" mat-flat-button class="order-btn">Confirm order</button>
+    <button mat-flat-button class="order-btn">{{orderState}}</button>
   </div>
 </div>

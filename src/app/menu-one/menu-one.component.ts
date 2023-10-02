@@ -27,19 +27,21 @@ export class MenuOneComponent {
   dinnerMenu: boolean = false;
   drinkMenu: boolean = false;
 
+  showSpinner: boolean = true;
+
   constructor(private cartService: CartService,
               private itemService: ItemService) {
     this.itemService.getItems().subscribe((items: Item[]) => {
       console.log(items);
+      this.showSpinner = false;
       this.coffeeMenuList = items.filter(item => item.category === 'Coffee');
       this.lunchMenuList = items.filter(item => item.category === 'Lunch');
       this.dinnerMenuList = items.filter(item => item.category === 'Diner');
       this.drinksMenuList = items.filter(item => item.category === 'Drink');
+    }, error => {
+      console.log(error);
+      this.showSpinner = false;
     });
-  }
-
-  addToCart(item: Item) {
-    this.cartService.addToCart(item, 1);
   }
 
   showCoffeeMenu() {

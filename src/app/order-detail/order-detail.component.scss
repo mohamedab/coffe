@@ -4,3 +4,25 @@
   top: 0;
   z-index: 1;
 }
+
+.mat-mdc-raised-button:not(:disabled) {
+  background-color: #e88f2a !important;
+  font-weight: 900;
+  font-size: 16px;
+}
+
+.mat-mdc-raised-button:not(:disabled) {
+  color: white !important;
+}
+
+.mat-mdc-snack-bar-container {
+  &.snackbar {
+    --mdc-snackbar-container-color: #113946;
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
+}
+
+.mat-mdc-snack-bar-container .mat-mdc-button.mat-mdc-snack-bar-action:not(:disabled) {
+  color: #e88f2a !important;
+}

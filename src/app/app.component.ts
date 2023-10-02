@@ -14,13 +14,12 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.initializeDatabase();
+   // this.initializeDatabase();
   }
 
   initializeDatabase(): void {
-    this.itemService.getItems().subscribe(items => {
+    this.itemService.getItemsFormJson().subscribe(items => {
       this.itemService.addItems(items);
-    })
-
+    });
   }
 }

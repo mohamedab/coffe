@@ -12,13 +12,13 @@ export class TotalBarComponent {
 
   totalPrice: number = 0;
   selecedItemsNbr: number = 0;
-  @Input() showOrderDetailBouton: boolean = true;
+  @Input() orderState: string = 'Confirm order';
   cart: Order = new Order();
 
   constructor(private router: Router,
               public cartService: CartService) {
     this.cartService.getCart().subscribe((cart: Order) => {
-      if (cart.items.length > 0) {
+      if (cart.items.length >= 0) {
         this.selecedItemsNbr = cart.items.reduce((acc, item) => acc + parseInt(String(item.quantity), 10), 0);
         this.totalPrice = cart.totalAmount;
         if (this.totalPrice === 0) {

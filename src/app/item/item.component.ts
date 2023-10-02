@@ -12,6 +12,7 @@ export class ItemComponent {
   @Input() items: Item[] = [];
   quantities: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   @Input() editOrder: boolean = false;
+  @Input() isOrderConfirmed: boolean = false;
 
   constructor(private cartService: CartService) {
   }
@@ -28,6 +29,6 @@ export class ItemComponent {
   }
 
   updateItemQuantity(item: any) {
-    this.cartService.updateCart(item, item.quantity);
+    this.cartService.updateCartQuantity(item, item.quantity);
   }
 }

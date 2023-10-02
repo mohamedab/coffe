@@ -46695,7 +46695,7 @@ pre {
   font-style: italic;
   line-height: 22px;
   margin-bottom: 0;
-  max-width: 260px;
+  max-width: 245px;
 }
 
 .menu-list li .price {
@@ -48086,29 +48086,11 @@ html.lb-disable-scrolling {
   transition-property: transform
 }
 
-.add {
-  margin-bottom: 0;
-  background-color: rgb(31, 195, 106) !important;
-  color: #fff;
-  padding: 5px;
-  border-radius: 7px;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 14px;
-  margin-top: 5px;
+.center {
+  text-align: center;
 }
 
-
-.remove {
-  margin-bottom: 0;
-  margin-left: 5px;
-  background-color: #e21836 !important;
-  color: #fff;
-  padding: 5px;
-  border-radius: 7px;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 14px;
-  margin-top: 5px;
+// Spinner
+.mat-mdc-progress-spinner .mdc-circular-progress__determinate-circle, .mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
+  stroke: #945d34 !important;
 }
-

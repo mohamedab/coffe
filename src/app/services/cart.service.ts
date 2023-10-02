@@ -19,8 +19,19 @@ export class CartService {
     this.loadCartFromLocalStorage();
   }
 
-  private saveCartToLocalStorage(): void {
+  saveCartToLocalStorage(cart?: Order): void {
+    if (cart) {
+      this.cart = cart;
+    }
     localStorage.setItem('cart', JSON.stringify(this.cart));
+  }
+
+  clearCartToLocalStorage(): void {
+    localStorage.removeItem('cart');
+    this.cart = new Order();
+    this.saveCartToLocalStorage();
+    // Emit the updated cart through the cartSubject
+    this.cartSubject.next(this.cart);
   }
 
   private loadCartFromLocalStorage(): void {
@@ -32,7 +43,7 @@ export class CartService {
     }
   }
 
-  updateCart(item: Item, quantity: number): void {
+  updateCartQuantity(item: Item, quantity: number): void {
     const existingCartItem = this.cart.items.find((cartItem) => cartItem.itemId === item.itemId);
     if (existingCartItem) {
       // If the item already exists in the cart, update the quantity
@@ -44,10 +55,8 @@ export class CartService {
       this.saveCartToLocalStorage();
 
       // Emit the updated cart through the cartSubject
-      console.log(this.cart);
       this.cartSubject.next(this.cart);
     }
-
   }
 
   addToCart(item: Item, quantity: number): void {
@@ -69,7 +78,6 @@ export class CartService {
     this.saveCartToLocalStorage();
 
     // Emit the updated cart through the cartSubject
-    console.log(this.cart);
     this.cartSubject.next(this.cart);
   }
 
@@ -94,12 +102,19 @@ export class CartService {
   }
 
   updateOrder(order: Order) {
-    const orderDocRef = doc(this.firestore, `Orders/${order.orderId}`);
-    return setDoc(orderDocRef, order);
+    const orderDocRef = doc(this.firestore, order.orderId);
+    return setDoc(orderDocRef, order).then(
+      () => {
+        console.log('Order Successfully updated');
+        // Save the updated cart in local storage
+        this.saveCartToLocalStorage();
+      }
+    ).catch(err => console.log(err));
   }
 
-  addOrder(order: Order): void {
-    addDoc(this.cartCollection, order);
+  addOrder(order: Order): Promise<any> {
+    order.orderId = doc(collection(this.firestore, 'orderId')).id;
+    return addDoc(this.cartCollection, order);
   }
 
 
