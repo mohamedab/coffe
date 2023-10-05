@@ -13,7 +13,7 @@
         <app-item [items]="selectedItems" [editOrder]="true" [isOrderConfirmed]="isOrderConfirmed"></app-item>
       </div>
 
-      <mat-card *ngIf="!isOrderConfirmed && selectedItems.length > 0" class="form-card">
+      <mat-card *ngIf="!isOrderConfirmed && selectedItems.length > 0 && confirmFormActive" class="form-card">
         <mat-card-content>
           <form #serverForm="ngForm" (ngSubmit)="confirmOrder(serverForm)" novalidate>
             <div fxLayout="column" style="width: 50%">
@@ -33,6 +33,11 @@
           </form>
         </mat-card-content>
       </mat-card>
+
+      <div fxLayout="column" fxLayoutAlign="center center" *ngIf="!isOrderConfirmed && selectedItems.length > 0 && !confirmFormActive">
+        <a class="btn" (click)="confirmOrder()">Confirm Order</a>
+        <span style="color: red">Please check your order before confirming it.</span>
+      </div>
 
       <div class="center" *ngIf="isOrderConfirmed">
         <a class="btn" (click)="startNewOrder()">Start new Order ?</a>

@@ -24,6 +24,7 @@ export class OrderDetailComponent {
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
+  confirmFormActive = false;
 
   constructor(private orderService: OrderService,
               private cartService: CartService,
@@ -49,8 +50,8 @@ export class OrderDetailComponent {
   }
 
 
-  confirmOrder(form: any) {
-    if (form.valid) {
+  confirmOrder(form?: any) {
+    if ((form && form.valid) || !this.confirmFormActive) {
       this.order.status = 'Pending';
       this.order.orderDate = new Date();
       this.order.clientName = this.clientName;
