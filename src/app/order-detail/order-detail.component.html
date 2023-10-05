@@ -1,5 +1,4 @@
 <div class="bg-pink-light" style="height: 100%">
-
   <mat-toolbar color="primary">
     <button mat-icon-button aria-label="back to menu"
             (click)="goBack()">
@@ -7,38 +6,44 @@
     </button>
     <span>back to menu</span>
   </mat-toolbar>
+  <div class="container">
+    <div class="dlab-tabs menu-tabs style1">
 
-  <div class="tab-pane">
-    <app-item [items]="selectedItems" [editOrder]="true" [isOrderConfirmed]="isOrderConfirmed"></app-item>
-  </div>
+      <div class="tab-pane">
+        <app-item [items]="selectedItems" [editOrder]="true" [isOrderConfirmed]="isOrderConfirmed"></app-item>
+      </div>
 
-  <mat-card *ngIf="!isOrderConfirmed && selectedItems.length > 0" class="form-card">
-    <mat-card-content>
-      <form #serverForm="ngForm" (ngSubmit)="confirmOrder(serverForm)" novalidate>
-        <div fxLayout="column" style="width: 50%">
-          <mat-form-field appearance="fill">
-            <mat-label>Name</mat-label>
-            <input matInput name="clientName" [(ngModel)]="clientName" required>
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Select a Server</mat-label>
-            <mat-select name="selectedServer" [(ngModel)]="selectedServer" required>
-              <mat-option *ngFor="let server of servers" [value]="server">{{ server }}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <button mat-raised-button type="submit" [disabled]="!serverForm.valid">Confirm Order</button>
-        </div>
-        <span style="color: red">Please check your order before confirming it.</span>
-      </form>
-    </mat-card-content>
-  </mat-card>
+      <mat-card *ngIf="!isOrderConfirmed && selectedItems.length > 0" class="form-card">
+        <mat-card-content>
+          <form #serverForm="ngForm" (ngSubmit)="confirmOrder(serverForm)" novalidate>
+            <div fxLayout="column" style="width: 50%">
+              <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput name="clientName" [(ngModel)]="clientName" required>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Select a Server</mat-label>
+                <mat-select name="selectedServer" [(ngModel)]="selectedServer" required>
+                  <mat-option *ngFor="let server of servers" [value]="server">{{ server }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <button mat-raised-button type="submit" [disabled]="!serverForm.valid">Confirm Order</button>
+            </div>
+            <span style="color: red">Please check your order before confirming it.</span>
+          </form>
+        </mat-card-content>
+      </mat-card>
 
-  <div class="center" *ngIf="isOrderConfirmed">
-    <a class="btn" (click)="startNewOrder()">Start new Order ?</a>
-  </div>
-  <app-total-bar [orderState]="order.status ? 'Order confirmed' : ''"></app-total-bar>
+      <div class="center" *ngIf="isOrderConfirmed">
+        <a class="btn" (click)="startNewOrder()">Start new Order ?</a>
+      </div>
+      <app-total-bar [orderState]="order.status ? 'Order confirmed' : ''"></app-total-bar>
 
-  <div class="center" *ngIf="selectedItems.length == 0">
-    <a class="btn" (click)="goBack()">Go back to menu</a>
+      <div class="center" *ngIf="selectedItems.length == 0">
+        <a class="btn" (click)="goBack()">Go back to menu</a>
+      </div>
+    </div>
   </div>
 </div>
+
+<app-footer></app-footer>
