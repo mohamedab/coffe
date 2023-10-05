@@ -4,21 +4,23 @@
       <div class="item-left">
         <img [src]="item.imageUrl">
         <h4 class="title" *ngIf="!editOrder">{{item.name}}</h4>
-        <h4 class="title" *ngIf="editOrder">{{item.quantity}} x {{item.name}} ({{item.price | currency}})</h4>
-        <p class="description">{{item.ingredients}}</p>
+        <h4 class="title" *ngIf="editOrder">{{item.quantity}} x {{item.name}} ({{item.price | number: '1.2-2'}})</h4>
+        <p class="description"><span *ngFor="let ingredient of item.ingredients; let last = last">
+          {{ ingredient }}{{ !last ? ', ' : '' }}</span>
+        </p>
       </div>
       <!-- Order selection-->
       <div class="item-right" *ngIf="!editOrder">
-        <h5 class="price">{{item.price | currency}}</h5>
-        <div fxLayout="row" fxLayoutAlign="space-between center">
-          <button mat-flat-button class="add" (click)="addToCart(item)">add</button>
+        <h5 class="price">{{item.price | number: '1.2-2'}}</h5>
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <button mat-mini-fab class="add" (click)="addToCart(item)"><mat-icon>add</mat-icon></button>
         </div>
       </div>
       <!-- Order modif/confirmation-->
       <div class="item-right" *ngIf="editOrder">
-        <h4 class="total">{{(item.price * item.quantity) | currency}}</h4>
-        <div *ngIf="!isOrderConfirmed" fxLayout="row" fxLayoutAlign="space-between center">
-          <button mat-flat-button class="remove" (click)="removeFromCart(item)">remove</button>
+        <h4 class="price">{{(item.price * item.quantity) | number: '1.2-2'}}</h4>
+        <div *ngIf="!isOrderConfirmed" fxLayout="row" fxLayoutAlign="center center">
+          <button mat-mini-fab class="remove" (click)="removeFromCart(item)"><mat-icon>remove</mat-icon></button>
         </div>
       </div>
     </li>

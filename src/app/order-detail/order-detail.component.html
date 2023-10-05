@@ -4,7 +4,7 @@
             (click)="goBack()">
       <mat-icon>arrow_back_ios_new</mat-icon>
     </button>
-    <span>back to menu</span>
+    <span>Retour au menu</span>
   </mat-toolbar>
   <div class="container">
     <div class="dlab-tabs menu-tabs style1">
@@ -18,37 +18,35 @@
           <form #serverForm="ngForm" (ngSubmit)="confirmOrder(serverForm)" novalidate>
             <div fxLayout="column" style="width: 50%">
               <mat-form-field appearance="fill">
-                <mat-label>Name</mat-label>
+                <mat-label>Nom</mat-label>
                 <input matInput name="clientName" [(ngModel)]="clientName" required>
               </mat-form-field>
               <mat-form-field appearance="fill">
-                <mat-label>Select a Server</mat-label>
+                <mat-label>Choisissez un serveur</mat-label>
                 <mat-select name="selectedServer" [(ngModel)]="selectedServer" required>
                   <mat-option *ngFor="let server of servers" [value]="server">{{ server }}</mat-option>
                 </mat-select>
               </mat-form-field>
               <button mat-raised-button type="submit" [disabled]="!serverForm.valid">Confirm Order</button>
             </div>
-            <span style="color: red">Please check your order before confirming it.</span>
+            <span style="color: red;text-align: center;">Veuillez vérifier votre commande avant de la confirmer.</span>
           </form>
         </mat-card-content>
       </mat-card>
 
       <div fxLayout="column" fxLayoutAlign="center center" *ngIf="!isOrderConfirmed && selectedItems.length > 0 && !confirmFormActive">
         <a class="btn" (click)="confirmOrder()">Confirm Order</a>
-        <span style="color: red">Please check your order before confirming it.</span>
+        <span style="color: red;text-align: center;">Veuillez vérifier votre commande avant de la confirmer.</span>
       </div>
 
       <div class="center" *ngIf="isOrderConfirmed">
-        <a class="btn" (click)="startNewOrder()">Start new Order ?</a>
+        <a class="btn" (click)="startNewOrder()">Lancer une nouvelle commande ?</a>
       </div>
-      <app-total-bar [orderState]="order.status ? 'Order confirmed' : ''"></app-total-bar>
+      <app-total-bar [orderState]="''"></app-total-bar>
 
       <div class="center" *ngIf="selectedItems.length == 0">
-        <a class="btn" (click)="goBack()">Go back to menu</a>
+        <a class="btn" (click)="goBack()">Retour au menu</a>
       </div>
     </div>
   </div>
 </div>
-
-<app-footer></app-footer>

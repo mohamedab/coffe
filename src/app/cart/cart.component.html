@@ -12,15 +12,16 @@
             <li *ngFor="let item of order.items; let j = index">
               <div class="item-left">
                 <img [src]="item.imageUrl">
-                <h4 class="title">{{item.quantity}} x {{item.name}} ({{item.price | currency}})</h4>
-                <p class="description">{{item.ingredients}}</p>
+                <h4 class="title">{{item.quantity}} x {{item.name}} ({{item.price | number: '1.2-2'}})</h4>
+                <p class="description"><span *ngFor="let ingredient of item.ingredients; let last = last">
+          {{ ingredient }}{{ !last ? ', ' : '' }}</span></p>
               </div>
               <div class="item-right">
-                <h4 class="total">{{(item.price * item.quantity) | currency}}</h4>
+                <h4 class="total">{{(item.price * item.quantity) | number: '1.2-2'}}</h4>
               </div>
             </li>
           </ul>
-          <h4>Total: {{ order.totalAmount | currency }}</h4>
+          <h4>Total: {{order.totalAmount | number: '1.2-2'}} Dhs</h4>
         </div>
       </div>
     </mat-expansion-panel>

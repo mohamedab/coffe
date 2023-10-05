@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Item} from "../models/item";
 import {OrderService} from "../services/order.service";
 import {ItemService} from "../services/item.service";
+import {Category} from "../models/category";
 
 @Component({
   selector: 'app-menu-one',
@@ -10,72 +11,41 @@ import {ItemService} from "../services/item.service";
 })
 export class MenuOneComponent {
 
-  coffeeMenuList: Item[] = [];
-
-  lunchMenuList: Item[] = [];
-
-  dinnerMenuList: Item[] = [];
-
-  drinksMenuList: Item[] = [];
-
-
-  allMenuItems: Item[] = [];
+  categories: Category[] = [];
+  activeMenuList: Item[] = [];
 
   itemId: number = 0;
-  coffeeMenu: boolean = true;
-  lunchMenu: boolean = false;
-  dinnerMenu: boolean = false;
-  drinkMenu: boolean = false;
 
   showSpinner: boolean = true;
 
   constructor(private cartService: OrderService,
               private itemService: ItemService) {
-    this.itemService.getItems().subscribe((items: Item[]) => {
-      console.log(items);
+    this.itemService.getCategoriesFormJson().subscribe((categories: Category[]) => {
+      this.categories = categories;
+      // Show the first menu
+      if (this.categories.length > 0) {
+        this.activeMenuList = this.categories[0].items;
+        this.categories[0].active = true;
+      }
       this.showSpinner = false;
-      this.coffeeMenuList = items.filter(item => item.category === 'Coffee');
-      this.lunchMenuList = items.filter(item => item.category === 'Lunch');
-      this.dinnerMenuList = items.filter(item => item.category === 'Diner');
-      this.drinksMenuList = items.filter(item => item.category === 'Drink');
     }, error => {
       console.log(error);
       this.showSpinner = false;
     });
   }
 
-  showCoffeeMenu() {
-    this.coffeeMenu = true;
-    this.lunchMenu = false;
-    this.dinnerMenu = false;
-    this.drinkMenu = false;
-  }
-
-  showLunchMenu() {
-    this.coffeeMenu = false;
-    this.lunchMenu = true;
-    this.dinnerMenu = false;
-    this.drinkMenu = false;
-  }
-
-  showDinnerMenu() {
-    this.coffeeMenu = false;
-    this.lunchMenu = false;
-    this.dinnerMenu = true;
-    this.drinkMenu = false;
-  }
-
-  showDrinkMenu() {
-    this.coffeeMenu = false;
-    this.lunchMenu = false;
-    this.dinnerMenu = false;
-    this.drinkMenu = true;
+  showActiveTab(category: Category) {
+    this.activeMenuList = category.items;
+    this.categories.forEach((cat) => {
+      cat.active = false; // Deactivate all categories
+    });
+    category.active = true; // Activate the selected category
   }
 
 // Generate a unique itemId for each item
   generateUniqueId(): string {
-    // Generate a random 8-character alphanumeric string
-    return Math.random().toString(36).substring(2, 10);
+    // Generate a random 12-character alphanumeric string
+    return Math.random().toString(36).substring(2, 14);
   }
 
 }

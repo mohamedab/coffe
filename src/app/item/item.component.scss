@@ -18,6 +18,7 @@
   font-size: 14px;
   line-height: 14px;
   margin-top: 5px;
+  background-color: #6B4D39 !important;
 }
 
 .remove {
@@ -29,14 +30,5 @@
   font-size: 14px;
   line-height: 14px;
   margin-top: 5px;
-}
-
-.add.mat-mdc-unelevated-button:not(:disabled) {
-  background-color: #6B4D39;
-  color: #ffffff;
-}
-
-.remove.mat-mdc-unelevated-button:not(:disabled) {
-  background-color: #e21836;
-  color: #ffffff;
+  background-color: #e21836 !important;
 }

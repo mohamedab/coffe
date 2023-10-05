@@ -12,7 +12,7 @@ export class TotalBarComponent {
 
   totalPrice: number = 0;
   selecedItemsNbr: number = 0;
-  @Input() orderState: string = 'Confirm order';
+  @Input() orderState: string = 'Voir panier';
   cart: Order = new Order();
 
   constructor(private router: Router,

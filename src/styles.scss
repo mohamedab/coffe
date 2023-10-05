@@ -31876,7 +31876,7 @@ textarea.form-control-lg {
 }
 
 .mCSB_scrollTools .mCSB_buttonDown, .mCSB_scrollTools .mCSB_buttonLeft, .mCSB_scrollTools .mCSB_buttonRight, .mCSB_scrollTools .mCSB_buttonUp {
- // background-image: url(mCSB_buttons.5b35a39c5f877ba43637.png);
+  // background-image: url(mCSB_buttons.5b35a39c5f877ba43637.png);
   background-repeat: no-repeat;
   opacity: .4;
   filter: "alpha(opacity=40)";
@@ -35612,8 +35612,8 @@ blockquote cite {
 }
 
 .logo-footer img, .logo-header img {
-  height: auto;
-  width: auto
+  height: 48px;
+  width: 160px;
 }
 
 .logo-footer span, .logo-header span {
@@ -46672,8 +46672,8 @@ pre {
 
 .menu-list li .title {
   font-family: Merriweather, serif;
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 900;
   line-height: 24px;
   margin-bottom: 0
 }
@@ -46682,7 +46682,7 @@ pre {
 .menu-list li .total {
   font-family: Merriweather, serif;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 900;
   line-height: 24px;
   margin-bottom: 0;
   text-align: end;
@@ -46695,7 +46695,6 @@ pre {
   font-style: italic;
   line-height: 22px;
   margin-bottom: 0;
-  max-width: 245px;
 }
 
 .menu-list li .price {
@@ -46707,7 +46706,7 @@ pre {
   border-radius: 3px;
   font-weight: 700;
   font-size: 14px;
-  line-height: 14px
+  line-height: 16px;
 }
 
 .menu-list li .item-right {
@@ -46717,17 +46716,16 @@ pre {
 }
 
 .menu-list .item-left {
-  padding-left: 50px;
+  padding-left: 40px;
   position: relative
 }
 
 .menu-list .item-left img {
   width: 50px;
   position: absolute;
-  left: -10px;
-  filter: drop-shadow(3px 0 0 rgba(0, 0, 0, .5));
-  transform: rotate(85deg);
-  top: -6px
+  left: -20px;
+  filter: drop-shadow(3px 0 0 rgba(0, 0, 0, 0.5));
+  top: -6px;
 }
 
 .dlab-bnr-inr {
@@ -46840,7 +46838,7 @@ pre {
 }
 
 .menu-tabs.style1 .nav-tabs li {
-  width: 25%
+  width: 50%
 }
 
 .menu-tabs.style1 .nav-tabs li h4 {
@@ -48097,10 +48095,11 @@ html.lb-disable-scrolling {
 
 // Badge
 .mat-badge-medium.mat-badge-overlap.mat-badge-after .mat-badge-content {
-    right: 0;
+  right: 0;
 }
+
 .mat-badge-medium.mat-badge-above .mat-badge-content {
-    top: 0;
+  top: 0;
 }
 
 mat-nav-list .mdc-list-item__primary-text {

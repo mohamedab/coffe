@@ -10,7 +10,6 @@ import {OrderService} from "../services/order.service";
 export class ItemComponent {
 
   @Input() items: Item[] = [];
-  quantities: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   @Input() editOrder: boolean = false;
   @Input() isOrderConfirmed: boolean = false;
 

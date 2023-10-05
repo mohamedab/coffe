@@ -1,278 +1,531 @@
 [
-  {
-    "name": "Cappuccino",
-    "price": 3.5,
-    "imageUrl": "assets/images/cup/cup1.png",
-    "ingredients": [
-      "espresso",
-      "steamed milk",
-      "foam"
-    ],
-    "quantity": 0,
-    "itemId": "h5x1isl8",
-    "category": "Coffee"
-  },
-  {
-    "name": "Latte",
-    "price": 4,
-    "imageUrl": "assets/images/cup/cup2.png",
-    "ingredients": [
-      "espresso",
-      "steamed milk"
-    ],
-    "quantity": 0,
-    "itemId": "92prq7u9",
-    "category": "Coffee"
-  },
-  {
-    "name": "Espresso",
-    "price": 2,
-    "imageUrl": "assets/images/cup/cup3.png",
-    "ingredients": [
-      "espresso"
-    ],
-    "quantity": 0,
-    "itemId": "d5e41u56",
-    "category": "Coffee"
-  },
-  {
-    "name": "Mocha",
-    "price": 4.5,
-    "imageUrl": "assets/images/cup/cup4.png",
-    "ingredients": [
-      "espresso",
-      "chocolate",
-      "steamed milk",
-      "whipped cream"
-    ],
-    "quantity": 0,
-    "itemId": "ik4tjym8",
-    "category": "Coffee"
-  },
-  {
-    "name": "Macchiato",
-    "price": 3,
-    "imageUrl": "assets/images/cup/cup5.png",
-    "ingredients": [
-      "espresso",
-      "caramel",
-      "foam"
-    ],
-    "quantity": 0,
-    "itemId": "d30jecn6",
-    "category": "Coffee"
-  },
-  {
-    "name": "Americano",
-    "price": 3,
-    "imageUrl": "assets/images/cup/cup6.png",
-    "ingredients": [
-      "espresso",
-      "hot water"
-    ],
-    "quantity": 0,
-    "itemId": "nasaz2do",
-    "category": "Coffee"
-  },
-  {
-    "name": "Iced Coffee",
-    "price": 3.5,
-    "imageUrl": "assets/images/cup/cup7.png",
-    "ingredients": [
-      "brewed coffee",
-      "ice",
-      "milk",
-      "sugar"
-    ],
-    "quantity": 0,
-    "itemId": "xmqv7812",
-    "category": "Coffee"
-  },
-  {
-    "name": "Caramel Frappuccino",
-    "price": 5,
-    "imageUrl": "assets/images/cup/cup8.png",
-    "ingredients": [
-      "coffee",
-      "caramel syrup",
-      "ice",
-      "milk",
-      "whipped cream"
-    ],
-    "quantity": 0,
-    "itemId": "r4dwbhtb",
-    "category": "Coffee"
-  },
-  {
-    "name": "Irish Coffee",
-    "price": 5,
-    "imageUrl": "assets/images/cup/cup9.png",
-    "ingredients": [
-      "whiskey",
-      "brewed coffee",
-      "sugar",
-      "whipped cream"
-    ],
-    "quantity": 0,
-    "itemId": "b0ffjpew",
-    "category": "Coffee"
-  },
-  {
-    "name": "Chicken Caesar Salad",
-    "price": 9.99,
-    "imageUrl": "assets/images/cup/cup1.png",
-    "ingredients": [
-      "romaine lettuce",
-      "grilled chicken",
-      "croutons",
-      "Caesar dressing"
-    ],
-    "quantity": 0,
-    "itemId": "8gxn9rfx",
-    "category": "Lunch"
-  },
-  {
-    "name": "Vegetable Wrap",
-    "price": 8.99,
-    "imageUrl": "assets/images/cup/cup4.png",
-    "ingredients": [
-      "grilled vegetables",
-      "hummus",
-      "feta cheese",
-      "tortilla"
-    ],
-    "quantity": 0,
-    "itemId": "tgi6wbz9",
-    "category": "Lunch"
-  },
-  {
-    "name": "Classic BLT Sandwich",
-    "price": 7.99,
-    "imageUrl": "assets/images/cup/cup6.png",
-    "ingredients": [
-      "bacon",
-      "lettuce",
-      "tomato",
-      "mayo",
-      "toasted bread"
-    ],
-    "quantity": 0,
-    "itemId": "8vfcog1i",
-    "category": "Lunch"
-  },
-  {
-    "name": "Caprese Panini",
-    "price": 9.49,
-    "imageUrl": "assets/images/cup/cup9.png",
-    "ingredients": [
-      "tomato",
-      "fresh mozzarella",
-      "basil",
-      "balsamic glaze",
-      "ciabatta"
-    ],
-    "quantity": 0,
-    "itemId": "dkx86mtm",
-    "category": "Lunch"
-  },
-  {
-    "name": "Grilled Salmon",
-    "price": 16.99,
-    "imageUrl": "assets/images/cup/cup1.png",
-    "ingredients": [
-      "salmon fillet",
-      "lemon herb butter",
-      "steamed asparagus"
-    ],
-    "quantity": 0,
-    "itemId": "fj9ibxdc",
-    "category": "Diner"
-  },
-  {
-    "name": "Steakhouse Burger",
-    "price": 14.99,
-    "imageUrl": "assets/images/cup/cup2.png",
-    "ingredients": [
-      "beef patty",
-      "cheddar cheese",
-      "bacon",
-      "lettuce",
-      "tomato",
-      "special sauce"
-    ],
-    "quantity": 0,
-    "category": "Diner"
-  },
-  {
-    "name": "Vegetable Stir-Fry",
-    "price": 13.49,
-    "imageUrl": "assets/images/cup/cup3.png",
-    "ingredients": [
-      "assorted vegetables",
-      "tofu",
-      "savory sauce"
-    ],
-    "quantity": 0,
-    "itemId": "dhj0h1hk",
-    "category": "Diner"
-  },
-  {
-    "name": "Pasta Primavera",
-    "price": 12.99,
-    "imageUrl": "assets/images/cup/cup4.png",
-    "ingredients": [
-      "penne pasta",
-      "seasonal vegetables",
-      "creamy Alfredo sauce"
-    ],
-    "quantity": 0,
-    "itemId": "pvb3q6id",
-    "category": "Diner"
-  },
-  {
-    "name": "Iced Tea",
-    "price": 2.49,
-    "imageUrl": "assets/images/cup/cup5.png",
-    "ingredients": [
-      "iced tea",
-      "lemon"
-    ],
-    "quantity": 0,
-    "itemId": "c8ajqkd0",
-    "category": "Drink"
-  },
-  {
-    "name": "Soda (Coke, Pepsi, etc.)",
-    "price": 1.99,
-    "imageUrl": "assets/images/cup/cup6.png",
-    "ingredients": [
-      "soda"
-    ],
-    "quantity": 0,
-    "itemId": "cjsbxm64",
-    "category": "Drink"
-  },
-  {
-    "name": "Lemonade",
-    "price": 2.49,
-    "imageUrl": "assets/images/cup/cup7.png",
-    "ingredients": [
-      "lemonade"
-    ],
-    "quantity": 0,
-    "itemId": "d6y9pqgk",
-    "category": "Drink"
-  },
-  {
-    "name": "Fruit Smoothie",
-    "price": 4.99,
-    "imageUrl": "assets/images/cup/cup8.png",
-    "ingredients": [
-      "assorted fruits",
-      "yogurt"
-    ],
-    "quantity": 0,
-    "itemId": "ou8f9ngi",
-    "category": "Drink"
-  }
+    {
+        "name": "Petit déjounéé composer",
+        "description": "Équilibré, varié, réconfortant.",
+        "imageUrl": "assets/images/icons/icon5.png",
+        "items": [
+            {
+                "name": "Panier 3 viennoiseries 10% beure",
+                "price": 12,
+                "imageUrl": "assets/images/items/pain.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "z76zy102ptr"
+            },
+            {
+                "name": "Panier de pain complet",
+                "price": 10,
+                "imageUrl": "assets/images/items/pain.png",
+                "ingredients": [
+                    "beure",
+                    "confiture",
+                    "miel"
+                ],
+                "quantity": 0,
+                "itemId": "6nxnj6bqh9h"
+            },
+            {
+                "name": "Céréales au lait",
+                "price": 8,
+                "imageUrl": "assets/images/items/breakfast.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "usy4zpzczge"
+            },
+            {
+                "name": "Fromage blanc et toast",
+                "price": 10,
+                "imageUrl": "assets/images/items/breakfast.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "4v07z9bsd9i"
+            },
+            {
+                "name": "Panna cotta mini",
+                "price": 9,
+                "imageUrl": "assets/images/items/breakfast.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "fecbewhym5p"
+            },
+            {
+                "name": "Salade fruits",
+                "price": 13,
+                "imageUrl": "assets/images/items/breakfast.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "ncd4d89jx9"
+            },
+            {
+                "name": "Salade crudité",
+                "price": 11,
+                "imageUrl": "assets/images/items/breakfast.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "2k23c1xtmck"
+            },
+            {
+                "name": "Riette de thon et pain grillé",
+                "price": 12,
+                "imageUrl": "assets/images/items/breakfast.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "z7ty346ubj"
+            },
+            {
+                "name": "Assiette charcuterie et fromage",
+                "price": 19,
+                "imageUrl": "assets/images/items/breakfast.png",
+                "ingredients": [
+                    "rouge",
+                    "crème",
+                    "catalane"
+                ],
+                "quantity": 0,
+                "itemId": "z2fu5ocihvc"
+            },
+            {
+                "name": "Tapenade olive noir pain grillé",
+                "price": 6,
+                "imageUrl": "assets/images/items/crepe.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "h0fvbh8skhp"
+            },
+            {
+                "name": "Hercha et mssemene",
+                "price": 16,
+                "imageUrl": "assets/images/items/pain.png",
+                "ingredients": [
+                    "confiture",
+                    "miel",
+                    "beurre",
+                    "fromage",
+                    "amlou"
+                ],
+                "quantity": 0,
+                "itemId": "hc5bj3muwwe"
+            },
+            {
+                "name": "Bissara",
+                "price": 8,
+                "imageUrl": "assets/images/items/breakfast.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "k5y1g1296hk"
+            },
+            {
+                "name": "Belboula",
+                "price": 4,
+                "imageUrl": "assets/images/items/breakfast.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "0wzdefvyezn"
+            },
+            {
+                "name": "Cake maison",
+                "price": 6,
+                "imageUrl": "assets/images/items/pain.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "jn8y7gj18b"
+            },
+            {
+                "name": "Omelette légumes",
+                "price": 12,
+                "imageUrl": "assets/images/items/breakfast.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "vjmn9lnwn9g"
+            },
+            {
+                "name": "Omelette fromage",
+                "price": 14,
+                "imageUrl": "assets/images/items/breakfast.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "ijwtab95apl"
+            },
+            {
+                "name": "Omelette nature",
+                "price": 10,
+                "imageUrl": "assets/images/items/breakfast.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "5mjuj8ceiye"
+            },
+            {
+                "name": "Omelette charcuterie",
+                "price": 14,
+                "imageUrl": "assets/images/items/breakfast.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "9hngdsxjbng"
+            },
+            {
+                "name": "Omelette mixte",
+                "price": 16,
+                "imageUrl": "assets/images/items/breakfast.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "7gd7jx761eh"
+            },
+            {
+                "name": "Khli3 3 oeufs",
+                "price": 20,
+                "imageUrl": "assets/images/items/breakfast.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "7zu7lr0clhf"
+            },
+            {
+                "name": "Jus au choix",
+                "price": 10,
+                "imageUrl": "assets/images/items/jus.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "imezo9vrezc"
+            },
+            {
+                "name": "Pain",
+                "price": 1,
+                "imageUrl": "assets/images/items/pain.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "kj9wutpai1"
+            }
+        ],
+        "active": true
+    },
+    {
+        "name": "Nos entrées",
+        "description": "Fraîches, appétissantes, diversifiées.",
+        "imageUrl": "assets/images/icons/icon6.png",
+        "items": [
+            {
+                "name": "Salade césar",
+                "price": 29,
+                "imageUrl": "assets/images/items/salade.png",
+                "ingredients": [
+                    "Laitue romaine",
+                    "Croûtons",
+                    "Parmensan râpé",
+                    "Poulet grillé",
+                    "Sauce césar",
+                    "Anchois",
+                    "Oeuf dur de cailles"
+                ],
+                "quantity": 0,
+                "itemId": "bariu109xjb"
+            },
+            {
+                "name": "Salade Noçoise Revisitée",
+                "price": 27,
+                "imageUrl": "assets/images/items/salade.png",
+                "ingredients": [
+                    "Laitue romaine",
+                    "Thon",
+                    "Haricots verts",
+                    "Tomates cerise",
+                    "Olives noires",
+                    "Oeuf dur de cailles",
+                    "Pommes de terre",
+                    "Radis",
+                    "Anchois",
+                    "Vinaigrette",
+                    "Poivron",
+                    "Oignon"
+                ],
+                "quantity": 0,
+                "itemId": "f9eb088oen4"
+            },
+            {
+                "name": "Salade Grecque",
+                "price": 24,
+                "imageUrl": "assets/images/items/salade.png",
+                "ingredients": [
+                    "Laitue romaine",
+                    "Poivron",
+                    "Oignon",
+                    "Tomates cerise",
+                    "Thym",
+                    "Fromage feta",
+                    "Olives noires",
+                    "Concombre"
+                ],
+                "quantity": 0,
+                "itemId": "pzgyphmaa2"
+            },
+            {
+                "name": "Salade Italienne",
+                "price": 36,
+                "imageUrl": "assets/images/items/salade.png",
+                "ingredients": [
+                    "Tomates cerise",
+                    "Mozzarella",
+                    "Courgettes",
+                    "Aubergine",
+                    "Poulet",
+                    "Penné",
+                    "Sauce basilic",
+                    "Jambon de dinde"
+                ],
+                "quantity": 0,
+                "itemId": "9lhkq0q6wg"
+            }
+        ]
+    },
+    {
+        "name": "Nos plats",
+        "description": "Savoureux, copieux, diversifiés.",
+        "imageUrl": "assets/images/icons/icon6.png",
+        "items": [
+            {
+                "name": "Emincé de poulet aux champignons",
+                "price": 50,
+                "imageUrl": "assets/images/items/patte.png",
+                "ingredients": [
+                    "Légumes sautés",
+                    "Pommes écrasés",
+                    "Echalotte",
+                    "Poulet grillé",
+                    "Ciboulette",
+                    "Champignon",
+                    "Crème fraiche"
+                ],
+                "quantity": 0,
+                "itemId": "qgcmq8t4nhk"
+            },
+            {
+                "name": "Emincé de Boeuf Stroganoff Revisitée",
+                "price": 62,
+                "imageUrl": "assets/images/items/patte.png",
+                "ingredients": [
+                    "Légumes sautés",
+                    "Pommes écrasés",
+                    "Echalotte",
+                    "Boeuf",
+                    "Cornichon",
+                    "Champignon",
+                    "Crème fraiche"
+                ],
+                "quantity": 0,
+                "itemId": "20q2hu70op6"
+            },
+            {
+                "name": "Penne au poulet Pesto",
+                "price": 51,
+                "imageUrl": "assets/images/items/patte.png",
+                "ingredients": [
+                    "Penne",
+                    "Echalotte",
+                    "Poulet grillé",
+                    "Champignon",
+                    "Crème fraiche",
+                    "Pesto",
+                    "Parmesan râpé"
+                ],
+                "quantity": 0,
+                "itemId": "8ze50tuz20m"
+            },
+            {
+                "name": "Tagliatelles à la bolognaise",
+                "price": 45,
+                "imageUrl": "assets/images/items/patte.png",
+                "ingredients": [
+                    "Tagliatelle",
+                    "Viande haché",
+                    "Pesto",
+                    "Parmesan râpé",
+                    "Sauce tomate"
+                ],
+                "quantity": 0,
+                "itemId": "rsebat7is7"
+            }
+        ]
+    },
+    {
+        "name": "Nos sandwichs",
+        "description": "Gourmands, pratiques, personnalisables.",
+        "imageUrl": "assets/images/icons/icon5.png",
+        "items": [
+            {
+                "name": "Sandwich au poulet",
+                "price": 33,
+                "imageUrl": "assets/images/items/sandwich.png",
+                "ingredients": [
+                    "Pain ciabatta",
+                    "Tomate",
+                    "Cornichon",
+                    "Poulet grillé",
+                    "Sauce césar",
+                    "Salade"
+                ],
+                "quantity": 0,
+                "itemId": "s84ec19kx1j"
+            },
+            {
+                "name": "Sandwich Niçois",
+                "price": 30,
+                "imageUrl": "assets/images/items/sandwich.png",
+                "ingredients": [
+                    "Pain ciabatta",
+                    "Tomate",
+                    "Thon",
+                    "Salade",
+                    "Oeuf"
+                ],
+                "quantity": 0,
+                "itemId": "ce2bowm7ynf"
+            },
+            {
+                "name": "Sandwich Classic",
+                "price": 34,
+                "imageUrl": "assets/images/items/sandwich.png",
+                "ingredients": [
+                    "Pain de mie",
+                    "Tomate",
+                    "Poulet grillé",
+                    "Salade",
+                    "Oeuf",
+                    "Mayonnaise"
+                ],
+                "quantity": 0,
+                "itemId": "kig109piem"
+            },
+            {
+                "name": "Club sandwich avocat thon",
+                "price": 38,
+                "imageUrl": "assets/images/items/sandwich.png",
+                "ingredients": [
+                    "Croûtons",
+                    "Tomate",
+                    "Tho",
+                    "Salade",
+                    "Avocat",
+                    "Mayonnaise"
+                ],
+                "quantity": 0,
+                "itemId": "y4dt7jq2ut"
+            }
+        ]
+    },
+    {
+        "name": "Nos desserts",
+        "description": "Délectables, sucrés, variés, tentants",
+        "imageUrl": "assets/images/icons/icon2.png",
+        "items": [
+            {
+                "name": "Panna cotta parfumer à la rose et coulis de fraises",
+                "price": 18,
+                "imageUrl": "assets/images/items/dessert.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "tb81znk702"
+            },
+            {
+                "name": "Cookies clasique boule de glace",
+                "price": 45,
+                "imageUrl": "assets/images/items/dessert.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "nal5hr14lya"
+            },
+            {
+                "name": "Fondant au chocolot coeur coulant",
+                "price": 36,
+                "imageUrl": "assets/images/items/dessert.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "gua30nyaczu"
+            },
+            {
+                "name": "TIRAMISU",
+                "price": 30,
+                "imageUrl": "assets/images/items/dessert.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "nxrhrb13q3"
+            }
+        ]
+    },
+    {
+        "name": "Nos Gaufres et Crêpes",
+        "description": "Gourmandes, moelleuses, délicieuses.",
+        "imageUrl": "assets/images/icons/icon1.png",
+        "items": [
+            {
+                "name": "GAUFRE NUTELLA",
+                "price": 26,
+                "imageUrl": "assets/images/items/gaufre.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "s2ad6qncsf"
+            },
+            {
+                "name": "GAUFRE NUTELLA BANANE",
+                "price": 28,
+                "imageUrl": "assets/images/items/gaufre.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "gnfomtg0kj"
+            },
+            {
+                "name": "GAUFRE LIEGOISE",
+                "price": 26,
+                "imageUrl": "assets/images/items/gaufre.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "v9q9sqqq9v"
+            },
+            {
+                "name": "GAUFRE CARAMEL",
+                "price": 26,
+                "imageUrl": "assets/images/items/gaufre.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "rk6wzzi1ig"
+            },
+            {
+                "name": "CRÊPES NUTELLA",
+                "price": 23,
+                "imageUrl": "assets/images/items/crepe.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "csa4gmj3z2p"
+            },
+            {
+                "name": "CRÊPES NUTELLA BANANE",
+                "price": 25,
+                "imageUrl": "assets/images/items/crepe.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "42qcsc2l8kx"
+            },
+            {
+                "name": "CRÊPES CARAMEL",
+                "price": 23,
+                "imageUrl": "assets/images/items/crepe.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "dvbh3hsbgr8"
+            },
+            {
+                "name": "CRÊPES POULET",
+                "price": 38,
+                "imageUrl": "assets/images/items/crepe.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "4kfx8rmv3qp"
+            },
+            {
+                "name": "CRÊPES AU FROMAGE",
+                "price": 28,
+                "imageUrl": "assets/images/items/crepe.png",
+                "ingredients": [],
+                "quantity": 0,
+                "itemId": "i4pc86vie4j"
+            }
+        ]
+    }
 ]

@@ -4,6 +4,7 @@ import {Item} from "../models/item";
 import {addDoc, collection, collectionData, doc, docData, Firestore, getDocs, query} from "@angular/fire/firestore";
 import {catchError, map} from "rxjs/operators";
 import {HttpClient} from "@angular/common/http";
+import {Category} from "../models/category";
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,10 @@ export class ItemService {
   getItemsFormJson(): Observable<Item[]> {
     return this.http.get<Item[]>(this.itemsUrl);
   }
+  getCategoriesFormJson(): Observable<Category[]> {
+    return this.http.get<Category[]>(this.itemsUrl);
+  }
+
 
   addItems(items: Item[]): void {
     items.forEach((item) => {

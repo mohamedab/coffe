@@ -2,9 +2,9 @@
      class="bottom-bar"
      (click)="goToOrderDetail()"
      *ngIf="totalPrice > 0">
-  <div class="total-price">{{selecedItemsNbr}} {{ selecedItemsNbr > 1 ? 'items' : 'item'}} |
-    Total: {{ totalPrice | currency }}</div>
+  <div class="total-price">{{selecedItemsNbr}} {{ selecedItemsNbr > 1 ? 'articles' : 'article'}} |
+    Total: {{totalPrice | number: '1.2-2'}} {{ totalPrice > 1 ? 'Dhs' : 'Dh'}}</div>
   <div>
-    <button mat-flat-button class="order-btn">{{orderState}}</button>
+    <h4 class="order-status" style="color: #fff">{{orderState}}</h4>
   </div>
 </div>

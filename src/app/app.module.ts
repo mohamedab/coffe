@@ -40,6 +40,9 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatBadgeModule} from "@angular/material/badge";
 import { CartComponent } from './cart/cart.component';
 import {MatExpansionModule} from "@angular/material/expansion";
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr');
 
 // Create a function that returns an instance of TranslateHttpLoader
 export function createTranslateLoader(http: HttpClient) {

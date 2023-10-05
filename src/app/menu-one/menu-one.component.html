@@ -2,51 +2,17 @@
   <div class="container">
     <div class="dlab-tabs menu-tabs style1">
       <ul class="nav-tabs nav" role="tablist">
-        <li class="nav-item">
-          <a (click)="showCoffeeMenu()"
-            [class.active]="coffeeMenu"
-            id="ngb-nav-3" role="tab" aria-selected="true"
-            aria-disabled="false" class="nav-link"
-            aria-controls="ngb-nav-3-panel">
+        <li class="nav-item" *ngFor="let category of categories; let i = index">
+          <a (click)="showActiveTab(category);"
+            [class.active]="category.active"
+            id="ngb-nav-{{i + 1}}" role="tab" [attr.aria-selected]="category.active"
+                                   aria-disabled="false" class="nav-link"
+            [attr.aria-controls]="'ngb-nav-' + (i + 1) + '-panel'">
             <div class="icon-bx">
-              <img
-                src="assets/images/icons/icon8.png">
+              <img [src]="category.imageUrl">
             </div>
-            <h4>COFFEE</h4>
-            <h6>COFFEE &amp; CAPPUCCINO</h6>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a (click)="showLunchMenu()"
-            [class.active]="lunchMenu"
-            id="ngb-nav-4" role="tab" aria-selected="false"
-            aria-disabled="false" class="nav-link">
-            <div
-              src="assets/images/icons/icon5.png"></div>
-            <h4>LUNCH</h4>
-            <h6>COFFEE &amp; CAPPUCCINO</h6>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a (click)="showDinnerMenu()"
-            [class.active]="dinnerMenu"
-            id="ngb-nav-5" role="tab" aria-selected="false"
-            aria-disabled="false" class="nav-link">
-            <div
-              src="assets/images/icons/icon6.png"></div>
-            <h4>DINER</h4>
-            <h6>COFFEE &amp; CAPPUCCINO</h6>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a (click)="showDrinkMenu()"
-            [class.active]="drinkMenu"
-            id="ngb-nav-6" role="tab" aria-selected="false"
-            aria-disabled="false" class="nav-link">
-            <div
-              src="assets/images/icons/icon7.png"></div>
-            <h4>DRINKS</h4>
-            <h6>COFFEE &amp; CAPPUCCINO</h6>
+            <h4 style="text-transform: uppercase">{{category.name}}</h4>
+            <h6 style="text-transform: uppercase">{{category.description}}</h6>
           </a>
         </li>
       </ul>
@@ -54,31 +20,9 @@
         <div fxLayout="row" fxLayoutAlign="center center">
           <mat-spinner color="accent" *ngIf="showSpinner"></mat-spinner>
         </div>
-        <div *ngIf="coffeeMenu" class="tab-pane fade show active" id="ngb-nav-3-panel" role="tabpanel"
-                                aria-labelledby="ngb-nav-3">
+        <div class="tab-pane fade show active" id="ngb-nav-3-panel" role="tabpanel">
           <div class="tab-pane">
-            <app-item [items]="coffeeMenuList"></app-item>
-          </div>
-        </div>
-
-        <div *ngIf="lunchMenu" class="tab-pane fade  active show" id="ngb-nav-4-panel" role="tabpanel"
-                               aria-labelledby="ngb-nav-4">
-          <div class="tab-pane ">
-            <app-item [items]="lunchMenuList"></app-item>
-          </div>
-        </div>
-
-        <div *ngIf="dinnerMenu" class="tab-pane fade  active show" id="ngb-nav-5-panel" role="tabpanel"
-                                aria-labelledby="ngb-nav-5">
-          <div class="tab-pane ">
-            <app-item [items]="dinnerMenuList"></app-item>
-          </div>
-        </div>
-
-        <div *ngIf="drinkMenu" class="tab-pane fade  active show" id="ngb-nav-6-panel" role="tabpanel"
-                               aria-labelledby="ngb-nav-6">
-          <div class="tab-pane ">
-            <app-item [items]="drinksMenuList"></app-item>
+            <app-item [items]="activeMenuList"></app-item>
           </div>
         </div>
       </div>
