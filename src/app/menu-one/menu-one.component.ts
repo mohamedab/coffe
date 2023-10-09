@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ElementRef, Renderer2} from '@angular/core';
 import {Item} from "../models/item";
 import {OrderService} from "../services/order.service";
 import {ItemService} from "../services/item.service";
@@ -42,10 +42,18 @@ export class MenuOneComponent {
     category.active = true; // Activate the selected category
   }
 
-// Generate a unique itemId for each item
+  // Generate a unique itemId for each item
   generateUniqueId(): string {
     // Generate a random 12-character alphanumeric string
     return Math.random().toString(36).substring(2, 14);
+  }
+
+  scrollToTabContent() {
+    const element = document.getElementById('tab-content');
+    if (element) {
+      // Scroll to the target element using either of the methods below
+      element.scrollIntoView({behavior: 'smooth', block: "start", inline: "center"});
+    }
   }
 
 }

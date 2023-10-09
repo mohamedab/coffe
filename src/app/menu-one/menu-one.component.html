@@ -2,8 +2,8 @@
   <div class="container">
     <div class="dlab-tabs menu-tabs style1">
       <ul class="nav-tabs nav" role="tablist">
-        <li class="nav-item" *ngFor="let category of categories; let i = index">
-          <a (click)="showActiveTab(category);"
+        <li id="nav-item" *ngFor="let category of categories; let i = index">
+          <a (click)="showActiveTab(category);scrollToTabContent()"
             [class.active]="category.active"
             id="ngb-nav-{{i + 1}}" role="tab" [attr.aria-selected]="category.active"
                                    aria-disabled="false" class="nav-link"
@@ -16,7 +16,7 @@
           </a>
         </li>
       </ul>
-      <div class="tab-content">
+      <div id="tab-content" class="tab-content">
         <div fxLayout="row" fxLayoutAlign="center center">
           <mat-spinner color="accent" *ngIf="showSpinner"></mat-spinner>
         </div>

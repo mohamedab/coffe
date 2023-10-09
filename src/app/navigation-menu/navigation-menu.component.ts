@@ -28,6 +28,8 @@ export class NavigationMenuComponent {
       if(cart.length > 0) {
         this.hidden = false;
         this.cart = cart;
+      } else {
+        this.hidden = true;
       }
     })
   }

@@ -35,18 +35,17 @@
       </mat-card>
 
       <div fxLayout="column" fxLayoutAlign="center center" *ngIf="!isOrderConfirmed && selectedItems.length > 0 && !confirmFormActive">
-        <a class="btn" (click)="confirmOrder()">Confirm Order</a>
-        <span style="color: red;text-align: center;">Veuillez vérifier votre commande avant de la confirmer.</span>
+        <a class="btn" (click)="confirmOrder()" *ngIf="!showSpinner">Confirm Order</a>
+        <span style="color: red;text-align: center;" *ngIf="!showSpinner">Veuillez vérifier votre commande avant de la confirmer.</span>
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <mat-spinner color="accent" *ngIf="showSpinner"></mat-spinner>
+        </div>
       </div>
 
-      <div class="center" *ngIf="isOrderConfirmed">
+      <div class="center" *ngIf="isOrderConfirmed || selectedItems.length == 0">
         <a class="btn" (click)="startNewOrder()">Lancer une nouvelle commande ?</a>
       </div>
       <app-total-bar [orderState]="''"></app-total-bar>
-
-      <div class="center" *ngIf="selectedItems.length == 0">
-        <a class="btn" (click)="goBack()">Retour au menu</a>
-      </div>
     </div>
   </div>
 </div>

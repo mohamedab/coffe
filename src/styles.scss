@@ -34831,7 +34831,7 @@ dl dd {
 
 label {
   font-weight: 600;
-  margin-bottom: 10px
+  margin-bottom: 0px
 }
 
 .panel-default, .panel-default > .panel-heading {
@@ -46721,11 +46721,11 @@ pre {
 }
 
 .menu-list .item-left img {
-  width: 50px;
+  width: 55px;
+  height: 46px;
   position: absolute;
   left: -20px;
-  filter: drop-shadow(3px 0 0 rgba(0, 0, 0, 0.5));
-  top: -6px;
+  top: 6px;
 }
 
 .dlab-bnr-inr {
@@ -48104,4 +48104,16 @@ html.lb-disable-scrolling {
 
 mat-nav-list .mdc-list-item__primary-text {
   color: white !important;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.ws-nowrap {
+  white-space: nowrap;
 }

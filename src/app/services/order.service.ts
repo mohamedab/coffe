@@ -3,7 +3,6 @@ import {BehaviorSubject, Observable} from "rxjs";
 import {Item} from "../models/item";
 import {Order} from "../models/order";
 import {addDoc, collection, doc, Firestore, setDoc} from "@angular/fire/firestore";
-import {CurrencyPipe} from "@angular/common";
 
 @Injectable({
   providedIn: 'root'
@@ -115,7 +114,6 @@ export class OrderService {
 
   addOrder(order: Order): Promise<any> {
     order.orderId = doc(collection(this.firestore, 'orderId')).id;
-    console.log(order);
     return addDoc(this.orderCollection, Object.assign({}, order));
   }
 

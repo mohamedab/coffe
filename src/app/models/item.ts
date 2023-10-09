@@ -6,4 +6,5 @@ export class Item {
   ingredients!: string[];
   quantity!: number;
   category!: string;
+  imageState!: string;
 }

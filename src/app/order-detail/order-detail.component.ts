@@ -25,6 +25,7 @@ export class OrderDetailComponent {
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
   confirmFormActive = false;
+  showSpinner: boolean = false;
 
   constructor(private orderService: OrderService,
               private cartService: CartService,
@@ -56,22 +57,26 @@ export class OrderDetailComponent {
       this.order.orderDate = new Date();
       this.order.clientName = this.clientName;
       this.order.serverId = this.selectedServer;
+      this.showSpinner = true;
       this.orderService.addOrder(this.order).then(() => {
-          console.log('Order Successfully added');
           this.isOrderConfirmed = true;
           // Save the updated cart in local storage
           this.orderService.saveOrderToLocalStorage(this.order);
           // Add order to cart
           this.cartService.addOrderToCart(this.order);
+          // Remove order from local storage.
+          this.orderService.clearOrderToLocalStorage();
           // Display a snackbar.
-          this._snackBar.open('Order Successfully confirmed', 'Done', {
+          this._snackBar.open('Commande confirmée', 'OK', {
             horizontalPosition: this.horizontalPosition,
             verticalPosition: this.verticalPosition,
           });
+          this.showSpinner = false;
         }
       ).catch(err => {
         console.log(err);
         this.order.orderId = '';
+        this.showSpinner = false;
       });
     }
   }

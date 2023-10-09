@@ -1,4 +1,4 @@
-<div class="bg-pink-light" style="height: 100%">
+<div fxLayout="column" fxLayoutAlign="start center" class="bg-pink-light" style="height: 100%">
   <mat-accordion>
     <mat-expansion-panel *ngFor="let order of cart; let i = index" style="top: 10px;margin: 0 15px 15px 15px;">
       <mat-expansion-panel-header>
@@ -26,6 +26,13 @@
       </div>
     </mat-expansion-panel>
   </mat-accordion>
+  <div class="center mt-4" *ngIf="cart.length > 0">
+    <a class="btn" (click)="viderCart()">Vider le panier</a>
+  </div>
+
+  <div class="center mt-5" *ngIf="cart.length == 0">
+    <a class="btn" (click)="goToMenu()">Retour au menu</a>
+  </div>
 </div>
 <app-footer></app-footer>
 
