@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
-import {Item} from "../models/item";
-import {OrderService} from "../services/order.service";
+import {Item} from "../../models/item";
+import {OrderService} from "../../services/order.service";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({

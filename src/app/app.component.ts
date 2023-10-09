@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FirebaseService} from "./services/firebase.service";
-import {ItemService} from "./services/item.service";
+import {FirebaseService} from "./shared/services/firebase.service";
+import {ItemService} from "./shared/services/item.service";
 
 @Component({
   selector: 'app-root',

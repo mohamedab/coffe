@@ -1,10 +1,10 @@
 import {Component, ViewEncapsulation} from '@angular/core';
-import {Item} from "../models/item";
-import {OrderService} from "../services/order.service";
+import {Item} from "../shared/models/item";
+import {OrderService} from "../shared/services/order.service";
 import {Router} from "@angular/router";
-import {Order} from "../models/order";
+import {Order} from "../shared/models/order";
 import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from "@angular/material/snack-bar";
-import {CartService} from "../services/cart.service";
+import {CartService} from "../shared/services/cart.service";
 
 @Component({
   selector: 'app-order-detail',

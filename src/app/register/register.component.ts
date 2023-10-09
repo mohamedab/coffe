@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {UserProfile} from "../models/userProfile";
-import {AuthService} from "../services/auth.service";
+import {UserProfile} from "../shared/models/userProfile";
+import {AuthService} from "../shared/services/auth.service";
 
 @Component({
   selector: 'app-register',

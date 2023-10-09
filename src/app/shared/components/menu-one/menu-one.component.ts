@@ -1,8 +1,8 @@
 import {Component, ElementRef, Renderer2} from '@angular/core';
-import {Item} from "../models/item";
-import {OrderService} from "../services/order.service";
-import {ItemService} from "../services/item.service";
-import {Category} from "../models/category";
+import {Item} from "../../models/item";
+import {OrderService} from "../../services/order.service";
+import {ItemService} from "../../services/item.service";
+import {Category} from "../../models/category";
 
 @Component({
   selector: 'app-menu-one',

@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Router} from "@angular/router";
-import {Order} from "../models/order";
-import {OrderService} from "../services/order.service";
+import {Order} from "../../models/order";
+import {OrderService} from "../../services/order.service";
 
 @Component({
   selector: 'app-total-bar',
