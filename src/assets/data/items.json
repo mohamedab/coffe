@@ -569,7 +569,7 @@
       {
         "name": "Café noir",
         "price": 13,
-        "imageUrl": "assets/images/items/boisson/DOUBLE EXPRESSO.jpg",
+        "imageUrl": "assets/images/items/boisson/Café noir.jpg",
         "ingredients": [],
         "quantity": 0,
         "itemId": "g63n0cfnefu",
@@ -578,7 +578,7 @@
       {
         "name": "Café séparé",
         "price": 14,
-        "imageUrl": "assets/images/items/boisson/DOUBLE EXPRESSO.jpg",
+        "imageUrl": "assets/images/items/boisson/Café séparé.jpg",
         "ingredients": [],
         "quantity": 0,
         "itemId": "rjqkvz6hpjs",
@@ -596,7 +596,7 @@
       {
         "name": "Café noisette",
         "price": 14,
-        "imageUrl": "assets/images/items/boisson/DOUBLE EXPRESSO.jpg",
+        "imageUrl": "assets/images/items/boisson/Café noisette.jpg",
         "ingredients": [],
         "quantity": 0,
         "itemId": "tllw3tix0p",
@@ -641,7 +641,7 @@
       {
         "name": "Lait chaud",
         "price": 14,
-        "imageUrl": "assets/images/items/boisson/TODO.jpg",
+        "imageUrl": "assets/images/items/boisson/Lait chaud.jpg",
         "ingredients": [],
         "quantity": 0,
         "itemId": "eo3ydx38rl",
@@ -650,7 +650,7 @@
       {
         "name": "Lavazza",
         "price": 18,
-        "imageUrl": "assets/images/items/boisson/DOUBLE EXPRESSO.jpg",
+        "imageUrl": "assets/images/items/boisson/Lavazza.jpg",
         "ingredients": [],
         "quantity": 0,
         "itemId": "92ycb4vp81h",
@@ -686,7 +686,7 @@
       {
         "name": "Thé noir",
         "price": 13,
-        "imageUrl": "assets/images/items/boisson/THE VERVENE.jpg",
+        "imageUrl": "assets/images/items/boisson/Thé noir.jpg",
         "ingredients": [],
         "quantity": 0,
         "itemId": "nt08n7ypb3i",
@@ -713,7 +713,7 @@
       {
         "name": "Eau gazeuse 50cl",
         "price": 8,
-        "imageUrl": "assets/images/items/boisson/EAU PLATE 50CL.jpg",
+        "imageUrl": "assets/images/items/boisson/Eau gazeuse 50cl.jpg",
         "ingredients": [],
         "quantity": 0,
         "itemId": "h2acznsydlr",
@@ -1021,7 +1021,7 @@
       {
         "name": "Jus mangue",
         "price": 22,
-        "imageUrl": "assets/images/items/boisson/TODO.jpg",
+        "imageUrl": "assets/images/items/boisson/Jus mangue.jpg",
         "ingredients": [],
         "quantity": 0,
         "itemId": "42izr0tp2mu",
@@ -1030,7 +1030,7 @@
       {
         "name": "Jus ananas",
         "price": 22,
-        "imageUrl": "assets/images/items/boisson/TODO.jpg",
+        "imageUrl": "assets/images/items/boisson/jus ananas.jpg",
         "ingredients": [],
         "quantity": 0,
         "itemId": "hmbu3i0xsdc",
@@ -1102,7 +1102,7 @@
       {
         "name": "Jus fruits rouges",
         "price": 24,
-        "imageUrl": "assets/images/items/boisson/JUS POMME.jpg",
+        "imageUrl": "assets/images/items/boisson/jus fruits rouges.jpg",
         "ingredients": [],
         "quantity": 0,
         "itemId": "0wx8e7cy62tc",
@@ -1242,7 +1242,7 @@
       {
         "name": "Affogatto caramel",
         "price": 26,
-        "imageUrl": "assets/images/items/boisson/FRAPPUCCINO CARAMEL.jpg",
+        "imageUrl": "assets/images/items/boisson/Affogatto caramel.jpg",
         "ingredients": [],
         "quantity": 0,
         "itemId": "x9qnlhjofyc",
@@ -1262,7 +1262,7 @@
       {
         "name": "Bubblee Tea classique",
         "price": 35,
-        "imageUrl": "assets/images/items/boisson/TODO.jpg",
+        "imageUrl": "assets/images/items/boisson/BUBBLE TEA CLASSIQUE.jpg",
         "ingredients": [],
         "quantity": 0,
         "itemId": "n1lukt42vyb",
@@ -1271,7 +1271,7 @@
       {
         "name": "Bubblee Tea mangue",
         "price": 36,
-        "imageUrl": "assets/images/items/boisson/TODO.jpg",
+        "imageUrl": "assets/images/items/boisson/BUBBLE TEA MANGUE.jpg",
         "ingredients": [],
         "quantity": 0,
         "itemId": "ospto3od4t",
@@ -1280,7 +1280,7 @@
       {
         "name": "Bubblee Tea fruits rouges",
         "price": 37,
-        "imageUrl": "assets/images/items/boisson/TODO.jpg",
+        "imageUrl": "assets/images/items/boisson/BUBBLE TEA FRUITS ROUGE.jpg",
         "ingredients": [],
         "quantity": 0,
         "itemId": "v1fijj115f",

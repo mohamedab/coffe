@@ -10,7 +10,7 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
   animations: [
     trigger('imageExpansion', [
       state('collapsed', style({transform: 'scale(O)'})),
-      state('expanded', style({transform: 'scale(4)', position: 'relative', top: '50%', left: '50%', 'z-index': '1'})),
+      state('expanded', style({transform: 'scale(6)', position: 'relative', top: '50%', left: '80%', 'z-index': '1'})),
       transition('collapsed => expanded', animate('300ms ease-in')),
       transition('expanded => collapsed', animate('300ms ease-out')),
     ]),
