@@ -6,11 +6,18 @@ import {
   sendEmailVerification,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
-  signOut
+  signOut,
+  updateEmail,
+  updatePassword,
+  updateProfile
 } from '@angular/fire/auth';
-import {addDoc, collection, doc, Firestore, setDoc} from "@angular/fire/firestore";
+import {collection, doc, Firestore, getDoc, setDoc} from "@angular/fire/firestore";
 import {Router} from "@angular/router";
 import {UserProfile} from "../models/userProfile";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {BehaviorSubject, Observable, of} from "rxjs";
+import firebase from "firebase/compat";
+import UserCredential = firebase.auth.UserCredential;
 
 @Injectable({
   providedIn: 'root',
@@ -19,11 +26,12 @@ export class AuthService {
   userData: any; // Save logged in user data
   currentUser: any;
   usersRef: any;
+  connectedUser: BehaviorSubject<UserProfile> = new BehaviorSubject<UserProfile>(new UserProfile());
 
-  constructor(private afAuth: Auth,
+  constructor(public afAuth: Auth,
               public firestore: Firestore,
               public router: Router,
-              public ngZone: NgZone // NgZone service to remove outside scope warning
+              public snackBar: MatSnackBar,
   ) {
     this.usersRef = collection(this.firestore, 'Users');
     if (this.afAuth) {
@@ -31,42 +39,37 @@ export class AuthService {
         if (user) {
           this.userData = user;
           this.currentUser = this.afAuth.currentUser;
-          localStorage.setItem('user', JSON.stringify(this.userData));
         } else {
           localStorage.setItem('user', 'null');
           this.currentUser = null;
+          this.connectedUser.next(new UserProfile());
         }
       });
     }
   }
 
+  getConnectedUserDoc(user: any) {
+    const docRef = doc(this.firestore, "Users", user.uid);
+    getDoc(docRef).then(docSnap => {
+      if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+        const userProfile: UserProfile = docSnap.data() as UserProfile;
+        this.connectedUser.next(userProfile);
+        localStorage.setItem('user', JSON.stringify(docSnap.data()));
+      } else {
+        console.log("No such document!");
+      }
+    });
+  }
+
   // Sign in with email/password
-  signIn(email: string, password: string): void {
-    signInWithEmailAndPassword(this.afAuth, email, password)
-      .then((result) => {
-        onAuthStateChanged(this.afAuth, (user) => {
-          if (user) {
-            this.setUserData(user);
-            this.router.navigate(['menu']);
-          }
-        });
-      })
-      .catch((error) => {
-        window.alert(error.message);
-      });
+  signIn(email: string, password: string): Promise<any> {
+    return signInWithEmailAndPassword(this.afAuth, email, password);
   }
 
   // Sign up with email/password
-  signUp(email: string, password: string, user: UserProfile) {
-    createUserWithEmailAndPassword(this.afAuth, email, password)
-      .then((result) => {
-        /* Call the SendVerificaitonMail() function when new user sign up and returns promise */
-        this.sendVerificationMail(user);
-        this.addUserData(result.user, user);
-      })
-      .catch((error) => {
-        window.alert(error.message);
-      });
+  signUp(email: string, password: string, user: UserProfile): Promise<any> {
+    return createUserWithEmailAndPassword(this.afAuth, email, password);
   }
 
   // Send email verfificaiton when new user sign up
@@ -74,38 +77,39 @@ export class AuthService {
     sendEmailVerification(this.currentUser)
       .then(() => {
         user.emailVerified = true;
-        console.log('verfication mail sent with succes');
-        // this.router.navigate(['verify-email-address']);
+        this.snackBar.open('Verification mail sent with succes!', '×', {
+          panelClass: 'success',
+          verticalPosition: 'top',
+          duration: 3000
+        });
       });
   }
 
-  // Reset Forggot password
-  forgotPassword(passwordResetEmail: string) {
-    sendPasswordResetEmail(this.afAuth, passwordResetEmail)
-      .then(() => {
-        window.alert('Password reset email sent, check your inbox.');
-      })
-      .catch((error) => {
-        window.alert(error);
-      });
+  // Reset Forgot password
+  forgotPassword(passwordResetEmail: string): Promise<any> {
+   return sendPasswordResetEmail(this.afAuth, passwordResetEmail);
   }
 
-  // Returns true when user is looged in and email is verified
+  // Returns true when user is logged in and email is verified
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
     return user !== null && user.emailVerified !== false;
   }
 
+  getConnectedUser(): Observable<UserProfile> {
+    const user = JSON.parse(localStorage.getItem('user')!);
+    if (user !== null) {
+      return of(user);
+    }
+    return this.connectedUser as Observable<UserProfile>;
+  }
+
   /* Setting up user data when sign in with username/password,
   sign up with username/password and sign in with social auth
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-  setUserData(user: any) {
+  setUserData(user: any): Promise<void> {
     const userRef = doc(this.usersRef, user.uid);
-    setDoc(userRef, {displayName: user.emailVerified}, { merge: true })
-      .then(() => {
-        console.log('User Successfully updated');
-      }
-    ).catch(err => console.log(err));
+    return setDoc(userRef, {emailVerified: user.emailVerified}, {merge: true});
   }
 
   addUserData(user: any, userProfile: UserProfile) {
@@ -128,7 +132,38 @@ export class AuthService {
   signOut() {
     signOut(this.afAuth).then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['login']);
     });
+  }
+
+  updateUserInfo(values: any) {
+    updateProfile(this.currentUser, {displayName: values.name})
+      .then(() => {
+      }).catch(err => console.log(err));
+    updateEmail(this.currentUser, values.email).then(() => {
+      this.updateUserInfoDos(values);
+    }).catch(err => console.log(err));
+  }
+
+  private updateUserInfoDos(values: any) {
+    const userRef = doc(this.usersRef, this.currentUser.uid);
+    setDoc(userRef, {displayName: values.name, email: values.email, phone: values.phone}, {merge: true})
+      .then(() => {
+          this.snackBar.open('Your account information updated successfully!', '×', {
+            panelClass: 'success',
+            verticalPosition: 'top',
+            duration: 3000
+          });
+        }
+      ).catch(err => console.log(err));
+  }
+
+  updateUserPassword(values: any) {
+    updatePassword(this.currentUser, values.newPassword).then(() => {
+      this.snackBar.open('Your password changed successfully!', '×', {
+        panelClass: 'success',
+        verticalPosition: 'top',
+        duration: 3000
+      });
+    }).catch((error) => console.log(error));
   }
 }

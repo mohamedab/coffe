@@ -2,16 +2,16 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {SharedModule} from "../shared/shared.module";
-import {RegisterComponent} from "./register.component";
+import {ResetPasswordComponent} from "./reset-password.component";
 
 
 export const routes: Routes = [
-  {path: '', component: RegisterComponent, pathMatch: 'full'}
+  {path: '', component: ResetPasswordComponent, pathMatch: 'full'}
 ];
 
 @NgModule({
   declarations: [
-    RegisterComponent
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,
@@ -19,5 +19,5 @@ export const routes: Routes = [
     SharedModule
   ]
 })
-export class RegisterModule {
+export class ResetPasswordModule {
 }

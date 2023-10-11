@@ -2,17 +2,18 @@ import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {UserProfile} from "../shared/models/userProfile";
-import {AuthService} from "../shared/services/auth.service";
+import {UserProfile} from "../../shared/models/userProfile";
+import {AuthService} from "../../shared/services/auth.service";
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  selector: 'app-add-user',
+  templateUrl: './add-user.component.html',
+  styleUrls: ['./add-user.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class AddUserComponent implements OnInit {
   public registerForm!: FormGroup;
   public hide = true;
+  errorMessage: any = null;
   public userTypes = [
     {id: 1, name: 'SuperAdmin'},
     {id: 2, name: 'Server'},
@@ -35,7 +36,6 @@ export class RegisterComponent implements OnInit {
 
   public onRegisterFormSubmit(values: any): void {
     if (this.registerForm.valid) {
-      console.log(values);
       const user: UserProfile = {
         displayName: values.username,
         email: values.email,
@@ -43,7 +43,15 @@ export class RegisterComponent implements OnInit {
         roles: [values.userType.name],
         userId: ''
       }
-      this.authService.signUp(values.email, values.password, user);
+      this.authService.signUp(values.email, values.password, user)
+        .then((result) => {
+          /* Call the SendVerificaitonMail() function when new user sign up and returns promise */
+          this.authService.sendVerificationMail(user);
+          this.authService.addUserData(result.user, user);
+          this.router.navigate(['login']);
+        }).catch((error) => {
+        this.errorMessage = 'Cannot create User';
+      });
     }
   }
 

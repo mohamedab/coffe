@@ -41,6 +41,8 @@ import {FooterComponent} from "./components/footer/footer.component";
 import {ItemComponent} from "./components/item/item.component";
 import {TotalBarComponent} from "./components/total-bar/total-bar.component";
 import {MenuOneComponent} from "./components/menu-one/menu-one.component";
+import {AlertDialogComponent} from "./components/alert-dialog/alert-dialog.component";
+import {ConfirmDialogComponent} from "./components/confirm-dialog/confirm-dialog.component";
 
 
 @NgModule({
@@ -126,14 +128,18 @@ import {MenuOneComponent} from "./components/menu-one/menu-one.component";
     FooterComponent,
     ItemComponent,
     TotalBarComponent,
-    MenuOneComponent
+    MenuOneComponent,
+    AlertDialogComponent,
+    ConfirmDialogComponent
   ],
   declarations: [
     AppPageBannerComponent,
     FooterComponent,
     ItemComponent,
     TotalBarComponent,
-    MenuOneComponent
+    MenuOneComponent,
+    AlertDialogComponent,
+    ConfirmDialogComponent
   ],
   providers:[]
 })

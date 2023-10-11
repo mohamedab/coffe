@@ -44242,128 +44242,6 @@ ol.commentlist li .star-rating {
   }
 }
 
-#particles-js .container {
-  z-index: 2
-}
-
-.particles-js-canvas-el {
-  position: absolute;
-  top: 0;
-  z-index: 1
-}
-
-#loading-area {
-  width: 100%;
-  height: 100%;
-  background-color: #faf3eb;
-  position: fixed;
-  left: 0;
-  top: 0;
-  opacity: 1;
-  z-index: 999999999;
-  background-repeat: no-repeat;
-  background-size: 80px;
-  background-image: "../images/loading.gif";
-  background-position: 50%
-}
-
-.loading-1#loading-area, .loading-2#loading-area, .loading-3#loading-area, .loading-4#loading-area {
-  background-color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center
-}
-
-.loading-1#loading-area .loader1, .loading-2#loading-area .loader2, .loading-3#loading-area .loader3, .loading-4#loading-area .loader4 {
-  margin: 0
-}
-
-.loader1 {
-  font-weight: 500;
-  font-size: 20px;
-  text-transform: uppercase;
-  letter-spacing: .5em;
-  color: #000
-}
-
-.loader1 .letter {
-  display: inline-block;
-  line-height: 1em;
-  color: var(--text-color)
-}
-
-.loading-1 .loader1 {
-  color: #000;
-  width: 100%
-}
-
-#loading-area.loading-2 {
-  display: table;
-  text-align: center;
-  background-image: none;
-  background: #fff
-}
-
-.loading-2 .loader2 {
-  display: table-cell;
-  vertical-align: middle;
-  color: #000;
-  margin: 0
-}
-
-.loader2 {
-  position: relative;
-  font-weight: 500;
-  font-size: 30px
-}
-
-.loader2 .letters {
-  position: absolute;
-  margin: auto;
-  left: 0;
-  top: 50%;
-  right: 0;
-  opacity: 0;
-  transform: transformY(-50%)
-}
-
-.loader3 .text-wrapper {
-  position: relative;
-  display: inline-block;
-  padding-top: .2em;
-  padding-right: .05em;
-  padding-bottom: .1em;
-  overflow: hidden
-}
-
-.loader3 .letter {
-  display: inline-block;
-  line-height: 1em
-}
-
-.loader3, .loader4 {
-  position: relative;
-  font-weight: 500;
-  letter-spacing: 10px;
-  text-transform: uppercase
-}
-
-.loader4 .text-wrapper {
-  position: relative;
-  display: inline-block;
-  padding-top: .2em;
-  padding-right: .05em;
-  padding-bottom: .1em;
-  overflow: hidden
-}
-
-.loader4 .letter {
-  transform-origin: 50% 100%;
-  display: inline-block;
-  line-height: 1em
-}
-
 .dlab-social-icon.dlab-social-icon-lg li a {
   color: #fff;
   font-size: 14px;
@@ -46463,6 +46341,10 @@ pre {
   background-color: #faf3eb
 }
 
+.bg-gray-light {
+  background-color: #fafafa
+}
+
 .container {
   max-width: 970px
 }
@@ -48116,4 +47998,8 @@ mat-nav-list .mdc-list-item__primary-text {
 
 .ws-nowrap {
   white-space: nowrap;
+}
+
+.divider {
+  margin: 8px 0;
 }

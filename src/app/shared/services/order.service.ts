@@ -2,7 +2,8 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
 import {Item} from "../models/item";
 import {Order} from "../models/order";
-import {addDoc, collection, doc, Firestore, setDoc} from "@angular/fire/firestore";
+import {addDoc, collection, collectionData, doc, Firestore, setDoc} from "@angular/fire/firestore";
+import {MatDialog} from "@angular/material/dialog";
 
 @Injectable({
   providedIn: 'root'
@@ -57,6 +58,10 @@ export class OrderService {
       // Emit the updated order through the orderSubject
       this.orderSubject.next(this.order);
     }
+  }
+
+  getAllOrders(): Observable<Order[]> {
+    return collectionData(this.orderCollection, {idField: 'orderId'}) as Observable<Order[]>;
   }
 
   addToOrder(item: Item, quantity: number): void {
