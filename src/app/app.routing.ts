@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {NavigationMenuComponent} from "./navigation-menu/navigation-menu.component";
+import {AuthGuard} from "./shared/guards/login-auth.guard";
 
 const routes: Routes = [
   {
@@ -15,7 +16,7 @@ const routes: Routes = [
   },
   {path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule)},
   {path: 'reset', loadChildren: () => import('./reset-password/reset-password.module').then(m => m.ResetPasswordModule)},
-  {path: 'account', loadChildren: () => import('./account/account.module').then(m => m.AccountModule)},
+  {path: 'account', loadChildren: () => import('./account/account.module').then(m => m.AccountModule), canActivate:[AuthGuard]},
 ];
 
 @NgModule({

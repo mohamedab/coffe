@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {MatSnackBar} from '@angular/material/snack-bar';
 import {UserProfile} from "../../shared/models/userProfile";
 import {AuthService} from "../../shared/services/auth.service";
+import {Roles} from "../../shared/models/roles";
 
 @Component({
   selector: 'app-add-user',
@@ -15,9 +15,9 @@ export class AddUserComponent implements OnInit {
   public hide = true;
   errorMessage: any = null;
   public userTypes = [
-    {id: 1, name: 'SuperAdmin'},
-    {id: 2, name: 'Server'},
-    {id: 3, name: 'Manager'}
+    {id: 1, name: Roles.SUPERADMIN},
+    {id: 2, name: Roles.SERVER},
+    {id: 3, name: Roles.MANAGER}
   ];
 
   constructor(public fb: FormBuilder, public router: Router, public authService: AuthService) {

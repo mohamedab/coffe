@@ -17,6 +17,7 @@ import {UserProfile} from "../models/userProfile";
 import {BehaviorSubject, forkJoin, from, Observable, of, throwError} from "rxjs";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {catchError} from 'rxjs/operators';
+import {Roles} from "../models/roles";
 
 @Injectable({
   providedIn: 'root',
@@ -93,6 +94,19 @@ export class AuthService {
     const user = JSON.parse(localStorage.getItem('user')!);
     return user !== null && user.emailVerified !== false;
   }
+
+  // Returns true when user is logged in and email is verified
+  get isAdmin(): boolean {
+    const user = JSON.parse(localStorage.getItem('user')!);
+    return user !== null && user.emailVerified !== false && user.roles.includes(Roles.SUPERADMIN);
+  }
+
+  // Returns true when user is logged in and email is verified
+  get isManager(): boolean {
+    const user = JSON.parse(localStorage.getItem('user')!);
+    return user !== null && user.emailVerified !== false && (user.roles?.includes(Roles.MANAGER) || user.roles?.includes(Roles.SUPERADMIN));
+  }
+
 
   getConnectedUser(): Observable<UserProfile> {
     return this.connectedUser as Observable<UserProfile>;

@@ -41,6 +41,6 @@
       <tr mat-row *matRowDef="let order; columns: displayedColumns;">
       </tr>
     </table>
-    <p *ngIf="dataSource?.data?.length === 0" class="py-5 mb-0 text-center">No data available</p>
+    <p *ngIf="dataSource?.data?.length === 0" class="py-5 mb-0 text-center">No order available</p>
 </div>
 <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>

@@ -13,11 +13,11 @@ export class AccountComponent implements OnInit {
   public sidenavOpen:boolean = true;
   connectedUser: UserProfile = new UserProfile();
   public links = [
-    { name: 'Profile', href: 'profile', icon: 'person' },
-    { name: 'Dashboard', href: 'dashboard', icon: 'dashboard' },
-    { name: 'Commandes', href: 'orders', icon: 'list_alt' },
-    { name: 'Ajouter Utilisateur', href: 'add-user', icon: 'person_add' },
-    { name: 'Logout', href: '/login', icon: 'power_settings_new', action: true},
+    { name: 'Profile', href: 'profile', icon: 'person', hasAccess: true },
+    { name: 'Dashboard', href: 'dashboard', icon: 'dashboard', hasAccess: this.authService.isManager},
+    { name: 'Commandes', href: 'orders', icon: 'list_alt', hasAccess: true },
+    { name: 'Ajouter Utilisateur', href: 'add-user', icon: 'person_add', hasAccess: this.authService.isManager  },
+    { name: 'Logout', href: '/login', icon: 'power_settings_new', hasAccess: true},
   ];
   constructor(public router:Router, private authService: AuthService) {
     this.authService.getConnectedUser().subscribe(user => this.connectedUser = user);
