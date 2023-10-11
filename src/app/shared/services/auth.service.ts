@@ -1,4 +1,4 @@
-import {Injectable, NgZone} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {
   Auth,
   createUserWithEmailAndPassword,
@@ -14,16 +14,15 @@ import {
 import {collection, doc, Firestore, getDoc, setDoc} from "@angular/fire/firestore";
 import {Router} from "@angular/router";
 import {UserProfile} from "../models/userProfile";
+import {BehaviorSubject, forkJoin, from, Observable, of, throwError} from "rxjs";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {BehaviorSubject, Observable, of} from "rxjs";
-import firebase from "firebase/compat";
-import UserCredential = firebase.auth.UserCredential;
+import {catchError} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  userData: any; // Save logged in user data
+  public userData: any; // Save logged in user data
   currentUser: any;
   usersRef: any;
   connectedUser: BehaviorSubject<UserProfile> = new BehaviorSubject<UserProfile>(new UserProfile());
@@ -31,14 +30,14 @@ export class AuthService {
   constructor(public afAuth: Auth,
               public firestore: Firestore,
               public router: Router,
-              public snackBar: MatSnackBar,
-  ) {
+              public snackBar: MatSnackBar) {
     this.usersRef = collection(this.firestore, 'Users');
     if (this.afAuth) {
       onAuthStateChanged(this.afAuth, (user) => {
         if (user) {
           this.userData = user;
           this.currentUser = this.afAuth.currentUser;
+          this.getConnectedUserDoc(user);
         } else {
           localStorage.setItem('user', 'null');
           this.currentUser = null;
@@ -54,8 +53,8 @@ export class AuthService {
       if (docSnap.exists()) {
         console.log("Document data:", docSnap.data());
         const userProfile: UserProfile = docSnap.data() as UserProfile;
-        this.connectedUser.next(userProfile);
         localStorage.setItem('user', JSON.stringify(docSnap.data()));
+        this.connectedUser.next(userProfile);
       } else {
         console.log("No such document!");
       }
@@ -87,7 +86,7 @@ export class AuthService {
 
   // Reset Forgot password
   forgotPassword(passwordResetEmail: string): Promise<any> {
-   return sendPasswordResetEmail(this.afAuth, passwordResetEmail);
+    return sendPasswordResetEmail(this.afAuth, passwordResetEmail);
   }
 
   // Returns true when user is logged in and email is verified
@@ -97,10 +96,6 @@ export class AuthService {
   }
 
   getConnectedUser(): Observable<UserProfile> {
-    const user = JSON.parse(localStorage.getItem('user')!);
-    if (user !== null) {
-      return of(user);
-    }
     return this.connectedUser as Observable<UserProfile>;
   }
 
@@ -135,35 +130,36 @@ export class AuthService {
     });
   }
 
-  updateUserInfo(values: any) {
-    updateProfile(this.currentUser, {displayName: values.name})
-      .then(() => {
-      }).catch(err => console.log(err));
-    updateEmail(this.currentUser, values.email).then(() => {
-      this.updateUserInfoDos(values);
-    }).catch(err => console.log(err));
+  updateName(name: string): Promise<any> {
+    return updateProfile(this.currentUser, {displayName: name});
   }
 
-  private updateUserInfoDos(values: any) {
+  updateEmail(email: string): Promise<any> {
+    return updateEmail(this.currentUser, email);
+  }
+
+  updateUserInfo(values: any): Observable<any> {
+    const updateProfilePromise = this.updateName(values.name);
+    const updateEmailPromise = this.updateEmail(values.email);
+    // Create observables from promises
+    const updateProfile$ = from(updateProfilePromise);
+    const updateEmail$ = from(updateEmailPromise);
+
+    return forkJoin([updateProfile$, updateEmail$])
+      .pipe(
+        catchError(error => {
+          // Handle any errors that might occur during the updateProfile or updateEmail calls
+          return throwError(error);
+        })
+      );
+  }
+
+  updateUserInfoDos(values: any): Promise<any> {
     const userRef = doc(this.usersRef, this.currentUser.uid);
-    setDoc(userRef, {displayName: values.name, email: values.email, phone: values.phone}, {merge: true})
-      .then(() => {
-          this.snackBar.open('Your account information updated successfully!', '×', {
-            panelClass: 'success',
-            verticalPosition: 'top',
-            duration: 3000
-          });
-        }
-      ).catch(err => console.log(err));
+    return setDoc(userRef, {displayName: values.name, email: values.email, phone: values.phone}, {merge: true});
   }
 
-  updateUserPassword(values: any) {
-    updatePassword(this.currentUser, values.newPassword).then(() => {
-      this.snackBar.open('Your password changed successfully!', '×', {
-        panelClass: 'success',
-        verticalPosition: 'top',
-        duration: 3000
-      });
-    }).catch((error) => console.log(error));
+  updateUserPassword(values: any): Promise<any> {
+    return updatePassword(this.currentUser, values.newPassword);
   }
 }
