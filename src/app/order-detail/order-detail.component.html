@@ -10,42 +10,21 @@
     <div class="dlab-tabs menu-tabs style1">
 
       <div class="tab-pane">
-        <app-item [items]="selectedItems" [editOrder]="true" [isOrderConfirmed]="isOrderConfirmed"></app-item>
+        <app-item [items]="selectedItems" [editOrder]="true" [isOrderValidateStep]="true"></app-item>
       </div>
 
-      <mat-card *ngIf="!isOrderConfirmed && selectedItems.length > 0 && confirmFormActive" class="form-card">
-        <mat-card-content>
-          <form #serverForm="ngForm" (ngSubmit)="confirmOrder(serverForm)" novalidate>
-            <div fxLayout="column" style="width: 50%">
-              <mat-form-field appearance="fill">
-                <mat-label>Nom</mat-label>
-                <input matInput name="clientName" [(ngModel)]="clientName" required>
-              </mat-form-field>
-              <mat-form-field appearance="fill">
-                <mat-label>Choisissez un serveur</mat-label>
-                <mat-select name="selectedServer" [(ngModel)]="selectedServer" required>
-                  <mat-option *ngFor="let server of servers" [value]="server">{{ server }}</mat-option>
-                </mat-select>
-              </mat-form-field>
-              <button mat-raised-button type="submit" [disabled]="!serverForm.valid">Confirm Order</button>
-            </div>
-            <span style="color: red;text-align: center;">Veuillez vérifier votre commande avant de la confirmer.</span>
-          </form>
-        </mat-card-content>
-      </mat-card>
-
-      <div fxLayout="column" fxLayoutAlign="center center" *ngIf="!isOrderConfirmed && selectedItems.length > 0 && !confirmFormActive">
-        <a class="btn" (click)="confirmOrder()" *ngIf="!showSpinner">Confirm Order</a>
-        <span style="color: red;text-align: center;" *ngIf="!showSpinner">Veuillez vérifier votre commande avant de la confirmer.</span>
+      <div fxLayout="column" fxLayoutAlign="center center" *ngIf="!isOrderValidated && selectedItems.length > 0">
+        <a class="btn" (click)="validateOrder()" *ngIf="!showSpinner">Valider la commande</a>
+        <span style="color: red;text-align: center;" *ngIf="!showSpinner">Veuillez vérifier votre commande avant de la valider.</span>
         <div fxLayout="row" fxLayoutAlign="center center">
           <mat-spinner color="accent" *ngIf="showSpinner"></mat-spinner>
         </div>
       </div>
 
-      <div class="center" *ngIf="isOrderConfirmed || selectedItems.length == 0">
+      <div class="center" *ngIf="isOrderValidated || selectedItems.length == 0">
         <a class="btn" (click)="startNewOrder()">Lancer une nouvelle commande ?</a>
       </div>
-      <app-total-bar [orderState]="''"></app-total-bar>
+      <app-total-bar [orderState]="isOrderValidated ? 'Validée':''"></app-total-bar>
     </div>
   </div>
 </div>

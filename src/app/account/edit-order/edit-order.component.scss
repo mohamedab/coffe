@@ -1,0 +1,16 @@
+.mat-mdc-snack-bar-container {
+  &.snackbar {
+    --mdc-snackbar-container-color: #113946;
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
+}
+
+.mat-mdc-snack-bar-container .mat-mdc-button.mat-mdc-snack-bar-action:not(:disabled) {
+  color: #e88f2a !important;
+}
+
+.form-card {
+  background-color: transparent !important;
+  z-index: 1;
+}

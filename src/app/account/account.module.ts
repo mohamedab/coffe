@@ -8,6 +8,8 @@ import {SharedModule} from "../shared/shared.module";
 import {OrdersComponent} from "./orders/orders.component";
 import {EditOrderComponent} from "./edit-order/edit-order.component";
 import {AddUserComponent} from "./add-user/add-user.component";
+import {FormsModule} from "@angular/forms";
+import {OrderDetailResolver} from "./resolvers/order-detail-rosolver";
 
 export const routes: Routes = [
   {
@@ -15,7 +17,7 @@ export const routes: Routes = [
     component: AccountComponent, children: [
       { path: '', redirectTo: 'profile', pathMatch: 'full' },
       { path: 'orders', component: OrdersComponent},
-      { path: 'orders/:id', component: EditOrderComponent},
+      { path: 'orders/:id', component: EditOrderComponent, resolve: {order: OrderDetailResolver}},
       { path: 'add-user', component: AddUserComponent},
       { path: 'profile', component: ProfileComponent},
       { path: 'dashboard', component: DashboardComponent}
@@ -35,7 +37,8 @@ export const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class AccountModule { }

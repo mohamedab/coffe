@@ -130,7 +130,7 @@ import {ConfirmDialogComponent} from "./components/confirm-dialog/confirm-dialog
     TotalBarComponent,
     MenuOneComponent,
     AlertDialogComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
   ],
   declarations: [
     AppPageBannerComponent,

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Item} from "../../models/item";
 import {OrderService} from "../../services/order.service";
 import {animate, state, style, transition, trigger} from "@angular/animations";
@@ -20,8 +20,9 @@ export class ItemComponent {
 
   @Input() items: Item[] = [];
   @Input() editOrder: boolean = false;
-  @Input() isOrderConfirmed: boolean = false;
-  imageState = 'initial';
+  @Input() isOrderValidateStep: boolean = false;
+  @Input() isOrderConfirmStep: boolean = false;
+  @Output() updateOrder: EventEmitter<Item[]> = new EventEmitter<Item[]>();
 
   constructor(private cartService: OrderService) {
   }
@@ -46,5 +47,10 @@ export class ItemComponent {
         item.imageState = 'collapsed';
       }
     });
+  }
+
+  removeFromList(index: number) {
+    this.items.splice(index, 1);
+    this.updateOrder.emit(this.items);
   }
 }

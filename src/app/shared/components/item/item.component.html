@@ -22,8 +22,13 @@
       <!-- Order modif/confirmation-->
       <div class="item-right" *ngIf="editOrder">
         <h4 class="price">{{(item.price * item.quantity) | number: '1.2-2'}}</h4>
-        <div *ngIf="!isOrderConfirmed" fxLayout="row" fxLayoutAlign="center center">
+        <div *ngIf="isOrderValidateStep" fxLayout="row" fxLayoutAlign="center center">
           <button mat-mini-fab class="remove" (click)="removeFromCart(item)">
+            <mat-icon>remove</mat-icon>
+          </button>
+        </div>
+        <div *ngIf="isOrderConfirmStep" fxLayout="row" fxLayoutAlign="center center">
+          <button mat-mini-fab class="remove" (click)="removeFromList(i)">
             <mat-icon>remove</mat-icon>
           </button>
         </div>

@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
 import {Order} from "../../shared/models/order";
 import {OrderService} from "../../shared/services/order.service";
 import {DialogService} from "../../shared/services/dialog.service";
+import {OrderStatus} from "../../shared/models/order-status";
 
 @Component({
   selector: 'app-orders',
@@ -12,38 +13,44 @@ import {DialogService} from "../../shared/services/dialog.service";
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'image', 'title', 'published', 'views', 'actions' ];
+  displayedColumns: string[] = ['orderId', 'status', 'orderDate', 'totalAmount', 'actions'];
   dataSource!: MatTableDataSource<Order>;
   @ViewChild(MatPaginator, {static: true}) paginator!: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort!: MatSort;
+  orders: Order[] = [];
 
-  constructor(public orderService:OrderService,
-              public dialogService: DialogService) { }
+  constructor(public orderService: OrderService,
+              public dialogService: DialogService) {
+  }
 
   ngOnInit() {
-    this.orderService.getAllOrders().subscribe(res => {
-      this.initDataSource(res);
+    this.getPendingOrders();
+  }
+
+  private getPendingOrders() {
+    this.orderService.getPendingOrders().subscribe((data: Order[]) => {
+      this.orders = data.map((order: Order) => {
+        const date: any = order.orderDate;
+        order.orderDate = date.toDate();
+        return order;
+      });
+      this.initDataSource(this.orders);
     });
   }
 
-  public initDataSource(data:any){
+  public initDataSource(data: Order[]) {
     this.dataSource = new MatTableDataSource<Order>(data);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
-  public remove(Order:Order) {
-    const index: number = this.dataSource.data.indexOf(Order);
-    if (index !== -1) {
-      const message = 'Êtes-vous sûr de supprimer cette commande ?';
-      let dialogRef = this.dialogService.openConfirmDialog('', message);
-			dialogRef.afterClosed().subscribe(dialogResult => {
-				if(dialogResult){
-          this.dataSource.data.splice(index,1);
-          this.initDataSource(this.dataSource.data);
-				}
-			});
-    }
+  public cancel(order: Order) {
+    this.orderService.updateOrderStatusDoc(order.orderId, OrderStatus.Canceled)
+      .then(() => {
+          console.log('canceled');
+          this.getPendingOrders();
+        }
+      ).catch(err => console.log(err));
   }
 
   public applyFilter(event: Event) {

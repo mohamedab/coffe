@@ -51,7 +51,6 @@ export class AuthService {
     const docRef = doc(this.firestore, "Users", user.uid);
     getDoc(docRef).then(docSnap => {
       if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
         const userProfile: UserProfile = docSnap.data() as UserProfile;
         localStorage.setItem('user', JSON.stringify(docSnap.data()));
         this.connectedUser.next(userProfile);

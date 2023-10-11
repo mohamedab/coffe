@@ -2,8 +2,20 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
 import {Item} from "../models/item";
 import {Order} from "../models/order";
-import {addDoc, collection, collectionData, doc, Firestore, setDoc} from "@angular/fire/firestore";
-import {MatDialog} from "@angular/material/dialog";
+import {
+  addDoc,
+  collection,
+  doc,
+  Firestore, getDoc,
+  getDocs,
+  orderBy,
+  query,
+  setDoc, where
+} from "@angular/fire/firestore";
+import {catchError, map} from "rxjs/operators";
+import {from} from "rxjs";
+import {OrderStatus} from "../models/order-status";
+import {UserProfile} from "../models/userProfile";
 
 @Injectable({
   providedIn: 'root'
@@ -44,24 +56,23 @@ export class OrderService {
     }
   }
 
-  updateOrderQuantity(item: Item, quantity: number): void {
-    const existingItem = this.order.items.find((orderItem) => orderItem.itemId === item.itemId);
-    if (existingItem) {
-      // If the item already exists in the order, update the quantity
-      existingItem.quantity = quantity;
-      // Recalculate the total amount
-      this.calculateTotalAmount();
-
-      // Save the updated order in local storage
-      this.saveOrderToLocalStorage();
-
-      // Emit the updated order through the orderSubject
-      this.orderSubject.next(this.order);
-    }
-  }
-
-  getAllOrders(): Observable<Order[]> {
-    return collectionData(this.orderCollection, {idField: 'orderId'}) as Observable<Order[]>;
+  getPendingOrders(): Observable<Order[]> {
+    const q = query(this.orderCollection, where("status", "==", OrderStatus.Pending), orderBy("orderDate", "desc"));
+    return from(getDocs(q)).pipe(
+      map((querySnapshot) => {
+        const orders: Order[] = [];
+        querySnapshot.forEach((doc) => {
+          // Assuming your Item class matches the Firestore data structure
+          const order: Order = doc.data() as Order;
+          orders.push(order);
+        });
+        return orders;
+      }), catchError((error) => {
+        console.error('Error fetching data: ', error);
+        // You can throw an error here or return an empty array as needed
+        throw error;
+      })
+    );
   }
 
   addToOrder(item: Item, quantity: number): void {
@@ -107,7 +118,7 @@ export class OrderService {
   }
 
   updateOrder(order: Order) {
-    const orderDocRef = doc(this.firestore, order.orderId);
+    const orderDocRef = doc(this.orderCollection, order.orderId);
     return setDoc(orderDocRef, order).then(
       () => {
         console.log('Order Successfully updated');
@@ -117,11 +128,26 @@ export class OrderService {
     ).catch(err => console.log(err));
   }
 
-  addOrder(order: Order): Promise<any> {
-    order.orderId = doc(collection(this.firestore, 'orderId')).id;
-    return addDoc(this.orderCollection, Object.assign({}, order));
+  updateOrderStatusDoc(orderId: string, status: OrderStatus): Promise<any> {
+    const orderDocRef = doc(this.orderCollection, orderId);
+    return setDoc(orderDocRef, {status: status}, {merge: true})
   }
 
+  updateOrderDoc(order: Order): Promise<any> {
+    const orderDocRef = doc(this.orderCollection, order.orderId);
+    return setDoc(orderDocRef, Object.assign({}, order))
+  }
+
+  addOrderDoc(order: Order): Promise<any> {
+    order.orderId = doc(collection(this.firestore, 'orderId')).id;
+    const orderRef = doc(this.orderCollection, order.orderId);
+    return setDoc(orderRef, Object.assign({}, order));
+  }
+
+  getOrderDocById(orderId: string): Promise<any> {
+    const orderDocRef = doc(this.orderCollection, orderId);
+    return getDoc(orderDocRef);
+  }
 
   private calculateTotalAmount(): void {
     const totalAmount = this.order.items.reduce((total, item) => total + item.price * item.quantity, 0);
