@@ -1,7 +1,7 @@
-import {Component, inject, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ChartConfiguration, ChartOptions} from "chart.js";
 import {OrderService} from "../../shared/services/order.service";
-import {Subscription, Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {OrderStatus} from "../../shared/models/order-status";
 import {DateRange} from "../../shared/models/date-range";
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public barChartData: ChartConfiguration<'bar'>['data'];
   public barChartData1: ChartConfiguration<'bar'>['data'];
   private barChartSuscription: Subscription = new Subscription();
+
   public barChartOptions: ChartConfiguration<'bar'>['options'] = {
     responsive: true,
     plugins: {
@@ -66,7 +67,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   };
 
 
-  constructor(private orderService: OrderService, private breakpointObserver: BreakpointObserver) {}
+  constructor(private orderService: OrderService, private breakpointObserver: BreakpointObserver) {
+  }
 
   ngOnInit(): void {
     this.getOrdersWithinDaysRange();
@@ -106,6 +108,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       };
       this.showSpinner = false;
     }, error => {
+      console.log(error);
       this.showSpinner = false;
     });
   }
@@ -236,7 +239,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     return dates;
   }
 
-  private getCountByDate(dates: string[], orders: any[]): number[] {
+  private getCountByDate(dates: string[], orders: any[]): any[] {
     return dates.map(date => orders.filter(order => order.orderDate.toDate().toISOString().split('T')[0] === date).length);
   }
 

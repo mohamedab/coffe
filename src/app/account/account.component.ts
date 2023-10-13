@@ -17,7 +17,7 @@ export class AccountComponent implements OnInit {
     { name: 'Profile', href: 'profile', icon: 'person', hasAccess: true },
     { name: 'Dashboard', href: 'dashboard', icon: 'dashboard', hasAccess: this.authService.isManager},
     { name: 'Commandes à Confirmer', href: 'orders/' + OrderStatus.Pending, icon: 'list_alt', hasAccess: true },
-    { name: 'Commandes Confirmé', href: 'orders/' + OrderStatus.Confirmed, icon: 'list_alt', hasAccess: true },
+    { name: 'Commandes Confirmé', href: 'orders/' + OrderStatus.Confirmed, icon: 'fact_check', hasAccess: true },
     { name: 'Ajouter Utilisateur', href: 'add-user', icon: 'person_add', hasAccess: this.authService.isManager},
     { name: 'Logout', href: '/login', icon: 'power_settings_new', hasAccess: true},
   ];
