@@ -5,3 +5,11 @@
 .confirmed-icon {
   color: green !important;
 }
+
+.mdc-data-table__cell, .mdc-data-table__header-cell {
+  padding: 0 !important;
+}
+
+.mdc-data-table__cell.cdk-column-tableNumber {
+  padding-left: 10px !important;
+}

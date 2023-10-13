@@ -1,9 +1,11 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import {ChartConfiguration, ChartOptions} from "chart.js";
 import {OrderService} from "../../shared/services/order.service";
-import {Subscription} from "rxjs";
+import {Subscription, Observable} from "rxjs";
 import {OrderStatus} from "../../shared/models/order-status";
 import {DateRange} from "../../shared/models/date-range";
+import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-dashboard',
@@ -11,13 +13,39 @@ import {DateRange} from "../../shared/models/date-range";
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit, OnDestroy {
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(map(result => result.matches));
 
-  public barChartPlugins = [];
+  public barChartPlugins = [{
+    title: {
+      display: true,
+      text: 'Custom Chart Title'
+    }
+  }];
   public barChartLegend = true;
   public barChartData: ChartConfiguration<'bar'>['data'];
   public barChartData1: ChartConfiguration<'bar'>['data'];
   private barChartSuscription: Subscription = new Subscription();
-  public barChartOptions: ChartConfiguration<'bar'>['options'] = {responsive: true};
+  public barChartOptions: ChartConfiguration<'bar'>['options'] = {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: 'ORDERS FOR LAST 7 DAYS'
+      },
+      tooltip: {
+        enabled: true
+      }
+    }
+  };
+  public barChartOptions1: ChartConfiguration<'bar'>['options'] = {
+    responsive: true, plugins: {
+      title: {
+        display: true,
+        text: 'ORDERS FOR LAST 7 MONTHS'
+      }
+    }
+  };
   showSpinner: boolean = false;
 
 
@@ -38,8 +66,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   };
 
 
-  constructor(private orderService: OrderService) {
-  }
+  constructor(private orderService: OrderService, private breakpointObserver: BreakpointObserver) {}
 
   ngOnInit(): void {
     this.getOrdersWithinDaysRange();
@@ -79,13 +106,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
       };
       this.showSpinner = false;
     }, error => {
-      console.log(error);
       this.showSpinner = false;
     });
   }
 
   getOrdersWithinBiMonthlyRange() {
-    const dateRanges: DateRange[] = this.calculateBiMonthlyDateRanges(7);
+    const dateRanges: DateRange[] = this.calculateMonthlyDateRanges(7);
     this.showSpinner = true;
     // Fetch orders within the last 7 fortnights
     this.orderService.getOrdersWithinDateRanges(dateRanges).subscribe((orders) => {
@@ -115,6 +141,26 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
   }
 
+  private calculateMonthlyDateRanges(count: number): DateRange[] {
+    const today = new Date();
+    const dateRanges: DateRange[] = [];
+
+    for (let i = 0; i < count; i++) {
+      const endDate = new Date(today);
+      const lastDayOfMonth = new Date(endDate.getFullYear(), endDate.getMonth() + 1, 0);
+      endDate.setDate(lastDayOfMonth.getDate());
+      const startDate = new Date(today);
+      startDate.setDate(1); // Définir la date de fin au premier jour du mois
+      // Trouver le dernier jour du mois
+      dateRanges.push({startDate, endDate});
+
+      // Reculez d'un mois si ce n'est pas le premier intervalle
+      today.setMonth(today.getMonth() - 1);
+    }
+
+    return dateRanges.reverse(); // Inverser l'ordre pour avoir les plus anciennes en premier
+  }
+
   // Define a DateRange type to store the start and end dates for each fortnight
   private calculateBiMonthlyDateRanges(count: number): DateRange[] {
     const today = new Date();
@@ -142,30 +188,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
 
     return dateRanges.reverse(); // Inverser l'ordre pour avoir les plus anciennes en premier
-
   }
 
   // Format the date range for labels (e.g., "2022-01-01 to 2022-01-14")
   private formatDateRange(dateRange: DateRange): string {
     const startDate = dateRange.startDate;
-    const endDate = dateRange.endDate;
-
-    const startDay = startDate.getDate();
     const startMonth = startDate.toLocaleString('default', {month: 'long'});
-    const endDay = endDate.getDate();
-    const endMonth = endDate.toLocaleString('default', {month: 'long'});
-
-    let formattedDateRange: string;
-
-    if (startDay === 1) {
-      formattedDateRange = `1er ${startMonth}`;
-    } else {
-      formattedDateRange = `16 ${startMonth}`;
-    }
-
-    formattedDateRange += ` au ${endDay} ${endMonth}`;
-
-    return formattedDateRange;
+    return startMonth;
   }
 
   private getCountByDateRange(dateRanges: DateRange[], orders: any[]): number[] {

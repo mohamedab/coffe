@@ -2,22 +2,31 @@
   <mat-spinner color="primary" *ngIf="showSpinner"></mat-spinner>
 </div>
 
-<div style="display: block;max-width: 950px">
-  <canvas baseChart
-          [data]="barChartData"
-          [options]="barChartOptions"
-          [plugins]="barChartPlugins"
-          [legend]="barChartLegend"
-          [type]="'bar'">
-  </canvas>
-</div>
+<div fxLayout="row wrap" fxLayoutAlign="space-between start" class="h-100">
+  <mat-card fxFlex.gt-sm="70" class="mb-4">
+    <div style="display: block;">
+      <canvas baseChart
+              [height]="(isHandset$ | async) ? 400 : 'auto'"
+              [data]="barChartData"
+              [options]="barChartOptions"
+              [plugins]="barChartPlugins"
+              [legend]="barChartLegend"
+              [type]="'bar'">
+      </canvas>
+    </div>
+  </mat-card>
 
-<div style="display: block;max-width: 950px">
-  <canvas baseChart
-          [data]="barChartData1"
-          [options]="barChartOptions"
-          [plugins]="barChartPlugins"
-          [legend]="barChartLegend"
-          [type]="'bar'">
-  </canvas>
+  <mat-card fxFlex.gt-sm="70" fxFill.sm>
+    <div style="display: block;">
+      <canvas baseChart
+              [height]="(isHandset$ | async) ? 400 : 'auto'"
+              [data]="barChartData1"
+              [options]="barChartOptions1"
+              [plugins]="barChartPlugins"
+              [legend]="barChartLegend"
+              [type]="'bar'">
+      </canvas>
+    </div>
+  </mat-card>
+
 </div>

@@ -4,7 +4,6 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {Order} from "../../shared/models/order";
 import {OrderService} from "../../shared/services/order.service";
-import {DialogService} from "../../shared/services/dialog.service";
 import {OrderStatus} from "../../shared/models/order-status";
 import {ActivatedRoute} from "@angular/router";
 
@@ -14,7 +13,7 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
-  displayedColumns: string[] = ['orderId', 'status', 'orderDate', 'totalAmount', 'actions'];
+  displayedColumns: string[] = ['tableNumber', 'status', 'orderDate', 'totalAmount', 'actions'];
   dataSource!: MatTableDataSource<Order>;
   @ViewChild(MatPaginator, {static: true}) paginator!: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort!: MatSort;
@@ -22,6 +21,7 @@ export class OrdersComponent implements OnInit {
   Pending = OrderStatus.Pending;
   Confirmed = OrderStatus.Confirmed;
   orderStatus;
+  showSpinner: boolean= false;
 
   constructor(public orderService: OrderService,
               private route: ActivatedRoute) {
@@ -35,6 +35,7 @@ export class OrdersComponent implements OnInit {
   }
 
   getOrdersByStatus(status: string) {
+    this.showSpinner = true;
     this.orderService.getOrdersByStatus(status).subscribe((data: Order[]) => {
       this.orders = data.map((order: Order) => {
         const date: any = order.orderDate;
@@ -42,6 +43,10 @@ export class OrdersComponent implements OnInit {
         return order;
       });
       this.initDataSource(this.orders);
+      this.showSpinner = false;
+    }, error => {
+      console.log(error);
+      this.showSpinner = false;
     });
   }
 

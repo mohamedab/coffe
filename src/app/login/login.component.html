@@ -3,7 +3,7 @@
     <mat-card [style.max-width.px]="500" class="p-2">
       <div fxLayout="column" fxLayoutAlign="center center" class="text-center">
         <h1 class="uppercase">Sign In</h1>
-        <a mat-button routerLink="/register" color="accent">Don't have an account? Sign up now!</a>
+        <a mat-button routerLink="/login" color="accent"></a>
       </div>
       <form [formGroup]="loginForm" (ngSubmit)="onLoginFormSubmit(loginForm.value)">
         <mat-form-field appearance="outline" class="w-100 mt-2">

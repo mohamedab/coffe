@@ -11,14 +11,14 @@ import {AddUserComponent} from "./add-user/add-user.component";
 import {FormsModule} from "@angular/forms";
 import {OrderDetailResolver} from "./resolvers/order-detail-rosolver";
 import {ManagerGuard} from "../shared/guards/manager-role.guard";
-import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {NgChartsModule} from "ng2-charts";
+import {OrderStatus} from "../shared/models/order-status";
 
 export const routes: Routes = [
   {
     path: '',
     component: AccountComponent, children: [
-      { path: '', redirectTo: 'orders', pathMatch: 'full' },
+      { path: '', redirectTo: 'orders/' + OrderStatus.Pending, pathMatch: 'full' },
       { path: 'orders/:status', component: OrdersComponent},
       { path: 'orders/edit/:id', component: EditOrderComponent, resolve: {order: OrderDetailResolver}},
       { path: 'add-user', component: AddUserComponent, canActivate: [ManagerGuard]},
