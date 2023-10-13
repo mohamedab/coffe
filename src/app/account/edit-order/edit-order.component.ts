@@ -17,11 +17,12 @@ export class EditOrderComponent implements OnInit {
 
   items: Observable<Item[]> = EMPTY;
   order: Order = null;
-  clientName = '';
+  tableNumber = null;
   selectedServer = '';
   servers: string[] = ['Server 1', 'Server 2', 'Server 3']; // Replace with your list of servers
   showSpinner: boolean = false;
   selecedItemsNbr!: number;
+  isOrderConfirmed: boolean = false;
 
   constructor(private orderService: OrderService,
               private route: ActivatedRoute,
@@ -36,20 +37,21 @@ export class EditOrderComponent implements OnInit {
         const order: Order = data['order'];
         this.order = order;
         this.selecedItemsNbr = order.items.reduce((acc, item) => acc + parseInt(String(item.quantity), 10), 0);
+        this.isOrderConfirmed = this.order.status === OrderStatus.Confirmed;
       }
     });
   }
 
   goBack() {
-    this.router.navigate(['account/orders']);
+    this.router.navigate(['account/orders/' + OrderStatus.Confirmed]);
   }
 
 
   confirmOrder(form: any) {
-    if (form.valid) {
+    if (form.valid && !this.isOrderConfirmed) {
       this.order.status = OrderStatus.Confirmed;
       this.order.updateDate = new Date();
-      this.order.clientName = this.clientName;
+      this.order.tableNumber = this.tableNumber;
       this.order.serverId = this.selectedServer;
       this.showSpinner = true;
       this.orderService.updateOrderDoc(this.order).then(() => {
@@ -79,4 +81,5 @@ export class EditOrderComponent implements OnInit {
     const roundedNumberString = totalAmount.toFixed(2); // "29.48" as a string
     this.order.totalAmount = parseFloat(roundedNumberString);
   }
+
 }

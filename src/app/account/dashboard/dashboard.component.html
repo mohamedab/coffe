@@ -1,3 +1,7 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="h-100">
+  <mat-spinner color="primary" *ngIf="showSpinner"></mat-spinner>
+</div>
+
 <div style="display: block;max-width: 950px">
   <canvas baseChart
           [data]="barChartData"

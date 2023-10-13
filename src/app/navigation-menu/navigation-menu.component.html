@@ -14,7 +14,7 @@
         <mat-icon>shop</mat-icon>
       </button>
       <a *ngIf="isHandset$ | async" class="closebtn btn" (click)="drawer.close()">×</a>
-      <div class="logo-header">
+      <div fxLayout="row" fxLayoutAlign="center center" class="logo-header">
         <a routerLink="/menu">
           <img src="assets/images/logo3.png" width="193" height="89" alt="" class="mCS_img_loaded">
         </a>
@@ -47,9 +47,9 @@
         style="position: absolute;right: 0px;">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <div class="logo-header">
+      <div>
         <a routeLink="/">
-          <img src="assets/images/logo3.png" alt="">
+          <img src="assets/images/logo-1.png" alt="" style="max-width: 55% !important;">
         </a>
       </div>
       <span class="spacer"></span>

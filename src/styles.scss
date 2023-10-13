@@ -35612,8 +35612,8 @@ blockquote cite {
 }
 
 .logo-footer img, .logo-header img {
-  height: 48px;
-  width: 160px;
+  height: 150px;
+  width: 150px;
 }
 
 .logo-footer span, .logo-header span {
@@ -47971,7 +47971,8 @@ html.lb-disable-scrolling {
 }
 
 // Spinner
-.mat-mdc-progress-spinner .mdc-circular-progress__determinate-circle, .mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
+.my-spinner.mat-mdc-progress-spinner .mdc-circular-progress__determinate-circle,
+.my-spinner.mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
   stroke: #945d34 !important;
 }
 

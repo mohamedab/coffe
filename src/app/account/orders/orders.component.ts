@@ -6,6 +6,7 @@ import {Order} from "../../shared/models/order";
 import {OrderService} from "../../shared/services/order.service";
 import {DialogService} from "../../shared/services/dialog.service";
 import {OrderStatus} from "../../shared/models/order-status";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-orders',
@@ -18,17 +19,23 @@ export class OrdersComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator!: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort!: MatSort;
   orders: Order[] = [];
+  Pending = OrderStatus.Pending;
+  Confirmed = OrderStatus.Confirmed;
+  orderStatus;
 
   constructor(public orderService: OrderService,
-              public dialogService: DialogService) {
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.getPendingOrders();
+    this.route.params.subscribe(params => {
+      this.orderStatus =params['status'];
+      this.getOrdersByStatus(this.orderStatus);
+    });
   }
 
-  private getPendingOrders() {
-    this.orderService.getPendingOrders().subscribe((data: Order[]) => {
+  getOrdersByStatus(status: string) {
+    this.orderService.getOrdersByStatus(status).subscribe((data: Order[]) => {
       this.orders = data.map((order: Order) => {
         const date: any = order.orderDate;
         order.orderDate = date.toDate();
@@ -48,7 +55,7 @@ export class OrdersComponent implements OnInit {
     this.orderService.updateOrderStatusDoc(order.orderId, OrderStatus.Canceled)
       .then(() => {
           console.log('canceled');
-          this.getPendingOrders();
+          this.getOrdersByStatus(this.orderStatus);
         }
       ).catch(err => console.log(err));
   }

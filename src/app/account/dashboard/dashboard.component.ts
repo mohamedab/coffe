@@ -18,6 +18,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public barChartData1: ChartConfiguration<'bar'>['data'];
   private barChartSuscription: Subscription = new Subscription();
   public barChartOptions: ChartConfiguration<'bar'>['options'] = {responsive: true};
+  showSpinner: boolean = false;
+
 
   public lineChartLegend = true;
   public lineChartOptions: ChartOptions<'line'> = {responsive: true};
@@ -50,6 +52,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     const startDate = new Date();
     startDate.setDate(startDate.getDate() - 7);
     const dateRanges: DateRange[] = [{startDate, endDate}];
+    this.showSpinner = true;
 
     // Fetch orders with status "PENDING" and "CONFIRMED" within the date range
     this.barChartSuscription = this.orderService.getOrdersWithinDateRanges(dateRanges).subscribe((orders) => {
@@ -74,12 +77,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
           }
         ]
       };
+      this.showSpinner = false;
+    }, error => {
+      console.log(error);
+      this.showSpinner = false;
     });
   }
 
   getOrdersWithinBiMonthlyRange() {
     const dateRanges: DateRange[] = this.calculateBiMonthlyDateRanges(7);
-
+    this.showSpinner = true;
     // Fetch orders within the last 7 fortnights
     this.orderService.getOrdersWithinDateRanges(dateRanges).subscribe((orders) => {
       const pendingOrders = orders.filter(order => order.status === OrderStatus.Pending);
@@ -101,6 +108,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
           }
         ]
       };
+      this.showSpinner = false;
+    }, error => {
+      console.log(error);
+      this.showSpinner = false;
     });
   }
 

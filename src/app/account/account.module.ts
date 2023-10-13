@@ -19,8 +19,8 @@ export const routes: Routes = [
     path: '',
     component: AccountComponent, children: [
       { path: '', redirectTo: 'orders', pathMatch: 'full' },
-      { path: 'orders', component: OrdersComponent},
-      { path: 'orders/:id', component: EditOrderComponent, resolve: {order: OrderDetailResolver}},
+      { path: 'orders/:status', component: OrdersComponent},
+      { path: 'orders/edit/:id', component: EditOrderComponent, resolve: {order: OrderDetailResolver}},
       { path: 'add-user', component: AddUserComponent, canActivate: [ManagerGuard]},
       { path: 'profile', component: ProfileComponent},
       { path: 'dashboard', component: DashboardComponent, canActivate: [ManagerGuard]}

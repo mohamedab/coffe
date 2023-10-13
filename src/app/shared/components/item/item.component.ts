@@ -19,10 +19,12 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 export class ItemComponent {
 
   @Input() items: Item[] = [];
+  @Input() addOrder: boolean = false;
   @Input() editOrder: boolean = false;
   @Input() isOrderValidateStep: boolean = false;
   @Input() isOrderConfirmStep: boolean = false;
   @Output() updateOrder: EventEmitter<Item[]> = new EventEmitter<Item[]>();
+  @Output() addItemToOrder: EventEmitter<Item[]> = new EventEmitter<Item[]>();
 
   constructor(private cartService: OrderService) {
   }
@@ -52,5 +54,18 @@ export class ItemComponent {
   removeFromList(index: number) {
     this.items.splice(index, 1);
     this.updateOrder.emit(this.items);
+  }
+
+  addToList(item: any) {
+    const existingItem = this.items.find((orderItem) => orderItem.itemId === item.itemId);
+    if (existingItem) {
+      // If the item already exists in the order, update the quantity
+      existingItem.quantity += 1;
+    } else {
+      // If it's a new item, add it to the order
+      const newItem: Item = {...item, quantity:1};
+      this.items.push(newItem);
+    }
+    this.addItemToOrder.emit(this.items);
   }
 }

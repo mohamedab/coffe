@@ -4,6 +4,7 @@ import {EMPTY, from, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Order} from "../../shared/models/order";
 import {OrderService} from "../../shared/services/order.service";
+import {OrderStatus} from "../../shared/models/order-status";
 
 export const OrderDetailResolver: ResolveFn<Order> = (
   route: ActivatedRouteSnapshot,
@@ -16,7 +17,7 @@ export const OrderDetailResolver: ResolveFn<Order> = (
     if (doc.exists()) {
       return doc.data() as Order;
     } else {  // id not found
-      router.navigate(['account/orders']);
+      router.navigate(['account/orders/' + OrderStatus.Pending]);
       return EMPTY;
     }
   }));

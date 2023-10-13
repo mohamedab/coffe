@@ -10,26 +10,30 @@
           {{ ingredient }}{{ !last ? ', ' : '' }}</span>
         </p>
       </div>
-      <!-- Order selection-->
-      <div class="item-right" *ngIf="!editOrder">
-        <h5 class="price">{{item.price | number: '1.2-2'}}</h5>
-        <div fxLayout="row" fxLayoutAlign="center center">
+
+      <div class="item-right">
+        <h4 class="price">{{(item.price * item.quantity) | number: '1.2-2'}}</h4>
+
+        <div *ngIf="isOrderValidateStep && addOrder" fxLayout="row" fxLayoutAlign="center center">
           <button mat-mini-fab class="add" (click)="addToCart(item)">
             <mat-icon>add</mat-icon>
           </button>
         </div>
-      </div>
-      <!-- Order modif/confirmation-->
-      <div class="item-right" *ngIf="editOrder">
-        <h4 class="price">{{(item.price * item.quantity) | number: '1.2-2'}}</h4>
-        <div *ngIf="isOrderValidateStep" fxLayout="row" fxLayoutAlign="center center">
-          <button mat-mini-fab class="remove" (click)="removeFromCart(item)">
-            <mat-icon>remove</mat-icon>
+
+        <div *ngIf="isOrderConfirmStep && addOrder" fxLayout="row" fxLayoutAlign="center center">
+          <button mat-mini-fab class="add" (click)="addToList(item)">
+            <mat-icon>add</mat-icon>
           </button>
         </div>
-        <div *ngIf="isOrderConfirmStep" fxLayout="row" fxLayoutAlign="center center">
+
+        <div *ngIf="isOrderValidateStep && editOrder" fxLayout="row" fxLayoutAlign="center center">
+          <button mat-mini-fab class="remove" (click)="removeFromCart(item)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+        <div *ngIf="isOrderConfirmStep && editOrder" fxLayout="row" fxLayoutAlign="center center">
           <button mat-mini-fab class="remove" (click)="removeFromList(i)">
-            <mat-icon>remove</mat-icon>
+            <mat-icon>delete</mat-icon>
           </button>
         </div>
       </div>

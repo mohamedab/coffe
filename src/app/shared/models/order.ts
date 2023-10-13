@@ -8,5 +8,5 @@ export class Order {
   totalAmount!: number;    // Total cost of the order
   status!: string;         // Order status ("Pending," "In Progress," "Delivered," etc.)
   serverId!: string;     // Name of the server
-  clientName!: string;     // Name of the client
+  tableNumber!: number;     // Table number
 }

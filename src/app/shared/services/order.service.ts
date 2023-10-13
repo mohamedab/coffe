@@ -58,8 +58,8 @@ export class OrderService {
     }
   }
 
-  getPendingOrders(): Observable<Order[]> {
-    const q = query(this.orderCollection, where("status", "==", OrderStatus.Pending), orderBy("orderDate", "desc"));
+  getOrdersByStatus(status: string): Observable<Order[]> {
+    const q = query(this.orderCollection, where("status", "==", status), orderBy("orderDate", "desc"));
     return from(getDocs(q)).pipe(
       map((querySnapshot) => {
         const orders: Order[] = [];

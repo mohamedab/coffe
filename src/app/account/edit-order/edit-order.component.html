@@ -4,7 +4,11 @@
 
     <div class="dlab-tabs menu-tabs">
       <div class="tab-pane">
-        <app-item [items]="order.items" (updateOrder)="updateOrder($event)" [editOrder]="true"
+        <app-item [items]="order.items"
+                  (updateOrder)="updateOrder($event)"
+                  (addItemToOrder)="updateOrder($event)"
+                  [editOrder]="!isOrderConfirmed"
+                  [addOrder]="!isOrderConfirmed"
                   [isOrderConfirmStep]="true"></app-item>
       </div>
     </div>
@@ -18,10 +22,10 @@
       <div class="divider w-100"></div>
     </div>
 
-    <form #serverForm="ngForm" (ngSubmit)="confirmOrder(serverForm)" novalidate>
+    <form #serverForm="ngForm" (ngSubmit)="confirmOrder(serverForm)" novalidate *ngIf="!isOrderConfirmed">
       <mat-form-field appearance="outline" class="w-100">
-        <mat-label>Nom</mat-label>
-        <input matInput name="clientName" [(ngModel)]="clientName" required>
+        <mat-label>N° Table</mat-label>
+        <input matInput name="tableNumber" type="number" [(ngModel)]="tableNumber" required>
       </mat-form-field>
       <mat-form-field appearance="outline" class="w-100">
         <mat-label>Choisissez un serveur</mat-label>
@@ -33,7 +37,7 @@
         <div fxLayout="row" fxLayoutAlign="center center">
           <mat-spinner color="primary" *ngIf="showSpinner"></mat-spinner>
         </div>
-        <button mat-raised-button type="submit" [disabled]="!serverForm.valid && !showSpinner" color="primary">Confirmer
+        <button mat-raised-button type="submit" [disabled]="!serverForm.valid" color="primary" *ngIf="!showSpinner">Confirmer
           la commande
         </button>
       </div>
