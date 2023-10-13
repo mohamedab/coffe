@@ -16,7 +16,7 @@ export class AccountComponent implements OnInit {
     { name: 'Profile', href: 'profile', icon: 'person', hasAccess: true },
     { name: 'Dashboard', href: 'dashboard', icon: 'dashboard', hasAccess: this.authService.isManager},
     { name: 'Commandes', href: 'orders', icon: 'list_alt', hasAccess: true },
-    { name: 'Ajouter Utilisateur', href: 'add-user', icon: 'person_add', hasAccess: this.authService.isManager  },
+    { name: 'Ajouter Utilisateur', href: 'add-user', icon: 'person_add', hasAccess: this.authService.isManager},
     { name: 'Logout', href: '/login', icon: 'power_settings_new', hasAccess: true},
   ];
   constructor(public router:Router, private authService: AuthService) {

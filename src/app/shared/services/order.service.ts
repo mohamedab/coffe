@@ -1,21 +1,23 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from "rxjs";
+import {BehaviorSubject, from, Observable, forkJoin} from "rxjs";
 import {Item} from "../models/item";
 import {Order} from "../models/order";
 import {
-  addDoc,
   collection,
   doc,
-  Firestore, getDoc,
+  Firestore,
+  getDoc,
   getDocs,
+  onSnapshot,
   orderBy,
   query,
-  setDoc, where
+  setDoc,
+  where
 } from "@angular/fire/firestore";
 import {catchError, map} from "rxjs/operators";
-import {from} from "rxjs";
 import {OrderStatus} from "../models/order-status";
-import {UserProfile} from "../models/userProfile";
+import {DateRange} from "../models/date-range";
+import {EMPTY} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -73,6 +75,44 @@ export class OrderService {
         throw error;
       })
     );
+  }
+
+  getOrdersWithinDateRanges(dateRanges: DateRange[]): Observable<Order[]> {
+    const queries: Observable<Order[]>[] = dateRanges.map((range) => {
+      const {startDate, endDate} = range;
+      return this.queryOrders(startDate, endDate);
+    });
+
+    return forkJoin(queries).pipe(
+      map((results) => results.flat())
+    );
+  }
+
+  queryOrders(startDate: Date, endDate: Date): Observable<Order[]> {
+    const q = query(
+      this.orderCollection,
+      where("status", "in", [OrderStatus.Pending, OrderStatus.Confirmed]),
+      where('orderDate', '>=', startDate),
+      where('orderDate', '<=', endDate));
+
+    return new Observable((observer) => {
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        const orders: Order[] = [];
+        querySnapshot.docChanges().forEach((change) => {
+          // Assuming your Item class matches the Firestore data structure
+          const order: Order = change.doc.data() as Order;
+          orders.push(order);
+        });
+        observer.next(orders);
+        observer.complete();
+      }, (error) => {
+        observer.error(error);
+      });
+      // Return a cleanup function that unsubscribes from the Firestore listener
+      return () => {
+        unsubscribe();
+      };
+    });
   }
 
   addToOrder(item: Item, quantity: number): void {

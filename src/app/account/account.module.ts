@@ -11,6 +11,8 @@ import {AddUserComponent} from "./add-user/add-user.component";
 import {FormsModule} from "@angular/forms";
 import {OrderDetailResolver} from "./resolvers/order-detail-rosolver";
 import {ManagerGuard} from "../shared/guards/manager-role.guard";
+import {AngularFireAuthModule} from "@angular/fire/compat/auth";
+import {NgChartsModule} from "ng2-charts";
 
 export const routes: Routes = [
   {
@@ -39,7 +41,8 @@ export const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     SharedModule,
-    FormsModule
+    FormsModule,
+    NgChartsModule
   ]
 })
 export class AccountModule { }

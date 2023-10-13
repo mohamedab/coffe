@@ -1,3 +1,19 @@
-<p>
-  dashboard works!
-</p>
+<div style="display: block;max-width: 950px">
+  <canvas baseChart
+          [data]="barChartData"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [type]="'bar'">
+  </canvas>
+</div>
+
+<div style="display: block;max-width: 950px">
+  <canvas baseChart
+          [data]="barChartData1"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [type]="'bar'">
+  </canvas>
+</div>
