@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   public loginForm!: FormGroup;
   public hide = true;
   errorMessage: any = null;
+  showSpinner: boolean= false;
 
   constructor(public fb: FormBuilder,
               public router: Router,
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
 
   public onLoginFormSubmit(values: any): void {
     if (this.loginForm.valid) {
+      this.showSpinner = true;
       this.authService.signIn(values.email, values.password)
         .then((result) => {
           onAuthStateChanged(this.authService.afAuth, (user) => {
@@ -41,13 +43,16 @@ export class LoginComponent implements OnInit {
                 this.errorMessage = null;
                 this.authService.getConnectedUserDoc(user);
                 this.router.navigate(['account']);
+                this.showSpinner = false;
               }).catch((error) => {
                 this.errorMessage = 'Username or Password invalid';
+                this.showSpinner = false;
               });
             }
           });
         }).catch((error) => {
         this.errorMessage = 'Username or Password invalid';
+        this.showSpinner = false;
       });
     }
   }

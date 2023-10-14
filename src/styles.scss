@@ -46546,10 +46546,11 @@ pre {
 
 .menu-list li {
   width: 50%;
+  min-height: 80px;
   display: flex;
   border-bottom: 1px dashed #0003;
   padding: 15px;
-  position: relative
+  position: relative;
 }
 
 .menu-list li .title {
@@ -47974,6 +47975,14 @@ html.lb-disable-scrolling {
 .my-spinner.mat-mdc-progress-spinner .mdc-circular-progress__determinate-circle,
 .my-spinner.mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
   stroke: #945d34 !important;
+}
+
+my-pinner.mat-mdc-progress-spinner {
+  height: 50px !important;
+}
+
+.mat-mdc-progress-spinner {
+  height: 50px !important;
 }
 
 // Badge

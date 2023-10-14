@@ -14,6 +14,7 @@ export class ResetPasswordComponent implements OnInit {
   public hide = true;
   errorMessage: any = null;
   succesMessage: any;
+  showSpinner: boolean= false;
 
   constructor(public fb: FormBuilder,
               public router: Router,
@@ -32,12 +33,15 @@ export class ResetPasswordComponent implements OnInit {
 
   forgotPassword(values: any) {
     if (this.resetPasswordForm.valid) {
+      this.showSpinner = true;
       this.authService.forgotPassword(values.resetEmail)
         .then(() => {
           this.succesMessage = 'Password reset email sent, check your inbox.';
+          this.showSpinner = false;
         })
         .catch((error) => {
           this.errorMessage = 'Cannot reset password';
+          this.showSpinner = false;
         });
     }
   }

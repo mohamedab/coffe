@@ -55,7 +55,11 @@
           </button>
         </mat-form-field>
         <div class="text-center mt-2">
-          <button mat-raised-button color="accent" class="uppercase" type="submit">
+          <div fxLayout="row" fxLayoutAlign="center center">
+            <mat-spinner color="primary" *ngIf="showSpinner"></mat-spinner>
+          </div>
+
+          <button mat-raised-button color="accent" class="uppercase" type="submit" *ngIf="!showSpinner">
             Create an Account
           </button>
         </div>

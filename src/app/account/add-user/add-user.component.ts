@@ -14,6 +14,7 @@ export class AddUserComponent implements OnInit {
   public registerForm!: FormGroup;
   public hide = true;
   errorMessage: any = null;
+  showSpinner: boolean = false;
   public userTypes = [
     {id: 1, name: Roles.SUPERADMIN},
     {id: 2, name: Roles.SERVER},
@@ -43,14 +44,17 @@ export class AddUserComponent implements OnInit {
         roles: [values.userType.name],
         userId: ''
       }
+      this.showSpinner = true;
       this.authService.signUp(values.email, values.password, user)
         .then((result) => {
           /* Call the SendVerificaitonMail() function when new user sign up and returns promise */
           this.authService.sendVerificationMail(user);
           this.authService.addUserData(result.user, user);
           this.router.navigate(['login']);
+          this.showSpinner = false;
         }).catch((error) => {
         this.errorMessage = 'Cannot create User';
+        this.showSpinner = false;
       });
     }
   }

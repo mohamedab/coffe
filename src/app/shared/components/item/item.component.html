@@ -1,7 +1,7 @@
 <div class="menu-box">
   <ul class="menu-list">
     <li *ngFor="let item of items; let i = index">
-      <div class="item-left">
+      <div *ngIf="isOrderValidateStep" class="item-left">
         <img [src]="item.imageUrl" alt="Click to expand" [@imageExpansion]="item.imageState"
              (click)="toggleImageExpansion(i)">
         <h4 class="title" *ngIf="!editOrder">{{item.name}}</h4>
@@ -11,27 +11,41 @@
         </p>
       </div>
 
-      <div class="item-right">
-        <h4 class="price">{{(item.price * item.quantity) | number: '1.2-2'}}</h4>
-
-        <div *ngIf="isOrderValidateStep && addOrder" fxLayout="row" fxLayoutAlign="center center">
+      <div *ngIf="isOrderValidateStep" class="item-right">
+        <div *ngIf="addOrder" fxLayout="column" fxLayoutAlign="center center">
+          <h5 class="price">{{item.price | number: '1.2-2'}}</h5>
           <button mat-mini-fab class="add" (click)="addToCart(item)">
             <mat-icon>add</mat-icon>
           </button>
         </div>
 
-        <div *ngIf="isOrderConfirmStep && addOrder" fxLayout="row" fxLayoutAlign="center center">
+        <div *ngIf="editOrder" fxLayout="column" fxLayoutAlign="center center">
+          <h4 class="price">{{(item.price * item.quantity) | number: '1.2-2'}}</h4>
+          <button mat-mini-fab class="remove" (click)="removeFromCart(item)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="isOrderConfirmStep" class="item-left">
+        <img [src]="item.imageUrl" alt="Click to expand" [@imageExpansion]="item.imageState" (click)="toggleImageExpansion(i)">
+        <h4 class="title text-muted">{{item.quantity}} x {{item.name}} ({{item.price | number: '1.2-2'}})</h4>
+        <p class="description" *ngIf="editOrder">
+          <span *ngFor="let ingredient of item.ingredients; let last = last">
+          {{ ingredient }}{{ !last ? ', ' : '' }}</span>
+        </p>
+      </div>
+
+      <div *ngIf="isOrderConfirmStep" class="item-right">
+        <h4 class="price" *ngIf="editOrder">{{(item.price * item.quantity) | number: '1.2-2'}}</h4>
+        <h4 class="fw-bold" *ngIf="!editOrder">{{(item.price * item.quantity) | number: '1.2-2'}}</h4>
+        <div *ngIf="addOrder" fxLayout="column" fxLayoutAlign="center center">
           <button mat-mini-fab class="add" (click)="addToList(item)">
             <mat-icon>add</mat-icon>
           </button>
         </div>
 
-        <div *ngIf="isOrderValidateStep && editOrder" fxLayout="row" fxLayoutAlign="center center">
-          <button mat-mini-fab class="remove" (click)="removeFromCart(item)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </div>
-        <div *ngIf="isOrderConfirmStep && editOrder" fxLayout="row" fxLayoutAlign="center center">
+        <div *ngIf="editOrder" fxLayout="column" fxLayoutAlign="center center">
           <button mat-mini-fab class="remove" (click)="removeFromList(i)">
             <mat-icon>delete</mat-icon>
           </button>

@@ -13,15 +13,17 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
-  displayedColumns: string[] = ['tableNumber', 'status', 'orderDate', 'totalAmount', 'actions'];
+  displayedColumns: string[] = [];
+  pendingColumns: string[] = ['status', 'orderDate', 'totalAmount', 'actions'];
+  confirmedColumns: string[] = ['tableNumber', 'status', 'updateDate', 'totalAmount', 'actions'];
   dataSource!: MatTableDataSource<Order>;
   @ViewChild(MatPaginator, {static: true}) paginator!: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort!: MatSort;
   orders: Order[] = [];
   Pending = OrderStatus.Pending;
   Confirmed = OrderStatus.Confirmed;
-  orderStatus;
-  showSpinner: boolean= false;
+  orderStatus: string;
+  showSpinner: boolean = false;
 
   constructor(public orderService: OrderService,
               private route: ActivatedRoute) {
@@ -29,8 +31,9 @@ export class OrdersComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.orderStatus =params['status'];
+      this.orderStatus = params['status'];
       this.getOrdersByStatus(this.orderStatus);
+      this.displayedColumns = this.orderStatus === this.Pending ? this.pendingColumns : this.confirmedColumns;
     });
   }
 
@@ -38,8 +41,10 @@ export class OrdersComponent implements OnInit {
     this.showSpinner = true;
     this.orderService.getOrdersByStatus(status).subscribe((data: Order[]) => {
       this.orders = data.map((order: Order) => {
-        const date: any = order.orderDate;
-        order.orderDate = date.toDate();
+        const orderDate: any = order.orderDate;
+        const updateDate: any = order.updateDate;
+        order.orderDate = orderDate ? orderDate.toDate(): null;
+        order.updateDate = updateDate ? updateDate.toDate(): null;
         return order;
       });
       this.initDataSource(this.orders);
