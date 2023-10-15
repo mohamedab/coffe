@@ -7,6 +7,8 @@ import {CartService} from "../../shared/services/cart.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {OrderStatus} from "../../shared/models/order-status";
 import {EMPTY, of, Observable} from "rxjs";
+import {Category} from "../../shared/models/category";
+import {ItemService} from "../../shared/services/item.service";
 
 @Component({
   selector: 'app-edit-order',
@@ -15,7 +17,6 @@ import {EMPTY, of, Observable} from "rxjs";
 })
 export class EditOrderComponent implements OnInit {
 
-  items: Observable<Item[]> = EMPTY;
   order: Order = null;
   tableNumber = null;
   selectedServer = '';
@@ -24,11 +25,26 @@ export class EditOrderComponent implements OnInit {
   selecedItemsNbr!: number;
   isOrderConfirmed: boolean = false;
 
+  categories: Category[] = [];
+  items: Item[] = [];
+
   constructor(private orderService: OrderService,
+              private itemService: ItemService,
               private route: ActivatedRoute,
               private cartService: CartService,
               private router: Router,
               private _snackBar: MatSnackBar) {
+    this.itemService.getCategoriesFormJson()
+      .subscribe((categories: Category[]) => {
+        this.categories = categories;
+        // Show the first menu
+        if (this.categories.length > 0) {
+          this.items = this.categories[0].items;
+          this.categories[0].active = true;
+        }
+      }, error => {
+        console.log(error);
+      });
   }
 
   ngOnInit(): void {
@@ -82,4 +98,40 @@ export class EditOrderComponent implements OnInit {
     this.order.totalAmount = parseFloat(roundedNumberString);
   }
 
+  showActiveTab(category: Category) {
+    this.items = category.items;
+    this.categories.forEach((cat) => {
+      cat.active = false; // Deactivate all categories
+    });
+    category.active = true; // Activate the selected category
+  }
+
+  // Generate a unique itemId for each item
+  generateUniqueId(): string {
+    // Generate a random 12-character alphanumeric string
+    return Math.random().toString(36).substring(2, 14);
+  }
+
+  scrollToTabContent() {
+    const element = document.getElementById('tab-content');
+    if (element) {
+      // Scroll to the target element using either of the methods below
+      element.scrollIntoView({behavior: 'smooth', block: "start", inline: "center"});
+    }
+  }
+
+  addToCart(item: any) {
+    const existingItem = this.order.items.find((orderItem) => orderItem.itemId === item.itemId);
+
+    if (existingItem) {
+      // If the item already exists in the order, update the quantity
+      existingItem.quantity += 1;
+    } else {
+      // If it's a new item, add it to the order
+      const newItem: Item = {...item, quantity:1};
+      this.order.items.push(newItem);
+    }
+    this.selecedItemsNbr = this.order.items.reduce((acc, item) => acc + parseInt(String(item.quantity), 10), 0);
+    this.calculateTotalAmount();
+  }
 }

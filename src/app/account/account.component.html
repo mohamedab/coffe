@@ -1,4 +1,4 @@
-<div class="p-3 h-100">
+<div class="h-100">
     <div class="theme-container">
         <mat-sidenav-container class="account h-100">
             <mat-sidenav #sidenav [opened]="sidenavOpen" [mode]="sidenavOpen ? 'side' : 'over'" class="account-sidenav">
@@ -8,7 +8,7 @@
                     </button>
                     <mat-card-header fxLayoutAlign="start center">
                         <img mat-card-avatar src="assets/images/user/user.jpeg" alt="avatar" class="mb-0">
-                        <mat-card-title class="text-muted mb-0">{{connectedUser.displayName}}</mat-card-title>
+                        <mat-card-title class="text-white mb-0">{{connectedUser.displayName}}</mat-card-title>
                     </mat-card-header>
                     <div class="divider my-3"></div>
                     <div *ngFor="let link of links">
@@ -16,20 +16,20 @@
                            [routerLinkActiveOptions]="{exact:true}"
                            fxLayout="row" fxLayoutAlign="start center" class="p-3"
                            (click)="link.name==='Logout' ? this.signOut(): null" *ngIf="link.hasAccess">
-                            <mat-icon class="text-muted">{{link.icon}}</mat-icon>
+                            <mat-icon>{{link.icon}}</mat-icon>
                             <span class="mx-2">{{ link.name }}</span>
                         </a>
                     </div>
                   </mat-card>
             </mat-sidenav>
-            <mat-sidenav-content ngClass.gt-sm="distance">
-              <mat-card *ngIf="!sidenavOpen" fxLayout="row" fxLayoutAlign="space-between center" class="text-muted mb-3 p-3">
+            <mat-sidenav-content ngClass.gt-sm="distance" class="account-content">
+              <mat-card *ngIf="!sidenavOpen" fxLayout="row" fxLayoutAlign="space-between center" class="mb-3 p-3">
                   <button mat-icon-button (click)="sidenav.toggle()">
                       <mat-icon>more_vert</mat-icon>
                   </button>
                   <h3> My Account</h3>
               </mat-card>
-              <mat-card class="account-wrapper p-2">
+              <mat-card [ngClass.lt-md]="'m-2'" class="account-wrapper p-2 m-3">
                   <router-outlet></router-outlet>
               </mat-card>
             </mat-sidenav-content>

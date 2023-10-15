@@ -1,56 +1,73 @@
-.theme-container{
-    margin: 0 auto;
-    width: 100%;
-    box-sizing: border-box;
-    height: 100%;
+.theme-container {
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  height: 100%;
+  background-color: #f6f7f9;
 }
+
 /******* Account *******/
-.account{
-    .mat-drawer{
-        width: 280px;
-        border: 0 !important;
-        box-shadow: none !important;
-        background-color: transparent !important;
-        .mat-drawer-inner-container{
-            padding: 2px;
-            height: 100%;
-            box-sizing: border-box;
-            .mat-mdc-card{
-                height: 100%;
-                box-sizing: border-box;
-                overflow: hidden;
-                a{
-                    color: inherit;
-                    text-decoration: none;
-                }
-            }
-            button.close{
-                position: absolute;
-                top: 2px;
-                right: 2px;
-                z-index: 1;
-            }
+.account {
+  .account-wrapper {
+    background-color: #fafafa;
+  }
+
+  .mat-drawer {
+    width: 280px;
+    border: 0 !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+
+    .mat-drawer-inner-container {
+      height: 100%;
+      box-sizing: border-box;
+      background-color: #f6f7f9 !important;
+
+      .mat-mdc-card {
+        height: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+        background-color: #051e34 !important;
+
+        a {
+          color: white;
+          text-decoration: none;
         }
+      }
+
+      button.close {
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        z-index: 1;
+      }
     }
-    .mat-drawer-content{
-        padding: 2px;
-        min-height: 400px;
-        &.distance{
-            padding-left: 16px;
-        }
+  }
+
+  .mat-drawer-content {
+    padding: 2px;
+    min-height: 400px;
+    background-color: #f6f7f9 !important;
+
+    &.distance {
+      padding-left: 16px;
     }
+  }
 }
-.table-wrapper{
-    display: block;
-    overflow-x: auto;
-    td.mat-mdc-cell,
-    th.mat-mdc-header-cell{
-        white-space: nowrap;
-        padding: 16px;
-    }
-    a.property-name{
-        color: inherit;
-        text-decoration: none;
-        font-weight: 500;
-    }
+
+.table-wrapper {
+  display: block;
+  overflow-x: auto;
+
+  td.mat-mdc-cell,
+  th.mat-mdc-header-cell {
+    white-space: nowrap;
+    padding: 16px;
+  }
+
+  a.property-name {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 500;
+  }
 }

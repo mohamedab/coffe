@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import {Component, HostListener, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {NavigationEnd, Router} from '@angular/router';
 import {AuthService} from "../shared/services/auth.service";
 import {UserProfile} from "../shared/models/userProfile";
 import {OrderStatus} from "../shared/models/order-status";
@@ -7,7 +7,8 @@ import {OrderStatus} from "../shared/models/order-status";
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
-  styleUrls: ['./account.component.scss']
+  styleUrls: ['./account.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AccountComponent implements OnInit {
   @ViewChild('sidenav') sidenav: any;

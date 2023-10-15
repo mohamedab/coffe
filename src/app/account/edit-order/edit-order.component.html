@@ -18,34 +18,91 @@
 
         <h4 *ngIf="order.tableNumber"><span class="text-muted">N° Table : </span>{{order.tableNumber}}</h4>
         <h4 *ngIf="order.serverId"><span class="text-muted">Serveur : </span>{{order.serverId}}</h4>
-        <h4 *ngIf="order.updateDate"><span class="text-muted">Data validation :</span> {{order.orderDate.toDate() | date : 'dd/MM/yyyy HH:mm:ss'}}</h4>
-        <h4 *ngIf="order.updateDate"><span class="text-muted">Data confirmation : </span>{{order.updateDate.toDate() | date : 'dd/MM/yyyy HH:mm:ss'}}</h4>
-        <h3 class="fw-bolder">Total : {{order.totalAmount | number: '1.2-2'}} {{ order.totalAmount > 1 ? 'Dhs' : 'Dh'}}</h3>
+        <h4 *ngIf="order.updateDate"><span
+          class="text-muted">Data validation :</span> {{order.orderDate.toDate() | date : 'dd/MM/yyyy HH:mm:ss'}}</h4>
+        <h4 *ngIf="order.updateDate"><span
+          class="text-muted">Data confirmation : </span>{{order.updateDate.toDate() | date : 'dd/MM/yyyy HH:mm:ss'}}
+        </h4>
+        <h3 class="fw-bolder">Total
+          : {{order.totalAmount | number: '1.2-2'}} {{ order.totalAmount > 1 ? 'Dhs' : 'Dh'}}</h3>
+
+        <mat-accordion *ngIf="!isOrderConfirmed">
+          <mat-expansion-panel style="top: 10px;margin: 30px 0;">
+            <mat-expansion-panel-header>
+              <mat-panel-title>Ajouter autres Articles</mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="dlab-tabs menu-tabs style1">
+              <ul class="nav-tabs nav" role="tablist">
+                <li id="nav-item" *ngFor="let category of categories; let i = index">
+                  <a (click)="showActiveTab(category);scrollToTabContent()"
+                     [class.active]="category.active"
+                     id="ngb-nav-{{i + 1}}" role="tab" [attr.aria-selected]="category.active"
+                     aria-disabled="false" class="nav-link"
+                     [attr.aria-controls]="'ngb-nav-' + (i + 1) + '-panel'">
+                    <div class="icon-bx">
+                      <img [src]="category.imageUrl">
+                    </div>
+                    <h4 style="text-transform: uppercase">{{category.name}}</h4>
+                    <h6 style="text-transform: uppercase">{{category.description}}</h6>
+                  </a>
+                </li>
+              </ul>
+              <div id="tab-content" class="tab-content">
+                <div class="tab-pane fade show active" id="ngb-nav-3-panel" role="tabpanel">
+                  <div class="tab-pane">
+                    <div class="menu-box">
+                      <ul class="menu-list">
+                        <li *ngFor="let item of items; let i = index">
+                          <div class="item-left">
+                            <img [src]="item.imageUrl">
+                            <h4 class="title">{{item.name}}</h4>
+                            <p class="description"><span *ngFor="let ingredient of item.ingredients; let last = last">
+                              {{ ingredient }}{{ !last ? ', ' : '' }}</span>
+                            </p>
+                          </div>
+
+                          <div class="item-right">
+                            <div fxLayout="column" fxLayoutAlign="center center">
+                              <h5 class="price">{{item.price | number: '1.2-2'}}</h5>
+                              <button mat-mini-fab class="add" (click)="addToCart(item)">
+                                <mat-icon>add</mat-icon>
+                              </button>
+                            </div>
+                          </div>
+                        </li>
+                        <!---->
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
 
         <form #serverForm="ngForm" (ngSubmit)="confirmOrder(serverForm)" novalidate *ngIf="!isOrderConfirmed">
-      <mat-form-field appearance="outline" class="w-100">
-        <mat-label>N° Table</mat-label>
-        <input matInput name="tableNumber" type="number" [(ngModel)]="tableNumber" required>
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="w-100">
-        <mat-label>Choisissez un serveur</mat-label>
-        <mat-select name="selectedServer" [(ngModel)]="selectedServer" required>
-          <mat-option *ngFor="let server of servers" [value]="server">{{ server }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <div class="text-center mt-2">
-        <div fxLayout="row" fxLayoutAlign="center center">
-          <mat-spinner color="primary" *ngIf="showSpinner"></mat-spinner>
-        </div>
-        <button mat-raised-button type="submit"
-                [disabled]="!serverForm.valid"
-                color="primary"
-                *ngIf="!showSpinner">
-          Confirmer la commande
-        </button>
-      </div>
-
-    </form>
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>N° Table</mat-label>
+            <input matInput name="tableNumber" type="number" [(ngModel)]="tableNumber" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Choisissez un serveur</mat-label>
+            <mat-select name="selectedServer" [(ngModel)]="selectedServer" required>
+              <mat-option *ngFor="let server of servers" [value]="server">{{ server }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="text-center mt-2">
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <mat-spinner color="primary" *ngIf="showSpinner"></mat-spinner>
+            </div>
+            <button mat-raised-button type="submit"
+                    [disabled]="!serverForm.valid"
+                    color="primary"
+                    *ngIf="!showSpinner">
+              Confirmer la commande
+            </button>
+          </div>
+        </form>
       </mat-card-content>
     </mat-card>
   </div>
