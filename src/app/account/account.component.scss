@@ -28,6 +28,7 @@
         box-sizing: border-box;
         overflow: hidden;
         background-color: #051e34 !important;
+        border-radius: 0 !important;
 
         a {
           color: white;
@@ -70,4 +71,17 @@
     text-decoration: none;
     font-weight: 500;
   }
+}
+
+.mat-divider.mat-divider {
+    border-top-color: rgba(0,0,0,0.12);
+}
+
+.mat-divider {
+  --mat-divider-width: 1px;
+  display: block;
+  margin: 0;
+  border-top-style: solid;
+  border-top-color: rgba(0,0,0,0.12);
+  border-top-width: 1px;
 }

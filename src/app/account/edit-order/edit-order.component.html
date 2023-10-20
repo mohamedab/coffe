@@ -28,7 +28,7 @@
 
         <mat-accordion *ngIf="!isOrderConfirmed">
           <mat-expansion-panel style="top: 10px;margin: 30px 0;">
-            <mat-expansion-panel-header>
+            <mat-expansion-panel-header (click)="showTotalPriceBar = !showTotalPriceBar">
               <mat-panel-title>Ajouter autres Articles</mat-panel-title>
             </mat-expansion-panel-header>
             <div class="dlab-tabs menu-tabs style1">
@@ -94,16 +94,19 @@
           <div class="text-center mt-2">
             <div fxLayout="row" fxLayoutAlign="center center">
               <mat-spinner color="primary" *ngIf="showSpinner"></mat-spinner>
+              <button mat-raised-button type="submit" [disabled]="!serverForm.valid" color="primary" *ngIf="!showSpinner">
+                Confirmer la commande
+              </button>
             </div>
-            <button mat-raised-button type="submit"
-                    [disabled]="!serverForm.valid"
-                    color="primary"
-                    *ngIf="!showSpinner">
-              Confirmer la commande
-            </button>
           </div>
         </form>
       </mat-card-content>
     </mat-card>
+  </div>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="space-between center" class="bottom-bar" *ngIf="showTotalPriceBar">
+  <div class="total-price">{{selecedItemsNbr}} {{ selecedItemsNbr > 1 ? 'articles' : 'article'}} |
+    Total: {{order.totalAmount  | number: '1.2-2'}} {{ order.totalAmount > 1 ? 'Dhs' : 'Dh'}}
   </div>
 </div>

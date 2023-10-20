@@ -1,6 +1,9 @@
 <div fxLayout="row wrap">
   <div fxFlex="100" fxFlex.gt-sm="50" class="p-3">
-    <h2 class="text-muted text-center fw-600 mb-3">Account details</h2>
+    <div>
+          <h2 class="text-center fw-600 mb-3">Account details</h2>
+    </div>
+    <mat-divider></mat-divider>
     <form [formGroup]="infoForm" (ngSubmit)="onInfoFormSubmit(infoForm.value)">
       <mat-form-field appearance="outline" class="w-100">
         <mat-label>Name</mat-label>
@@ -35,7 +38,10 @@
   </div>
 
   <div fxFlex="100" fxFlex.gt-sm="50" class="p-3" ngClass.sm="mt-2" ngClass.xs="mt-2">
-    <h2 class="text-muted text-center fw-600 mb-3">Password change</h2>
+    <div>
+      <h2 class="text-center mb-3">Password change</h2>
+    </div>
+    <mat-divider></mat-divider>
     <form [formGroup]="passwordForm" (ngSubmit)="onPasswordFormSubmit(passwordForm.value)">
       <mat-form-field appearance="outline" class="w-100">
         <mat-label>Current Password</mat-label>

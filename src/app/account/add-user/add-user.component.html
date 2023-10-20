@@ -1,11 +1,11 @@
 <div class="bg-gray-light h-100">
   <div class="container h-100" fxLayout="row" fxLayoutAlign="center center">
-    <mat-card [style.max-width.px]="500" class="p-2">
-      <div fxLayout="column" fxLayoutAlign="center center" class="text-center">
+    <mat-card [style.max-width.px]="500">
+      <div fxLayout="column" fxLayoutAlign="center center" class="text-center p-2">
         <h1 class="uppercase">Register</h1>
-        <a mat-button routerLink="/login" color="accent" class="w-100">Already have an account? Sign in!</a>
       </div>
-      <form [formGroup]="registerForm" (ngSubmit)="onRegisterFormSubmit(registerForm.value)">
+      <mat-divider></mat-divider>
+      <form [formGroup]="registerForm" (ngSubmit)="onRegisterFormSubmit(registerForm.value)" class="p-2">
         <mat-form-field appearance="outline" class="w-100 mt-2">
           <mat-icon matPrefix class="mr-1 text-muted">group</mat-icon>
           <mat-label>User type</mat-label>
@@ -59,7 +59,7 @@
             <mat-spinner color="primary" *ngIf="showSpinner"></mat-spinner>
           </div>
 
-          <button mat-raised-button color="accent" class="uppercase" type="submit" *ngIf="!showSpinner">
+          <button mat-raised-button color="primary" class="uppercase" type="submit" *ngIf="!showSpinner">
             Create an Account
           </button>
         </div>

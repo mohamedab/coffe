@@ -6,7 +6,6 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {CartService} from "../../shared/services/cart.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {OrderStatus} from "../../shared/models/order-status";
-import {EMPTY, of, Observable} from "rxjs";
 import {Category} from "../../shared/models/category";
 import {ItemService} from "../../shared/services/item.service";
 
@@ -24,6 +23,8 @@ export class EditOrderComponent implements OnInit {
   showSpinner: boolean = false;
   selecedItemsNbr!: number;
   isOrderConfirmed: boolean = false;
+  showTotalPriceBar: boolean = false;
+
 
   categories: Category[] = [];
   items: Item[] = [];
