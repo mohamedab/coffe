@@ -43,6 +43,7 @@ import {TotalBarComponent} from "./components/total-bar/total-bar.component";
 import {MenuOneComponent} from "./components/menu-one/menu-one.component";
 import {AlertDialogComponent} from "./components/alert-dialog/alert-dialog.component";
 import {ConfirmDialogComponent} from "./components/confirm-dialog/confirm-dialog.component";
+import {SwiperModule} from "./components/swiper/swiper.module";
 
 
 @NgModule({
@@ -84,7 +85,8 @@ import {ConfirmDialogComponent} from "./components/confirm-dialog/confirm-dialog
     MatToolbarModule,
     MatTooltipModule,
     MatStepperModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    SwiperModule
   ],
   exports: [
     RouterModule,
@@ -130,7 +132,8 @@ import {ConfirmDialogComponent} from "./components/confirm-dialog/confirm-dialog
     TotalBarComponent,
     MenuOneComponent,
     AlertDialogComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    SwiperModule
   ],
   declarations: [
     AppPageBannerComponent,

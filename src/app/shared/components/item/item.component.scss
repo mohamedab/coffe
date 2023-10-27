@@ -32,3 +32,17 @@
   margin-top: 5px;
   background-color: #e21836 !important;
 }
+
+.mat-mdc-snack-bar-container {
+  .mat-mdc-button.mat-mdc-snack-bar-action:not(:disabled) {
+    color: #e88f2a !important;
+  }
+
+  .mdc-snackbar__label {
+    text-align: center !important;
+  }
+  .mdc-snackbar__label {
+    font-size: 18px !important;
+    font-weight: 500;
+  }
+}

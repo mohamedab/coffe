@@ -1,11 +1,11 @@
 [
   {
-    "name": "Petit déjouner composer",
+    "name": "Petit déjeuner composer",
     "description": "Équilibré, varié, réconfortant.",
     "imageUrl": "assets/images/icons/icon5.png",
     "items": [
       {
-        "name": "Panier 3 viennoiseries 10% beure",
+        "name": "Panier 3 viennoiseries 100% pur beurre",
         "price": 12,
         "imageUrl": "assets/images/items/pdj/VENNOISERIES.jpg",
         "ingredients": [],
@@ -27,6 +27,15 @@
         "imageState": "collapsed"
       },
       {
+        "name": "Pancakes Nutella",
+        "price": 17,
+        "imageUrl": "assets/images/items/pdj/PANKACKENUTELLA.jpeg",
+        "ingredients": [],
+        "quantity": 0,
+        "itemId": "q1xp1eflol",
+        "imageState": "collapsed"
+      },
+      {
         "name": "Céréales au lait",
         "price": 8,
         "imageUrl": "assets/images/items/pdj/CEREAL AU LAIT.jpg",
@@ -45,7 +54,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Panna cotta mini",
+        "name": "Panna cotta",
         "price": 9,
         "imageUrl": "assets/images/items/pdj/PANA COTTA.jpg",
         "ingredients": [],
@@ -63,7 +72,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Salade crudité",
+        "name": "Salade crudités",
         "price": 11,
         "imageUrl": "assets/images/items/pdj/SALADE DE CRUDITES.jpg",
         "ingredients": [],
@@ -72,7 +81,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Riette de thon et pain grillé",
+        "name": "Riettes de thon et pain grillé",
         "price": 12,
         "imageUrl": "assets/images/items/pdj/RIETTES DE THON.jpg",
         "ingredients": [],
@@ -81,7 +90,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Assiette charcuterie et fromage",
+        "name": "Assiette fromage",
         "price": 19,
         "imageUrl": "assets/images/items/pdj/ASSIETTE CHARCUTERIE ET FROMAGE.jpg",
         "ingredients": [
@@ -94,7 +103,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Tapenade olive noir pain grillé",
+        "name": "Tapenade olives noirs pain grillé",
         "price": 6,
         "imageUrl": "assets/images/items/pdj/TAPENADE OLIVES PAIN GRILLE.jpg",
         "ingredients": [],
@@ -103,7 +112,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Hercha et mssemene",
+        "name": "Harcha et msemmen",
         "price": 16,
         "imageUrl": "assets/images/items/pdj/HARCHA MASSEMEN.jpg",
         "ingredients": [
@@ -190,7 +199,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Khli3 3 oeufs",
+        "name": "Khlii 3 oeufs",
         "price": 20,
         "imageUrl": "assets/images/items/pdj/OMELETTE KHLII.jpg",
         "ingredients": [],
@@ -208,8 +217,8 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Pain",
-        "price": 1,
+        "name": "Pain complet",
+        "price": 3,
         "imageUrl": "assets/images/items/pdj/PAIN.jpg",
         "ingredients": [],
         "quantity": 0,
@@ -225,39 +234,39 @@
     "imageUrl": "assets/images/icons/icon6.png",
     "items": [
       {
-        "name": "Salade césar",
+        "name": "Salade César",
         "price": 29,
         "imageUrl": "assets/images/items/menu/SALADE CESAR.jpg",
         "ingredients": [
           "Laitue romaine",
-          "Croûtons",
-          "Parmensan râpé",
-          "Poulet grillé",
-          "Sauce césar",
-          "Anchois",
-          "Oeuf dur de cailles"
+          "croûtons",
+          "parmensan râpé",
+          "poulet",
+          "sauce césar",
+          "anchois",
+          "oeufs dur de cailles"
         ],
         "quantity": 0,
         "itemId": "qucc1e3i9n",
         "imageState": "collapsed"
       },
       {
-        "name": "Salade Noçoise Revisitée",
+        "name": "Salade Niçoise Revisitée",
         "price": 27,
         "imageUrl": "assets/images/items/menu/SALADE NICOISE.jpg",
         "ingredients": [
           "Laitue romaine",
-          "Thon",
-          "Haricots verts",
-          "Tomates cerise",
-          "Olives noires",
-          "Oeuf dur de cailles",
-          "Pommes de terre",
-          "Radis",
-          "Anchois",
-          "Vinaigrette",
-          "Poivron",
-          "Oignon"
+          "thon",
+          "haricots verts",
+          "tomates cerise",
+          "olives noires",
+          "oeufs dur de cailles",
+          "pommes de terre",
+          "radis",
+          "anchois",
+          "vinaigrette",
+          "poivron",
+          "oignon"
         ],
         "quantity": 0,
         "itemId": "w8mkcoj9ohn",
@@ -269,13 +278,13 @@
         "imageUrl": "assets/images/items/menu/SALADE GRECQUE.jpg",
         "ingredients": [
           "Laitue romaine",
-          "Poivron",
-          "Oignon",
-          "Tomates cerise",
-          "Thym",
-          "Fromage feta",
-          "Olives noires",
-          "Concombre"
+          "poivron",
+          "oignon",
+          "tomates cerise",
+          "thym",
+          "fromage feta",
+          "olives noires",
+          "concombre"
         ],
         "quantity": 0,
         "itemId": "fgw4v8j95ys",
@@ -287,13 +296,13 @@
         "imageUrl": "assets/images/items/menu/SALADE ITALIENNE.jpg",
         "ingredients": [
           "Tomates cerise",
-          "Mozzarella",
-          "Courgettes",
-          "Aubergine",
-          "Poulet",
-          "Penné",
-          "Sauce basilic",
-          "Jambon de dinde"
+          "mozzarella",
+          "courgettes",
+          "aubergine",
+          "poulet",
+          "penné",
+          "sauce basilic",
+          "jambon de dinde"
         ],
         "quantity": 0,
         "itemId": "ittn7dzykm",
@@ -305,29 +314,29 @@
         "imageUrl": "assets/images/items/menu/EMINCEES DE POULET CHAMPIGNONS.jpg",
         "ingredients": [
           "Légumes sautés",
-          "Pommes écrasés",
-          "Echalotte",
-          "Poulet grillé",
-          "Ciboulette",
-          "Champignon",
-          "Crème fraiche"
+          "pommes écrasés",
+          "échalotte",
+          "poulet",
+          "ciboulette",
+          "champignon",
+          "crème fraiche"
         ],
         "quantity": 0,
         "itemId": "y6u1kcfhxu",
         "imageState": "collapsed"
       },
       {
-        "name": "Emincé de Boeuf Stroganoff Revisitée",
+        "name": "Emincé de boeuf Stroganoff",
         "price": 62,
         "imageUrl": "assets/images/items/menu/EMMINCEES DE BOEUF STROGANOF.jpg",
         "ingredients": [
           "Légumes sautés",
-          "Pommes écrasés",
-          "Echalotte",
-          "Boeuf",
-          "Cornichon",
-          "Champignon",
-          "Crème fraiche"
+          "pommes écrasés",
+          "échalotte",
+          "boeuf",
+          "cornichon",
+          "champignon",
+          "crème fraiche"
         ],
         "quantity": 0,
         "itemId": "25ks3b0izj2",
@@ -339,12 +348,12 @@
         "imageUrl": "assets/images/items/menu/PENNE POULET SAUCE PESTO.jpg",
         "ingredients": [
           "Penne",
-          "Echalotte",
-          "Poulet grillé",
-          "Champignon",
-          "Crème fraiche",
-          "Pesto",
-          "Parmesan râpé"
+          "échalotte",
+          "poulet",
+          "champignon",
+          "crème fraiche",
+          "pesto",
+          "parmesan râpé"
         ],
         "quantity": 0,
         "itemId": "5t6o4zluo2n",
@@ -356,10 +365,10 @@
         "imageUrl": "assets/images/items/menu/TAGLIATELLE A LA BOLOGNAISE.jpg",
         "ingredients": [
           "Tagliatelle",
-          "Viande haché",
-          "Pesto",
-          "Parmesan râpé",
-          "Sauce tomate"
+          "viande haché",
+          "pesto",
+          "parmesan râpé",
+          "sauce tomate"
         ],
         "quantity": 0,
         "itemId": "yf32yysqkqg",
@@ -375,7 +384,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Cookies clasique boule de glace",
+        "name": "Cookie classique et sa boule de glace",
         "price": 45,
         "imageUrl": "assets/images/items/menu/COOKIE AVEC BOULE DE GLACE.jpg",
         "ingredients": [],
@@ -414,11 +423,11 @@
         "imageUrl": "assets/images/items/menu/SANDWICH POULET.jpg",
         "ingredients": [
           "Pain ciabatta",
-          "Tomate",
-          "Cornichon",
-          "Poulet grillé",
-          "Sauce césar",
-          "Salade"
+          "tomate",
+          "cornichon",
+          "poulet",
+          "sauce césar",
+          "salade"
         ],
         "quantity": 0,
         "itemId": "t4t7w4kats",
@@ -430,10 +439,10 @@
         "imageUrl": "assets/images/items/menu/SANDWICH NICOIS.jpg",
         "ingredients": [
           "Pain ciabatta",
-          "Tomate",
-          "Thon",
-          "Salade",
-          "Oeuf"
+          "tomate",
+          "thon",
+          "salade",
+          "oeuf"
         ],
         "quantity": 0,
         "itemId": "gbq75sel5fb",
@@ -445,11 +454,11 @@
         "imageUrl": "assets/images/items/menu/CLUB SANDWICH.jpg",
         "ingredients": [
           "Pain de mie",
-          "Tomate",
-          "Poulet grillé",
-          "Salade",
-          "Oeuf",
-          "Mayonnaise"
+          "tomate",
+          "poulet",
+          "salade",
+          "oeuf",
+          "mayonnaise"
         ],
         "quantity": 0,
         "itemId": "3foeb6uhgpx",
@@ -460,12 +469,12 @@
         "price": 38,
         "imageUrl": "assets/images/items/menu/CLUB SANDWICH THON AVOCAT.jpg",
         "ingredients": [
-          "Croûtons",
-          "Tomate",
-          "Tho",
-          "Salade",
-          "Avocat",
-          "Mayonnaise"
+          "Pain de mie",
+          "tomate",
+          "thon",
+          "salade",
+          "avocat",
+          "mayonnaise"
         ],
         "quantity": 0,
         "itemId": "p1skr1odrl",
@@ -497,8 +506,8 @@
         "imageState": "collapsed"
       },
       {
-        "name": "GAUFRE LIEGOISE",
-        "price": 26,
+        "name": "GAUFRE LIÉGEOISE",
+        "price": 32,
         "imageUrl": "assets/images/items/menu/GAUFRE LIEGOISE.jpg",
         "ingredients": [],
         "quantity": 0,
@@ -533,7 +542,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "CRÊPES CARAMEL",
+        "name": "CRÊPES NUTELLA CARAMEL",
         "price": 23,
         "imageUrl": "assets/images/items/menu/CREPE CARAMEL.jpg",
         "ingredients": [],
@@ -558,6 +567,175 @@
         "quantity": 0,
         "itemId": "meo2ouoyp6d",
         "imageState": "collapsed"
+      },
+      {
+        "name": "PANCAKES",
+        "price": 17,
+        "imageUrl": "assets/images/items/pdj/PANKACKENUTELLA.jpeg",
+        "ingredients": [],
+        "quantity": 0,
+        "itemId": "meo2o34yp6d",
+        "imageState": "collapsed"
+      }
+    ]
+  },
+  {
+    "name": "Nos Pâtisseries",
+    "description": "Gourmandes, moelleuses, délicieuses.",
+    "imageUrl": "assets/images/icons/icon1.png",
+    "items": [
+      {
+        "name": "TARTE CITRON",
+        "price": 15,
+        "imageUrl": "assets/images/items/menu/TARTE CITRON.jpg",
+        "ingredients": [],
+        "quantity": 0,
+        "itemId": "bu10ae15cah",
+        "imageState": "collapsed"
+      },
+      {
+        "name": "TARTE POMME",
+        "price": 17,
+        "imageUrl": "assets/images/items/menu/TARTE POMME.jpg",
+        "ingredients": [],
+        "quantity": 0,
+        "itemId": "aax9ddywiob",
+        "imageState": "collapsed"
+      },
+      {
+        "name": "PRALINOR SELECT",
+        "price": 18,
+        "imageUrl": "assets/images/items/menu/PRALINOR SELECT.jpg",
+        "ingredients": [],
+        "quantity": 0,
+        "itemId": "s9jqsqbfz9",
+        "imageState": "collapsed"
+      },
+      {
+        "name": "OPERA SELECT",
+        "price": 18,
+        "imageUrl": "assets/images/items/menu/OPERA SELECT.jpg",
+        "ingredients": [],
+        "quantity": 0,
+        "itemId": "5tr9ht72qmg",
+        "imageState": "collapsed"
+      },
+      {
+        "name": "FORÊT NOIRE SELECT",
+        "price": 18,
+        "imageUrl": "assets/images/items/menu/FORET NOIRE SELECT.jpeg",
+        "ingredients": [],
+        "quantity": 0,
+        "itemId": "azepo29zp0e",
+        "imageState": "collapsed"
+      },
+      {
+        "name": "TARTE AMANDE",
+        "price": 18,
+        "imageUrl": "assets/images/items/menu/TARTE AMANDE.jpg",
+        "ingredients": [],
+        "quantity": 0,
+        "itemId": "zkyskhe5z4h",
+        "imageState": "collapsed"
+      },
+      {
+        "name": "TARTE PASSION FRAMBOISE",
+        "price": 18,
+        "imageUrl": "assets/images/items/menu/TARTE PASSION FRAMBOISE.jpg",
+        "ingredients": [],
+        "quantity": 0,
+        "itemId": "2qjez332kp4",
+        "imageState": "collapsed"
+      },
+      {
+        "name": "PATE AMANDE",
+        "price": 20,
+        "imageUrl": "assets/images/items/menu/PATE AMANDE.jpg",
+        "ingredients": [],
+        "quantity": 0,
+        "itemId": "91zerw7v2f",
+        "imageState": "collapsed"
+      },
+      {
+        "name": "ROYAL SELECT",
+        "price": 20,
+        "imageUrl": "assets/images/items/menu/ROYAL SELECT.jpg",
+        "ingredients": [],
+        "quantity": 0,
+        "itemId": "ptu2ouoyp6d",
+        "imageState": "collapsed"
+      },
+      {
+        "name": "CASABLANCA",
+        "price": 20,
+        "imageUrl": "assets/images/items/menu/CASABLANCA.jpg",
+        "ingredients": [],
+        "quantity": 0,
+        "itemId": "meo2o34yrty",
+        "imageState": "collapsed"
+      },
+      {
+        "name": "ELEGANCE",
+        "price": 23,
+        "imageUrl": "assets/images/items/menu/ELEGANCE.jpg",
+        "ingredients": [],
+        "quantity": 0,
+        "itemId": "meo2mr6yp6d",
+        "imageState": "collapsed"
+      },
+      {
+        "name": "CHOCO FRAMBOISE SELECT",
+        "price": 23,
+        "imageUrl": "assets/images/items/menu/CHOCO FRAMBOISE SELECT.jpg",
+        "ingredients": [],
+        "quantity": 0,
+        "itemId": "meoasc4yp6d",
+        "imageState": "collapsed"
+      },
+      {
+        "name": "ÉTÉ INDIEN",
+        "price": 23,
+        "imageUrl": "assets/images/items/menu/ÉTÉ INDIEN.jpg",
+        "ingredients": [],
+        "quantity": 0,
+        "itemId": "meo23rpyp6d",
+        "imageState": "collapsed"
+      },
+      {
+        "name": "CHEESECAKE CARAMEL",
+        "price": 25,
+        "imageUrl": "assets/images/items/menu/CHEESECAKE CARAMEL.jpg",
+        "ingredients": [],
+        "quantity": 0,
+        "itemId": "ndr9o34yp6d",
+        "imageState": "collapsed"
+      },
+      {
+        "name": "OREO CAKE",
+        "price": 35,
+        "imageUrl": "assets/images/items/menu/OREO CAKE.jpg",
+        "ingredients": [],
+        "quantity": 0,
+        "itemId": "wxs4t34yp6d",
+        "imageState": "collapsed"
+      },
+      {
+        "name": "RED VELVET",
+        "price": 35,
+        "imageUrl": "assets/images/items/menu/RED VELVET.jpg",
+        "ingredients": [],
+        "quantity": 0,
+        "itemId": "meotyu6yp6d",
+        "imageState": "collapsed"
+      },
+      {
+        "name": "CARROTTE CAKE",
+        "price": 35,
+        "imageUrl": "assets/images/items/menu/CARROTTE CAKE.jpg",
+        "ingredients": [],
+        "quantity": 0,
+        "itemId": "menqaz3yp6d",
+        "imageState": "collapsed"
       }
     ]
   },
@@ -567,21 +745,12 @@
     "imageUrl": "assets/images/icons/icon7.png",
     "items": [
       {
-        "name": "Café noir",
+        "name": "Expresso",
         "price": 13,
         "imageUrl": "assets/images/items/boisson/Café noir.jpg",
         "ingredients": [],
         "quantity": 0,
         "itemId": "g63n0cfnefu",
-        "imageState": "collapsed"
-      },
-      {
-        "name": "Café séparé",
-        "price": 14,
-        "imageUrl": "assets/images/items/boisson/Café séparé.jpg",
-        "ingredients": [],
-        "quantity": 0,
-        "itemId": "rjqkvz6hpjs",
         "imageState": "collapsed"
       },
       {
@@ -630,6 +799,15 @@
         "imageState": "collapsed"
       },
       {
+        "name": "Chocolat chaud à l'ancienne",
+        "price": 24,
+        "imageUrl": "assets/images/items/boisson/CHAUCOLAT CHAUD ANCIENNE.jpeg",
+        "ingredients": [],
+        "quantity": 0,
+        "itemId": "mez7lsa8lsk",
+        "imageState": "collapsed"
+      },
+      {
         "name": "Mocaccino",
         "price": 14,
         "imageUrl": "assets/images/items/boisson/MOCACCINO.jpg",
@@ -640,7 +818,7 @@
       },
       {
         "name": "Lait chaud",
-        "price": 14,
+        "price": 13,
         "imageUrl": "assets/images/items/boisson/Lait chaud.jpg",
         "ingredients": [],
         "quantity": 0,
@@ -657,7 +835,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Thé time",
+        "name": "Thé marocain",
         "price": 13,
         "imageUrl": "assets/images/items/boisson/THE MAROCAIN.jpg",
         "ingredients": [],
@@ -667,7 +845,7 @@
       },
       {
         "name": "Thé tchaba",
-        "price": 14,
+        "price": 17,
         "imageUrl": "assets/images/items/boisson/TEA TCHABA.jpg",
         "ingredients": [],
         "quantity": 0,
@@ -676,7 +854,7 @@
       },
       {
         "name": "Thé au safran",
-        "price": 14,
+        "price": 16,
         "imageUrl": "assets/images/items/boisson/THE AU SAFRAN.jpg",
         "ingredients": [],
         "quantity": 0,
@@ -702,63 +880,81 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Eau plae 50cl",
-        "price": 8,
-        "imageUrl": "assets/images/items/boisson/EAU PLATE 50CL.jpg",
+        "name": "Eau plate 50cl",
+        "price": 9,
+        "imageUrl": "assets/images/items/boisson/EAU PLATE 50CL.jpeg",
         "ingredients": [],
         "quantity": 0,
         "itemId": "wjj1d2p17vg",
         "imageState": "collapsed"
       },
       {
-        "name": "Eau gazeuse 50cl",
+        "name": "Eau plate 1L",
+        "price": 12,
+        "imageUrl": "assets/images/items/boisson/EAU PLATE 1L.jpg",
+        "ingredients": [],
+        "quantity": 0,
+        "itemId": "wbn1d2p17vg",
+        "imageState": "collapsed"
+      },
+      {
+        "name": "Oulmes 50cl",
         "price": 8,
-        "imageUrl": "assets/images/items/boisson/Eau gazeuse 50cl.jpg",
+        "imageUrl": "assets/images/items/boisson/OULMES.jpeg",
         "ingredients": [],
         "quantity": 0,
         "itemId": "h2acznsydlr",
         "imageState": "collapsed"
       },
       {
-        "name": "Coca cola 33cl",
-        "price": 13,
-        "imageUrl": "assets/images/items/boisson/SOFT DRINK SODA.jpg",
+        "name": "Coca cola 50cl",
+        "price": 10,
+        "imageUrl": "assets/images/items/boisson/COCA COLA 50CL.jpg",
         "ingredients": [],
         "quantity": 0,
         "itemId": "gay253gomuc",
         "imageState": "collapsed"
       },
       {
-        "name": "Fanta 33cl",
-        "price": 13,
-        "imageUrl": "assets/images/items/boisson/SOFT DRINK SODA 2.jpg",
+        "name": "Fanta 50cl",
+        "price": 10,
+        "imageUrl": "assets/images/items/boisson/FANTA 50CL.jpg",
         "ingredients": [],
         "quantity": 0,
         "itemId": "v7f0wdg5ma",
         "imageState": "collapsed"
       },
       {
-        "name": "Sprite 33cl",
-        "price": 13,
-        "imageUrl": "assets/images/items/boisson/SOFT DRINK SODA.jpg",
+        "name": "Sprite 50cl",
+        "price": 10,
+        "imageUrl": "assets/images/items/boisson/SPRITE 50CL.jpg",
         "ingredients": [],
         "quantity": 0,
         "itemId": "1cxyh0pujhh",
         "imageState": "collapsed"
       },
       {
-        "name": "Hawaî 33cl",
-        "price": 13,
-        "imageUrl": "assets/images/items/boisson/SOFT DRINK SODA.jpg",
+        "name": "Hawaî 50cl",
+        "price": 10,
+        "imageUrl": "assets/images/items/boisson/HAWAI 50CL.jpg",
         "ingredients": [],
         "quantity": 0,
         "itemId": "hpf9o8v3sj5",
         "imageState": "collapsed"
       },
       {
-        "name": "Schweppes citron / Tonic 33cl",
-        "price": 13,
-        "imageUrl": "assets/images/items/boisson/SOFT DRINK SODA 2.jpg",
+        "name": "Orangina 50cl",
+        "price": 12,
+        "imageUrl": "assets/images/items/boisson/ORANGINA.jpeg",
+        "ingredients": [],
+        "quantity": 0,
+        "itemId": "hpf9orf3sj5",
+        "imageState": "collapsed"
+      },
+      {
+        "name": "Schweppes citron / Tonic 50cl",
+        "price": 10,
+        "imageUrl": "assets/images/items/boisson/SCHWEPPES 50CL.jpg",
         "ingredients": [],
         "quantity": 0,
         "itemId": "t2k34nxjnsc",
@@ -766,8 +962,8 @@
       },
       {
         "name": "Red Bull / Burn / Monster",
-        "price": 24,
-        "imageUrl": "assets/images/items/boisson/ENERGY DRINK.jpg",
+        "price": 28,
+        "imageUrl": "assets/images/items/boisson/REDBULL.jpg",
         "ingredients": [],
         "quantity": 0,
         "itemId": "au13x1h1n5e",
@@ -781,12 +977,12 @@
     "imageUrl": "assets/images/icons/icon7.png",
     "items": [
       {
-        "name": "Pina colda",
+        "name": "Pina colada",
         "price": 33,
         "imageUrl": "assets/images/items/boisson/PINA COLADA.jpg",
         "ingredients": [
           "Lait coco",
-          "puréé coco",
+          "purée coco",
           "jus d'ananas"
         ],
         "quantity": 0,
@@ -801,7 +997,6 @@
           "Pèche",
           "ananas",
           "orange",
-          "sirop",
           "sirop passion",
           "grenadine"
         ],
@@ -811,7 +1006,7 @@
       },
       {
         "name": "Blue Dreams",
-        "price": 14,
+        "price": 34,
         "imageUrl": "assets/images/items/boisson/BLUE DREAM.jpg",
         "ingredients": [
           "Curaçao",
@@ -1001,7 +1196,7 @@
     "imageUrl": "assets/images/icons/icon7.png",
     "items": [
       {
-        "name": "Jus d'orange",
+        "name": "Orange",
         "price": 16,
         "imageUrl": "assets/images/items/boisson/JUS ORANGE.jpg",
         "ingredients": [],
@@ -1010,7 +1205,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Jus citron",
+        "name": "Citron",
         "price": 16,
         "imageUrl": "assets/images/items/boisson/JUS CITRON.jpg",
         "ingredients": [],
@@ -1019,7 +1214,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Jus mangue",
+        "name": "Mangue",
         "price": 22,
         "imageUrl": "assets/images/items/boisson/Jus mangue.jpg",
         "ingredients": [],
@@ -1028,7 +1223,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Jus ananas",
+        "name": "Ananas",
         "price": 22,
         "imageUrl": "assets/images/items/boisson/jus ananas.jpg",
         "ingredients": [],
@@ -1037,7 +1232,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Jus fraise",
+        "name": "Fraise",
         "price": 20,
         "imageUrl": "assets/images/items/boisson/JUS FRAISE.jpg",
         "ingredients": [],
@@ -1046,7 +1241,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Jus banane",
+        "name": "Banane",
         "price": 16,
         "imageUrl": "assets/images/items/boisson/JUS BANANE.jpg",
         "ingredients": [],
@@ -1055,7 +1250,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Jus pomme",
+        "name": "Pomme",
         "price": 16,
         "imageUrl": "assets/images/items/boisson/JUS POMME.jpg",
         "ingredients": [],
@@ -1064,7 +1259,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Jus kiwi",
+        "name": "Kiwi",
         "price": 20,
         "imageUrl": "assets/images/items/boisson/JUS KIWI.jpg",
         "ingredients": [],
@@ -1073,7 +1268,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Jus avocat",
+        "name": "Avocat",
         "price": 22,
         "imageUrl": "assets/images/items/boisson/JUS AVOCAT.jpg",
         "ingredients": [],
@@ -1082,7 +1277,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Jus carotte orange",
+        "name": "Carotte orange",
         "price": 20,
         "imageUrl": "assets/images/items/boisson/JUS CARROTTE ORANGE.jpg",
         "ingredients": [],
@@ -1091,7 +1286,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Jus citron gingembre",
+        "name": "Citron gingembre",
         "price": 20,
         "imageUrl": "assets/images/items/boisson/JUS CITRON GINGEMBRE.jpg",
         "ingredients": [],
@@ -1100,7 +1295,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Jus fruits rouges",
+        "name": "Fruits rouges",
         "price": 24,
         "imageUrl": "assets/images/items/boisson/jus fruits rouges.jpg",
         "ingredients": [],
@@ -1109,7 +1304,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Jus Multi fruits",
+        "name": "Multi fruits",
         "price": 24,
         "imageUrl": "assets/images/items/boisson/JUS MULTI FRUITS.jpg",
         "ingredients": [],
@@ -1118,7 +1313,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Jus Tropical",
+        "name": "Tropical",
         "price": 34,
         "imageUrl": "assets/images/items/boisson/JUS TROPICAL.jpg",
         "ingredients": [],
@@ -1127,7 +1322,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Jus Avocat fruits secs",
+        "name": "Avocat fruits secs",
         "price": 32,
         "imageUrl": "assets/images/items/boisson/JUS AVOCAT FRUITS SEC.jpg",
         "ingredients": [],
@@ -1136,7 +1331,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Jus Détox au choix",
+        "name": "Détox au choix",
         "price": 22,
         "imageUrl": "assets/images/items/boisson/JUS DETOX.jpg",
         "ingredients": [
@@ -1230,10 +1425,10 @@
         "price": 24,
         "imageUrl": "assets/images/items/boisson/ICE LATTE CHOCOLAT.jpg",
         "ingredients": [
-          "Aromatisé aux choix : Vanille",
+          "Aromatisé aux choix : (Vanille",
           "chocolat",
           "caramel",
-          "noisette"
+          "noisette)"
         ],
         "quantity": 0,
         "itemId": "9sgj3v6etaw",
@@ -1260,7 +1455,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Bubblee Tea classique",
+        "name": "Bubble Tea classique",
         "price": 35,
         "imageUrl": "assets/images/items/boisson/BUBBLE TEA CLASSIQUE.jpg",
         "ingredients": [],
@@ -1269,7 +1464,7 @@
         "imageState": "collapsed"
       },
       {
-        "name": "Bubblee Tea mangue",
+        "name": "Bubble Tea mangue",
         "price": 36,
         "imageUrl": "assets/images/items/boisson/BUBBLE TEA MANGUE.jpg",
         "ingredients": [],

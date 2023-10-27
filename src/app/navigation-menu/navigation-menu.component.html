@@ -2,10 +2,10 @@
   <mat-sidenav #drawer class="sidenav" fixedInViewport
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="(isHandset$ | async) === false"
+    [opened]="!(isHandset$ | async) && !(isTablet$ | async)"
     [style.background-image]="'url(assets/images/background/bg4.jpeg)'">
     <mat-toolbar>
-      <button *ngIf="!(isHandset$ | async)" mat-icon-button
+      <button *ngIf="!(isHandset$ | async) && !(isTablet$ | async)" mat-icon-button
               [matBadge]="cart.length"
               [matBadgeHidden]="hidden"
               matBadgeColor="warn"
@@ -13,32 +13,32 @@
               (click)="goToCart()">
         <mat-icon>shop</mat-icon>
       </button>
-      <a *ngIf="isHandset$ | async" class="closebtn btn" (click)="drawer.close()">×</a>
+      <a *ngIf="(isHandset$ | async) || (isTablet$ | async)" class="closebtn btn" (click)="drawer.close()">×</a>
       <div fxLayout="row" fxLayoutAlign="center center" class="logo-header">
         <a routerLink="/menu">
           <img src="assets/images/logo3.png" width="193" height="89" alt="" class="mCS_img_loaded">
         </a>
       </div>
     </mat-toolbar>
-    <mat-nav-list *ngIf="isHandset$ | async">
+    <mat-nav-list *ngIf="(isHandset$ | async) || (isTablet$ | async)">
       <a mat-list-item routerLink="/menu" routerLinkActive="activebutton"
          style="text-align: center" (click)="drawer.close()">Menu
       </a>
-      <a mat-list-item routerLink="/about" routerLinkActive="activebutton"
+<!--      <a mat-list-item routerLink="/about" routerLinkActive="activebutton"
          style="text-align: center" (click)="drawer.close()">A propos de nous
       </a>
       <a mat-list-item routerLink="/contact" routerLinkActive="activebutton"
          style="text-align: center" (click)="drawer.close()">Contactez-nous
-      </a>
+      </a>-->
     </mat-nav-list>
-    <mat-nav-list *ngIf="!(isHandset$ | async)">
+    <mat-nav-list *ngIf="!(isHandset$ | async) && !(isTablet$ | async)">
       <a mat-list-item routerLink="/menu" routerLinkActive="activebutton" style="text-align: center">Menu</a>
-      <a mat-list-item routerLink="/about" routerLinkActive="activebutton" style="text-align: center">A propos de nous</a>
-      <a mat-list-item routerLink="/contact" routerLinkActive="activebutton" style="text-align: center">Contactez-nous</a>
+<!--      <a mat-list-item routerLink="/about" routerLinkActive="activebutton" style="text-align: center">A propos de nous</a>
+      <a mat-list-item routerLink="/contact" routerLinkActive="activebutton" style="text-align: center">Contactez-nous</a>-->
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary" *ngIf="isHandset$ | async">
+    <mat-toolbar color="primary" *ngIf="(isHandset$ | async) || (isTablet$ | async)">
       <button
         type="button"
         aria-label="Toggle sidenav"

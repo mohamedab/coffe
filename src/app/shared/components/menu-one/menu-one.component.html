@@ -2,19 +2,25 @@
   <div class="container">
     <div class="dlab-tabs menu-tabs style1">
       <ul class="nav-tabs nav" role="tablist">
-        <li id="nav-item" *ngFor="let category of categories; let i = index">
-          <a (click)="showActiveTab(category);scrollToTabContent()"
-            [class.active]="category.active"
-            id="ngb-nav-{{i + 1}}" role="tab" [attr.aria-selected]="category.active"
-                                   aria-disabled="false" class="nav-link"
-            [attr.aria-controls]="'ngb-nav-' + (i + 1) + '-panel'">
-            <div class="icon-bx">
-              <img [src]="category.imageUrl">
+        <div class="swiper-container h-100 carousel-outer" [swiper]="config">
+          <div class="swiper-wrapper">
+            <div *ngFor="let category of categories; let i = index" class="category swiper-slide">
+              <a (click)="showActiveTab(category)"[class.active]="category.active"
+                id="ngb-nav-{{i + 1}}" role="tab" [attr.aria-selected]="category.active" aria-disabled="false"
+                                       class="nav-link h-100"
+                [attr.aria-controls]="'ngb-nav-' + (i + 1) + '-panel'">
+                <h4 style="text-transform: uppercase">{{category.name}}</h4>
+                <h6 style="text-transform: uppercase">{{category.description}}</h6>
+              </a>
             </div>
-            <h4 style="text-transform: uppercase">{{category.name}}</h4>
-            <h6 style="text-transform: uppercase">{{category.description}}</h6>
-          </a>
-        </li>
+          </div>
+          <button mat-mini-fab class="prop-prev swiper-button-prev swipe-arrow" style="margin-top: 30px;">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+          </button>
+          <button mat-mini-fab class="prop-next swiper-button-next swipe-arrow" style="margin-top: 30px;">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+          </button>
+        </div>
       </ul>
       <div id="tab-content" class="tab-content">
         <div fxLayout="row" fxLayoutAlign="center center">

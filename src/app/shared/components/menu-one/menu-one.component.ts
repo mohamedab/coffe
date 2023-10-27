@@ -3,6 +3,7 @@ import {Item} from "../../models/item";
 import {OrderService} from "../../services/order.service";
 import {ItemService} from "../../services/item.service";
 import {Category} from "../../models/category";
+import {SwiperConfigInterface} from "../swiper/swiper.module";
 
 @Component({
   selector: 'app-menu-one',
@@ -13,6 +14,23 @@ export class MenuOneComponent {
 
   categories: Category[] = [];
   activeMenuList: Item[] = [];
+  public config: SwiperConfigInterface = {};
+  clients = [
+    {name: 'aloha', image: 'assets/images/clients/aloha.png'},
+    {name: 'dream', image: 'assets/images/clients/dream.png'},
+    {name: 'congrats', image: 'assets/images/clients/congrats.png'},
+    {name: 'best', image: 'assets/images/clients/best.png'},
+    {name: 'original', image: 'assets/images/clients/original.png'},
+    {name: 'retro', image: 'assets/images/clients/retro.png'},
+    {name: 'king', image: 'assets/images/clients/king.png'},
+    {name: 'love', image: 'assets/images/clients/love.png'},
+    {name: 'the', image: 'assets/images/clients/the.png'},
+    {name: 'easter', image: 'assets/images/clients/easter.png'},
+    {name: 'with', image: 'assets/images/clients/with.png'},
+    {name: 'special', image: 'assets/images/clients/special.png'},
+    {name: 'bravo', image: 'assets/images/clients/bravo.png'}
+  ];
+
 
   itemId: number = 0;
 
@@ -32,6 +50,35 @@ export class MenuOneComponent {
       console.log(error);
       this.showSpinner = false;
     });
+  }
+
+  ngAfterViewInit() {
+    this.config = {
+      observer: true,
+      slidesPerView: 4,
+      spaceBetween: 16,
+      keyboard: true,
+      navigation: {nextEl: '.prop-next', prevEl: '.prop-prev'},
+      pagination: true,
+      grabCursor: true,
+      loop: true,
+      preloadImages: true,
+      lazy: false,
+      breakpoints: {
+        320: {
+          slidesPerView: 2
+        },
+        600: {
+          slidesPerView: 3
+        },
+        960: {
+          slidesPerView: 4
+        },
+        1280: {
+          slidesPerView: 5
+        }
+      }
+    }
   }
 
   showActiveTab(category: Category) {

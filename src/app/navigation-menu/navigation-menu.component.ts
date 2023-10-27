@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {BreakpointObserver, Breakpoints, BreakpointState} from '@angular/cdk/layout';
 import {Observable} from 'rxjs';
 import {map, shareReplay} from 'rxjs/operators';
 import {Order} from "../shared/models/order";
@@ -20,6 +20,12 @@ export class NavigationMenuComponent {
       shareReplay()
     );
 
+    isTablet$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Tablet)
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
+
   cart: Order[] = [];
   hidden: boolean = true;
 
@@ -32,6 +38,8 @@ export class NavigationMenuComponent {
         this.hidden = true;
       }
     })
+
+    this.breakpointObserver.observe(Breakpoints.Tablet).subscribe((e: BreakpointState) => console.log(e.matches));
   }
 
   goToCart() {

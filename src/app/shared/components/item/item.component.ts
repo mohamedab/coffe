@@ -1,7 +1,8 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
 import {Item} from "../../models/item";
 import {OrderService} from "../../services/order.service";
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-item',
@@ -15,6 +16,7 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
       transition('expanded => collapsed', animate('300ms ease-out')),
     ]),
   ],
+  encapsulation: ViewEncapsulation.None
 })
 export class ItemComponent {
 
@@ -26,17 +28,28 @@ export class ItemComponent {
   @Output() updateOrder: EventEmitter<Item[]> = new EventEmitter<Item[]>();
   @Output() addItemToOrder: EventEmitter<Item[]> = new EventEmitter<Item[]>();
 
-  constructor(private cartService: OrderService) {
+  constructor(private cartService: OrderService, private _snackBar: MatSnackBar) {
   }
 
   addToCart(item: Item) {
     let itemToAdd = new Item();
     itemToAdd = item;
     this.cartService.addToOrder(itemToAdd, 1);
+    this._snackBar.open('Article ajoutée', '×', {
+            panelClass: 'success',
+            verticalPosition: 'top',
+            duration: 2000
+          });
   }
 
   removeFromCart(item: Item) {
-    this.cartService.removeFromOrder(item)
+    this.cartService.removeFromOrder(item);
+     this._snackBar.open('Article retirée', '×', {
+            panelClass: 'warn',
+            verticalPosition: 'top',
+            horizontalPosition: 'center',
+            duration: 2000,
+          });
   }
 
   toggleImageExpansion(index: number) {
